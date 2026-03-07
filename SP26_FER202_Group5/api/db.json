@@ -1,0 +1,92 @@
+{
+  "categories": [],
+  "books": [
+    {
+      "id": "1",
+      "title": "Harry Potter",
+      "author": "J.K. Rowling",
+      "price": "$20",
+      "image": "images/book-1.jpg"
+    },
+    {
+      "id": "2",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": "$15",
+      "image": "images/book-2.jpg"
+    },
+    {
+      "id": "3",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "price": "$18",
+      "image": "images/book-3.jpg"
+    },
+    {
+      "id": "4",
+      "title": "1984",
+      "author": "George Orwell",
+      "price": "$22",
+      "image": "images/book-4.jpg"
+    },
+    {
+      "id": "5",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "price": "$19",
+      "image": "images/book-5.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Pet Sematary",
+      "author": "Stephen King",
+      "price": "$29",
+      "image": "images/book-6.jpg"
+    },
+    {
+      "id": "7",
+      "title": "C++ Primer 5th edition",
+      "author": "Stanley B.Lippman",
+      "price": "$49",
+      "image": "images/book-7.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Where The Crawdads Sing",
+      "author": "Della Owens",
+      "price": "$39",
+      "image": "images/book-8.jpg"
+    },
+    {
+      "id": "9",
+      "title": "The Hobbit",
+      "author": "J.R.R Tolkien",
+      "price": "$50",
+      "image": "images/book-9.jpg"
+    },
+    {
+      "id": "10",
+      "title": "The Lord Of The Rings",
+      "author": "J.R.R Tolkien",
+      "price": "$59",
+      "image": "images/book-10.jpg"
+    },
+    {
+      "id": "11",
+      "title": "Mastering ChatGPT for Beginners",
+      "author": "Shane Corbitt",
+      "price": "$99",
+      "image": "images/book-11.jpg"
+    },
+    {
+      "id": "12",
+      "title": "Make American Greate Again",
+      "author": "Donald J.Trump",
+      "price": "$19",
+      "image": "images/book-12.jpg"
+    }
+  ],
+  "users": [],
+  "carts": [],
+  "orders": []
+}
