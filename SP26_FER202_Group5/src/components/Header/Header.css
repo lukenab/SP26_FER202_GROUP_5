@@ -1,0 +1,38 @@
+.logo {
+  color: #1e3d52 !important;
+  font-weight: bold;
+}
+
+.searchField {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.basic-navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faSearch {
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.login-btn {
+  background-color: #1e3d52 !important; 
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
