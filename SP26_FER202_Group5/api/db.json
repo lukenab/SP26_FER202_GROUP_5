@@ -70,7 +70,7 @@
       "author": "J.R.R Tolkien",
       "price": "$59",
       "image": "images/book-10.jpg"
-    },
+    },  
     {
       "id": "11",
       "title": "Mastering ChatGPT for Beginners",
@@ -84,6 +84,27 @@
       "author": "Donald J.Trump",
       "price": "$19",
       "image": "images/book-12.jpg"
+    },
+    {
+      "id": "13",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "price": "$45",
+      "image": "images/book-13.png"
+    },
+    {
+      "id": "14",
+      "title": "The Pragmatic Programmer",
+      "author": "Andrew Hunt",
+      "price": "$48",
+      "image": "images/book-14.webp"
+    },
+    {
+      "id": "15",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "price": "$30",
+      "image": "images/book-15.jpg"
     }
   ],
   "users": [],

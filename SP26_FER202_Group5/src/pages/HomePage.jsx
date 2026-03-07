@@ -19,7 +19,8 @@ const HomePage = () => {
 
     fetchBookData();
   }, [])
-
+  
+  const popularBooks = books.slice(0, 8);
   return (
     <div className="homepage-wrapper">
       <section className="hero-section text-center text-white d-flex align-items-center justify-content-center mb-5">
@@ -39,7 +40,7 @@ const HomePage = () => {
         </div>
 
         <Row>
-          {books.map((book) => (
+          {popularBooks.map((book) => (
             <Col key={book.id} xs={12} sm={6} md={3} className="mb-4" style={{height: "550px"}}>
               <Card className="p-2 h-100 book-card shadow-sm border-0">
                 <div className="card-img-wrapper">
