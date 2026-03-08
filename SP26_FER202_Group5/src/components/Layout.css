@@ -1,0 +1,17 @@
+.app-content {
+  flex: 1;
+  padding: 1.5rem;
+  transition: margin-left 0.4s ease;
+  margin-left: 260px; /* khớp width sidebar */
+}
+
+.app-content.collapsed {
+  margin-left: 70px;
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    margin-left: 0 !important;
+    padding: 1rem;
+  }
+}

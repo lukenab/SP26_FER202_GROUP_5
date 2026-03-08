@@ -1,0 +1,57 @@
+.book-layout{
+display:flex;
+min-height:100vh;
+background:#f5f7fb;
+}
+
+/* sidebar */
+
+.sidebar{
+height:100vh;
+position:sticky;
+top:0;
+background:white;
+border-right:1px solid #eee;
+}
+/* main area */
+
+.main-content{
+flex:1;
+padding:20px 30px;
+}
+
+/* hero banner */
+
+.hero-banner{
+margin-bottom:25px;
+}
+
+.hero-banner img{
+height:300px;
+object-fit:cover;
+border-radius:12px;
+}
+
+/* category block */
+
+.category-block{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+margin-bottom:25px;
+}
+
+.category-block h5{
+font-weight:600;
+margin-bottom:15px;
+}
+
+/* right panel */
+
+.right-panel{
+background:white;
+border-radius:12px;
+padding:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
