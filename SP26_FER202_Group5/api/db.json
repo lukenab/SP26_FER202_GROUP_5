@@ -1,112 +1,201 @@
 {
-  "categories": [],
+  "categories": [
+      {
+      "id": "1",
+      "name": "Fantasy"
+      },
+      {
+      "id": "2",
+      "name": "Classic Literature"
+      },
+      {
+      "id": "3",
+      "name": "Horror"
+      },
+      {
+      "id": "4",
+      "name": "Programming"
+      },
+      {
+      "id": "5",
+      "name": "Mystery Fiction"
+      },
+      {
+      "id": "6",
+      "name": "Self-Help"
+      },
+      {
+      "id": "7",
+      "name": "Political"
+      }
+  ],
   "books": [
-    {
+      {
       "id": "1",
       "title": "Harry Potter",
       "author": "J.K. Rowling",
+      "country": "United Kingdom",
       "price": "$20",
-      "image": "images/book-1.jpg"
-    },
-    {
+      "image": "images/book-1.jpg",
+      "category_id": "1",
+      "publication_year": "1997",
+      "stock": 25
+      },
+      {
       "id": "2",
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
+      "country": "United States",
       "price": "$15",
-      "image": "images/book-2.jpg"
-    },
-    {
+      "image": "images/book-2.jpg",
+      "category_id": "2",
+      "publication_year": "1925",
+      "stock": 18
+      },
+      {
       "id": "3",
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
+      "country": "United States",
       "price": "$18",
-      "image": "images/book-3.jpg"
-    },
-    {
+      "image": "images/book-3.jpg",
+      "category_id": "2",
+      "publication_year": "1960",
+      "stock": 1
+      },
+      {
       "id": "4",
       "title": "1984",
       "author": "George Orwell",
+      "country": "United Kingdom",
       "price": "$22",
-      "image": "images/book-4.jpg"
-    },
-    {
+      "image": "images/book-4.jpg",
+      "category_id": "2",
+      "publication_year": "1949",
+      "stock": 14
+      },
+      {
       "id": "5",
       "title": "The Catcher in the Rye",
       "author": "J.D. Salinger",
+      "country": "United States",
       "price": "$19",
-      "image": "images/book-5.jpg"
-    },
-    {
+      "image": "images/book-5.jpg",
+      "category_id": "2",
+      "publication_year": "1951",
+      "stock": 16
+      },
+      {
       "id": "6",
       "title": "Pet Sematary",
       "author": "Stephen King",
+      "country": "United States",
       "price": "$29",
-      "image": "images/book-6.jpg"
-    },
-    {
+      "image": "images/book-6.jpg",
+      "category_id": "3",
+      "publication_year": "1983",
+      "stock": 12
+      },
+      {
       "id": "7",
       "title": "C++ Primer 5th edition",
       "author": "Stanley B.Lippman",
+      "country": "United States",
       "price": "$49",
-      "image": "images/book-7.jpg"
-    },
-    {
+      "image": "images/book-7.jpg",
+      "category_id": "4",
+      "publication_year": "2012",
+      "stock": 20
+      },
+      {
       "id": "8",
       "title": "Where The Crawdads Sing",
       "author": "Della Owens",
+      "country": "United States",
       "price": "$39",
-      "image": "images/book-8.jpg"
-    },
-    {
+      "image": "images/book-8.jpg",
+      "category_id": "5",
+      "publication_year": "2018",
+      "stock": 13
+      },
+      {
       "id": "9",
       "title": "The Hobbit",
       "author": "J.R.R Tolkien",
+      "country": "United Kingdom",
       "price": "$50",
-      "image": "images/book-9.jpg"
-    },
-    {
+      "image": "images/book-9.jpg",
+      "category_id": "1",
+      "publication_year": "1937",
+      "stock": 22
+      },
+      {
       "id": "10",
       "title": "The Lord Of The Rings",
       "author": "J.R.R Tolkien",
+      "country": "United Kingdom",
       "price": "$59",
-      "image": "images/book-10.jpg"
-    },  
-    {
+      "image": "images/book-10.jpg",
+      "category_id": "1",
+      "publication_year": "1954",
+      "stock": 15
+      },
+      {
       "id": "11",
       "title": "Mastering ChatGPT for Beginners",
       "author": "Shane Corbitt",
+      "country": "United States",
       "price": "$99",
-      "image": "images/book-11.jpg"
-    },
-    {
+      "image": "images/book-11.jpg",
+      "category_id": "6",
+      "publication_year": "2023",
+      "stock": 17
+      },
+      {
       "id": "12",
-      "title": "Make American Greate Again",
+      "title": "Make American Great Again",
       "author": "Donald J.Trump",
+      "country": "United States",
       "price": "$19",
-      "image": "images/book-12.jpg"
-    },
-    {
+      "image": "images/book-12.jpg",
+      "category_id": "7",
+      "publication_year": "2015",
+      "stock": 1
+      },
+      {
       "id": "13",
       "title": "Clean Code",
       "author": "Robert C. Martin",
+      "country": "United States",
       "price": "$45",
-      "image": "images/book-13.png"
-    },
-    {
+      "image": "images/book-13.png",
+      "category_id": "4",
+      "publication_year": "2008",
+      "stock": 19
+      },
+      {
       "id": "14",
       "title": "The Pragmatic Programmer",
       "author": "Andrew Hunt",
+      "country": "United States",
       "price": "$48",
-      "image": "images/book-14.webp"
-    },
-    {
+      "image": "images/book-14.webp",
+      "category_id": "4",
+      "publication_year": "1999",
+      "stock": 21
+      },
+      {
       "id": "15",
       "title": "Atomic Habits",
       "author": "James Clear",
+      "country": "United States",
       "price": "$30",
-      "image": "images/book-15.jpg"
-    }
-  ],
+      "image": "images/book-15.jpg",
+      "category_id": "6",
+      "publication_year": "2018",
+      "stock": 24
+      }
+      ],
   "users": [],
   "carts": [],
   "orders": []
