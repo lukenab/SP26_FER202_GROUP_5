@@ -12,3 +12,7 @@ export const getAllCategories = async () =>{
     return response.data;
 }
 
+export const getBookDetail = async (id) =>{
+    const response = await axios.get(`${BASE_URL}/books/${id}`);
+    return response.data;
+}

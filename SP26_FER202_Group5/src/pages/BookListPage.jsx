@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { getAllBook, getAllCategories } from '../service/api';
-
+import { Link } from 'react-router-dom';
 import HeroBanner from '../components/HeroBanner';
 import LeftPanel from '../components/LeftPanel';
 import BookCard from '../components/BookCard';
@@ -24,55 +24,85 @@ const BookListPage = () => {
     fetchData();
   }, []);
 
-  // sách mới
+  // sách mới phát hành
   const newBooks = [...books].sort((a, b) => b.publication_year - a.publication_year).slice(0, 5);
-
+  // sách mới lên kệ
+  const newArrivals = [...books].sort((a, b) => b.id - a.id).slice(0, 6);
   //featured random
   const featuredBooks = [...books].sort(() => 0.5 - Math.random()).slice(0, 8);
-
   // sắp hết hàng
-  const lowStockBooks = books.filter((b) => b.stock <= 5).slice(0, 8);
-
+  const lowStockBooks = books.filter((b) => b.stock <= 5).slice(0, 5);
   //  book theo category
-  const booksByCategory = categories.map((category) => ({
+  const booksByCategory = [...categories].sort(() => 0.5 - Math.random()).slice(0, 2).map((category) => ({
     ...category,
-    books: books.filter((book) => book.category_id === category.id),
+    books: books.filter((book) => book.category_id === category.id).sort(() => 0.5 - Math.random()).slice(0, 4)
   }));
 
   return (
   <>
-    {/* HERO */}
-    <HeroBanner />
 
-    <Container fluid className="mt-4">
-
+    
+    <Container fluid className="mt-1">
+      {/* HERO */}
+      <HeroBanner />
       <Row>
-
         {/* LEFT PANEL */}
         <Col lg={3}>
-          <LeftPanel newBooks={newBooks}/>
+        <Row className='mb-3'>
+          <LeftPanel newBooks={newBooks} title={"New Books"}/>
+          </Row>
+        <Row className='mb-3'>
+          <LeftPanel newBooks={newArrivals}title={"New Arrivals"}/>
+        </Row>
         </Col>
 
         {/* BOOK AREA */}
         <Col lg={9}>
-
           {/* FEATURED */}
           <div className="category-block">
-            <h5>Featured Books</h5>
-
-            <Row xs={2} md={4} className="g-3">
+            <h4 className='fw-bold'>New Featured</h4>
+            <Row xs={2} md={4} className="g-3 mb-2">
               {featuredBooks.map((book)=>(
                 <Col key={book.id}>
                   <BookCard book={book}/>
                 </Col>
               ))}
             </Row>
-
           </div>
-
+          {booksByCategory.map((category) => (
+            <div key={category.id} className="category-block mt-4">
+                <h4 className="fw-bold">{category.name}</h4>
+               {category.books.length > 0 ?(
+                 <Row xs={2} md={4} className="g-3">
+                  {category.books.map((book) => (
+                    <Col key={book.id}>
+                      <BookCard book={book} />
+                    </Col>
+                  ))}
+                </Row>
+               ):(
+                <div className="empty-category">
+                  <p>No books available in this category yet</p>
+                </div>
+               )}
+                {/* view all */}
+                <div className="text-end mt-2">
+                  <Link to={`/category/${category.id}`} className="view-all-link"> View All →</Link>
+                </div>
+              </div>
+          ))}
         </Col>
-
       </Row>
+      <Row className="category-block">
+            <h4 className='fw-bold'>Low Stock Books</h4>
+            <Row xs={2} md={5} className="g-3 mb-2">
+              {lowStockBooks.map((book)=>(
+                <Col key={book.id}>
+                  <BookCard book={book}/>
+                </Col>
+              ))}
+            </Row>
+          </Row>
 
     </Container>
   </>
