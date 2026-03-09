@@ -8,15 +8,15 @@ const BookCard = ({ book }) => {
       
       <div className="overflow-hidden rounded-top-4">
         <Card.Img variant="top" src={book.image} className="p-2"
-          style={{ width: "100%",height: "230px", objectFit: "contain", }}/>
+          style={{ width: "100%",height: "200px", objectFit: "contain", }}/>
       </div>
-      <Card.Body className="d-flex flex-column">
+      <Card.Body className="card-body d-flex flex-column">
         <Card.Title className="fw-semibold" style={{  fontSize: "18px" }} > {book.title} </Card.Title>
         <Card.Text style={{  fontSize: "13px" }}>Author: {book.author}</Card.Text>
         <div className="mb-3">
-          <Badge bg="danger" >{book.price} </Badge>
+          <Badge bg="danger"  className="fw-bold mt-auto">{book.price} </Badge>
         </div>
-        <Link to={`/book/${book.id}`} className="mt-auto">
+        <Link to={`/books/${book.id}`} className="mt-auto">
           <Button variant="outline-primary" size="sm" className="w-100">
             View Detail
           </Button>
