@@ -1,45 +1,50 @@
 {
   "categories": [
       {
-      "id": "1",
+      "id": 1,
       "name": "Fantasy"
       },
       {
-      "id": "2",
+      "id": 2,
       "name": "Classic Literature"
       },
       {
-      "id": "3",
+      "id": 3,
       "name": "Horror"
       },
       {
-      "id": "4",
+      "id": 4,
       "name": "Programming"
       },
       {
-      "id": "5",
+      "id": 5,
       "name": "Mystery Fiction"
       },
       {
-      "id": "6",
+      "id": 6,
       "name": "Self-Help"
       },
       {
       "id": "7",
       "name": "Political"
-      }
+      },
+      {
+        "id": 8,
+        "name": "Manga"
+        }
   ],
   "books": [
-      {
+     {
       "id": "1",
       "title": "Harry Potter",
       "author": "J.K. Rowling",
       "country": "United Kingdom",
       "price": "$20",
-      "image": "images/book-1.jpg",
+      "image": "/images/book-1.jpg",
       "category_id": "1",
       "publication_year": "1997",
-      "stock": 25
+      "stock": 25,
+      "description": "A young wizard named Harry discovers his magical heritage and attends Hogwarts School of Witchcraft and Wizardry while confronting the dark wizard Voldemort."
       },
       {
       "id": "2",
@@ -47,10 +52,11 @@
       "author": "F. Scott Fitzgerald",
       "country": "United States",
       "price": "$15",
-      "image": "images/book-2.jpg",
+      "image": "/images/book-2.jpg",
       "category_id": "2",
       "publication_year": "1925",
-      "stock": 18
+      "stock": 18,
+      "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby."
       },
       {
       "id": "3",
@@ -58,10 +64,11 @@
       "author": "Harper Lee",
       "country": "United States",
       "price": "$18",
-      "image": "images/book-3.jpg",
+      "image": "/images/book-3.jpg",
       "category_id": "2",
       "publication_year": "1960",
-      "stock": 1
+      "stock": 1,
+      "description": "A powerful story about racial injustice in the American South seen through the eyes of a young girl named Scout Finch."
       },
       {
       "id": "4",
@@ -69,10 +76,11 @@
       "author": "George Orwell",
       "country": "United Kingdom",
       "price": "$22",
-      "image": "images/book-4.jpg",
+      "image": "/images/book-4.jpg",
       "category_id": "2",
       "publication_year": "1949",
-      "stock": 14
+      "stock": 14,
+      "description": "A dystopian novel depicting a totalitarian society ruled by Big Brother where surveillance and propaganda control every aspect of life."
       },
       {
       "id": "5",
@@ -80,10 +88,11 @@
       "author": "J.D. Salinger",
       "country": "United States",
       "price": "$19",
-      "image": "images/book-5.jpg",
+      "image": "/images/book-5.jpg",
       "category_id": "2",
       "publication_year": "1951",
-      "stock": 16
+      "stock": 2,
+      "description": "A coming-of-age story about Holden Caulfield, a teenager wandering New York City while struggling with identity and alienation."
       },
       {
       "id": "6",
@@ -91,10 +100,11 @@
       "author": "Stephen King",
       "country": "United States",
       "price": "$29",
-      "image": "images/book-6.jpg",
+      "image": "/images/book-6.jpg",
       "category_id": "3",
       "publication_year": "1983",
-      "stock": 12
+      "stock": 12,
+      "description": "A horror novel about a burial ground that brings the dead back to life with terrifying consequences."
       },
       {
       "id": "7",
@@ -102,10 +112,11 @@
       "author": "Stanley B.Lippman",
       "country": "United States",
       "price": "$49",
-      "image": "images/book-7.jpg",
+      "image": "/images/book-7.jpg",
       "category_id": "4",
       "publication_year": "2012",
-      "stock": 20
+      "stock": 20,
+      "description": "A comprehensive guide to learning C++ programming covering modern C++ features and best practices."
       },
       {
       "id": "8",
@@ -113,10 +124,11 @@
       "author": "Della Owens",
       "country": "United States",
       "price": "$39",
-      "image": "images/book-8.jpg",
+      "image": "/images/book-8.jpg",
       "category_id": "5",
       "publication_year": "2018",
-      "stock": 13
+      "stock": 13,
+      "description": "A mystery novel about a young girl who grows up isolated in the marsh and becomes the prime suspect in a local murder."
       },
       {
       "id": "9",
@@ -124,10 +136,11 @@
       "author": "J.R.R Tolkien",
       "country": "United Kingdom",
       "price": "$50",
-      "image": "images/book-9.jpg",
+      "image": "/images/book-9.jpg",
       "category_id": "1",
       "publication_year": "1937",
-      "stock": 22
+      "stock": 22,
+      "description": "Bilbo Baggins embarks on an unexpected adventure with a group of dwarves to reclaim their stolen treasure from the dragon Smaug."
       },
       {
       "id": "10",
@@ -135,10 +148,11 @@
       "author": "J.R.R Tolkien",
       "country": "United Kingdom",
       "price": "$59",
-      "image": "images/book-10.jpg",
+      "image": "/images/book-10.jpg",
       "category_id": "1",
       "publication_year": "1954",
-      "stock": 15
+      "stock": 15,
+      "description": "An epic fantasy trilogy about the quest to destroy the One Ring and defeat the dark lord Sauron."
       },
       {
       "id": "11",
@@ -146,10 +160,11 @@
       "author": "Shane Corbitt",
       "country": "United States",
       "price": "$99",
-      "image": "images/book-11.jpg",
+      "image": "/images/book-11.jpg",
       "category_id": "6",
       "publication_year": "2023",
-      "stock": 17
+      "stock": 3,
+      "description": "A beginner-friendly guide explaining how to effectively use ChatGPT for productivity, learning, and content creation."
       },
       {
       "id": "12",
@@ -157,10 +172,11 @@
       "author": "Donald J.Trump",
       "country": "United States",
       "price": "$19",
-      "image": "images/book-12.jpg",
+      "image": "/images/book-12.jpg",
       "category_id": "7",
       "publication_year": "2015",
-      "stock": 1
+      "stock": 1,
+      "description": "A political book outlining Donald Trump's vision for economic growth, immigration policy, and national security."
       },
       {
       "id": "13",
@@ -168,10 +184,11 @@
       "author": "Robert C. Martin",
       "country": "United States",
       "price": "$45",
-      "image": "images/book-13.png",
+      "image": "/images/book-13.png",
       "category_id": "4",
       "publication_year": "2008",
-      "stock": 19
+      "stock": 19,
+      "description": "A famous programming book teaching developers how to write readable, maintainable, and high-quality code."
       },
       {
       "id": "14",
@@ -179,10 +196,11 @@
       "author": "Andrew Hunt",
       "country": "United States",
       "price": "$48",
-      "image": "images/book-14.webp",
+      "image": "/images/book-14.webp",
       "category_id": "4",
       "publication_year": "1999",
-      "stock": 21
+      "stock": 2,
+      "description": "A classic programming guide offering practical advice and principles for becoming a better software developer."
       },
       {
       "id": "15",
@@ -190,10 +208,215 @@
       "author": "James Clear",
       "country": "United States",
       "price": "$30",
-      "image": "images/book-15.jpg",
+      "image": "/images/book-15.jpg",
       "category_id": "6",
       "publication_year": "2018",
-      "stock": 24
+      "stock": 24,
+      "description": "A self-help book that explains how small daily habits can lead to remarkable long-term personal improvement."
+      },
+      {
+      "id": "16",
+      "title": "A Game of Thrones",
+      "author": "George R.R. Martin",
+      "country": "United States",
+      "price": "$55",
+      "image": "/images/book-16.jpg",
+      "category_id": "1",
+      "publication_year": "1996",
+      "stock": 20,
+      "description": "The first book in the epic fantasy series A Song of Ice and Fire featuring political intrigue and battles for the Iron Throne."
+      },
+      {
+      "id": "17",
+      "title": "The Name of the Wind",
+      "author": "Patrick Rothfuss",
+      "country": "United States",
+      "price": "$45",
+      "image": "/images/book-17.jpg",
+      "category_id": "1",
+      "publication_year": "2007",
+      "stock": 18,
+      "description": "The story of Kvothe, a legendary figure recounting his life as a gifted magician, musician, and adventurer."
+      },
+      {
+      "id": "18",
+      "title": "Murder on the Orient Express",
+      "author": "Agatha Christie",
+      "country": "United Kingdom",
+      "price": "$20",
+      "image": "/images/book-18.webp",
+      "category_id": "4",
+      "publication_year": "1934",
+      "stock": 14,
+      "description": "Detective Hercule Poirot investigates a mysterious murder that occurs aboard the luxurious Orient Express train."
+      },
+      {
+      "id": "19",
+      "title": "The Hound of the Baskervilles",
+      "author": "Arthur Conan Doyle",
+      "country": "United Kingdom",
+      "price": "$18",
+      "image": "/images/book-19.jpg",
+      "category_id": "4",
+      "publication_year": "1902",
+      "stock": 10,
+      "description": "Sherlock Holmes investigates a terrifying legend involving a supernatural hound haunting the Baskerville family."
+      },
+      {
+      "id": "20",
+      "title": "The ABC Murders",
+      "author": "Agatha Christie",
+      "country": "United Kingdom",
+      "price": "$19",
+      "image": "/images/book-20.jpg",
+      "category_id": "4",
+      "publication_year": "1936",
+      "stock": 9,
+      "description": "Hercule Poirot hunts a serial killer who leaves alphabetical clues before each murder."
+      },
+      {
+      "id": "21",
+      "title": "Gone Girl",
+      "author": "Gillian Flynn",
+      "country": "United States",
+      "price": "$21",
+      "image": "/images/book-21.webp",
+      "category_id": "5",
+      "publication_year": "2012",
+      "stock": 11,
+      "description": "A psychological thriller about the mysterious disappearance of a woman and the secrets within her marriage."
+      },
+      {
+      "id": "22",
+      "title": "Doraemon Vol. 1",
+      "author": "Fujiko F. Fujio",
+      "country": "Japan",
+      "price": "$12",
+      "image": "/images/book-22.webp",
+      "category_id": "8",
+      "publication_year": "1969",
+      "stock": 30,
+      "description": "The first volume of the famous manga about Doraemon, a robotic cat from the future who helps a boy named Nobita."
+      },
+      {
+      "id": "23",
+      "title": "Detective Conan Vol. 1",
+      "author": "Gosho Aoyama",
+      "country": "Japan",
+      "price": "$13",
+      "image": "/images/book-23.jpg",
+      "category_id": "8",
+      "publication_year": "1994",
+      "stock": 25,
+      "description": "A teenage detective is transformed into a child and continues solving complex mysteries while hiding his identity."
+      },
+      {
+      "id": "24",
+      "title": "Inuyasha Vol. 1",
+      "author": "Rumiko Takahashi",
+      "country": "Japan",
+      "price": "$14",
+      "image": "/images/book-24.jpg",
+      "category_id": "8",
+      "publication_year": "1996",
+      "stock": 22,
+      "description": "A fantasy manga where a modern girl travels to feudal Japan and joins the half-demon Inuyasha on a quest."
+      },
+      {
+      "id": "25",
+      "title": "Naruto Vol. 1",
+      "author": "Masashi Kishimoto",
+      "country": "Japan",
+      "price": "$14",
+      "image": "/images/book-25.jpg",
+      "category_id": "8",
+      "publication_year": "1999",
+      "stock": 28,
+      "description": "The story of Naruto Uzumaki, a young ninja who dreams of becoming the strongest leader of his village."
+      },
+      {
+      "id": "26",
+      "title": "One Piece Vol. 1",
+      "author": "Eiichiro Oda",
+      "country": "Japan",
+      "price": "$15",
+      "image": "/images/book-26.jpg",
+      "category_id": "8",
+      "publication_year": "1997",
+      "stock": 26,
+      "description": "Monkey D. Luffy begins his journey to become the Pirate King by searching for the legendary treasure One Piece."
+      },
+      {
+      "id": "27",
+      "title": "The Prince",
+      "author": "Niccolò Machiavelli",
+      "country": "Italy",
+      "price": "$18",
+      "image": "/images/book-27.jpg",
+      "category_id": "7",
+      "publication_year": "1532",
+      "stock": 20,
+      "description": "A classic political treatise discussing power, leadership, and the strategies rulers use to maintain control."
+      },
+      {
+      "id": "28",
+      "title": "The Art of War",
+      "author": "Sun Tzu",
+      "country": "China",
+      "price": "$16",
+      "image": "/images/book-28.jpg",
+      "category_id": "7",
+      "publication_year": "5th century BC",
+      "stock": 18,
+      "description": "An ancient Chinese military strategy book widely used in warfare, business, and leadership."
+      },
+      {
+      "id": "29",
+      "title": "On Liberty",
+      "author": "John Stuart Mill",
+      "country": "United Kingdom",
+      "price": "$17",
+      "image": "/images/book-29.jpg",
+      "category_id": "7",
+      "publication_year": "1859",
+      "stock": 15,
+      "description": "A philosophical work defending individual freedom and the importance of liberty in society."
+      },
+      {
+      "id": "30",
+      "title": "The 7 Habits of Highly Effective People",
+      "author": "Stephen R. Covey",
+      "country": "United States",
+      "price": "$18",
+      "image": "/images/book-30.jpg",
+      "category_id": "6",
+      "publication_year": "1989",
+      "stock": 20,
+      "description": "A famous self-development book teaching principles for personal and professional effectiveness."
+      },
+      {
+      "id": "31",
+      "title": "Think and Grow Rich",
+      "author": "Napoleon Hill",
+      "country": "United States",
+      "price": "$17",
+      "image": "/images/book-31.jpg",
+      "category_id": "6",
+      "publication_year": "1937",
+      "stock": 18,
+      "description": "A motivational classic that explores the mindset and habits needed to achieve financial success."
+      },
+      {
+      "id": "32",
+      "title": "Code Complete",
+      "author": "Steve McConnell",
+      "country": "United States",
+      "price": "$41",
+      "image": "/images/book-32.jpg",
+      "category_id": "4",
+      "publication_year": "2004",
+      "stock": 16,
+      "description": "A comprehensive guide to software construction, covering coding practices, debugging, and software quality."
       }
       ],
   "users": [],
