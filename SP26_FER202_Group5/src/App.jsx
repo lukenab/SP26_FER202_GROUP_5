@@ -7,26 +7,24 @@ import BookListPage from './pages/BookListPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import BookDetailPage from './pages/BookDetailPage';
-import CartPage from './components/Cart/CartPage';
-
+import AboutPage from './pages/AboutPage';
+import NewPage from './pages/NewPage';
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/books" element={<BookListPage />} />
-            <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path="/cart" element={<CartPage />} />
-          </Route>
-
-          {/* Auth pages */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/books" element={<BookListPage />} />
+          <Route path="/about" element={<AboutPage/>}/>
+          <Route  path="/news" element={<NewPage/>}/>
+          <Route path="/books/:id"element={<BookDetailPage/>}/>
+        </Route>
+        {/* Auth pages */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
