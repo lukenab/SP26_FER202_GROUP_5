@@ -1,40 +1,40 @@
 {
   "categories": [
-      {
-      "id": 1,
+    {
+      "id": "1",
       "name": "Fantasy"
-      },
-      {
-      "id": 2,
+    },
+    {
+      "id": "2",
       "name": "Classic Literature"
-      },
-      {
-      "id": 3,
+    },
+    {
+      "id": "3",
       "name": "Horror"
-      },
-      {
-      "id": 4,
+    },
+    {
+      "id": "4",
       "name": "Programming"
-      },
-      {
-      "id": 5,
+    },
+    {
+      "id": "5",
       "name": "Mystery Fiction"
-      },
-      {
-      "id": 6,
+    },
+    {
+      "id": "6",
       "name": "Self-Help"
-      },
-      {
+    },
+    {
       "id": "7",
       "name": "Political"
-      },
-      {
-        "id": 8,
-        "name": "Manga"
-        }
+    },
+    {
+      "id": "8",
+      "name": "Manga"
+    }
   ],
   "books": [
-     {
+    {
       "id": "1",
       "title": "Harry Potter",
       "author": "J.K. Rowling",
@@ -45,8 +45,8 @@
       "publication_year": "1997",
       "stock": 25,
       "description": "A young wizard named Harry discovers his magical heritage and attends Hogwarts School of Witchcraft and Wizardry while confronting the dark wizard Voldemort."
-      },
-      {
+    },
+    {
       "id": "2",
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
@@ -57,8 +57,8 @@
       "publication_year": "1925",
       "stock": 18,
       "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby."
-      },
-      {
+    },
+    {
       "id": "3",
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
@@ -69,8 +69,8 @@
       "publication_year": "1960",
       "stock": 1,
       "description": "A powerful story about racial injustice in the American South seen through the eyes of a young girl named Scout Finch."
-      },
-      {
+    },
+    {
       "id": "4",
       "title": "1984",
       "author": "George Orwell",
@@ -81,8 +81,8 @@
       "publication_year": "1949",
       "stock": 14,
       "description": "A dystopian novel depicting a totalitarian society ruled by Big Brother where surveillance and propaganda control every aspect of life."
-      },
-      {
+    },
+    {
       "id": "5",
       "title": "The Catcher in the Rye",
       "author": "J.D. Salinger",
@@ -93,8 +93,8 @@
       "publication_year": "1951",
       "stock": 2,
       "description": "A coming-of-age story about Holden Caulfield, a teenager wandering New York City while struggling with identity and alienation."
-      },
-      {
+    },
+    {
       "id": "6",
       "title": "Pet Sematary",
       "author": "Stephen King",
@@ -105,8 +105,8 @@
       "publication_year": "1983",
       "stock": 12,
       "description": "A horror novel about a burial ground that brings the dead back to life with terrifying consequences."
-      },
-      {
+    },
+    {
       "id": "7",
       "title": "C++ Primer 5th edition",
       "author": "Stanley B.Lippman",
@@ -117,8 +117,8 @@
       "publication_year": "2012",
       "stock": 20,
       "description": "A comprehensive guide to learning C++ programming covering modern C++ features and best practices."
-      },
-      {
+    },
+    {
       "id": "8",
       "title": "Where The Crawdads Sing",
       "author": "Della Owens",
@@ -129,8 +129,8 @@
       "publication_year": "2018",
       "stock": 13,
       "description": "A mystery novel about a young girl who grows up isolated in the marsh and becomes the prime suspect in a local murder."
-      },
-      {
+    },
+    {
       "id": "9",
       "title": "The Hobbit",
       "author": "J.R.R Tolkien",
@@ -141,8 +141,8 @@
       "publication_year": "1937",
       "stock": 22,
       "description": "Bilbo Baggins embarks on an unexpected adventure with a group of dwarves to reclaim their stolen treasure from the dragon Smaug."
-      },
-      {
+    },
+    {
       "id": "10",
       "title": "The Lord Of The Rings",
       "author": "J.R.R Tolkien",
@@ -153,8 +153,8 @@
       "publication_year": "1954",
       "stock": 15,
       "description": "An epic fantasy trilogy about the quest to destroy the One Ring and defeat the dark lord Sauron."
-      },
-      {
+    },
+    {
       "id": "11",
       "title": "Mastering ChatGPT for Beginners",
       "author": "Shane Corbitt",
@@ -165,8 +165,8 @@
       "publication_year": "2023",
       "stock": 3,
       "description": "A beginner-friendly guide explaining how to effectively use ChatGPT for productivity, learning, and content creation."
-      },
-      {
+    },
+    {
       "id": "12",
       "title": "Make American Great Again",
       "author": "Donald J.Trump",
@@ -177,8 +177,8 @@
       "publication_year": "2015",
       "stock": 1,
       "description": "A political book outlining Donald Trump's vision for economic growth, immigration policy, and national security."
-      },
-      {
+    },
+    {
       "id": "13",
       "title": "Clean Code",
       "author": "Robert C. Martin",
@@ -189,8 +189,8 @@
       "publication_year": "2008",
       "stock": 19,
       "description": "A famous programming book teaching developers how to write readable, maintainable, and high-quality code."
-      },
-      {
+    },
+    {
       "id": "14",
       "title": "The Pragmatic Programmer",
       "author": "Andrew Hunt",
@@ -201,8 +201,8 @@
       "publication_year": "1999",
       "stock": 2,
       "description": "A classic programming guide offering practical advice and principles for becoming a better software developer."
-      },
-      {
+    },
+    {
       "id": "15",
       "title": "Atomic Habits",
       "author": "James Clear",
@@ -213,8 +213,8 @@
       "publication_year": "2018",
       "stock": 24,
       "description": "A self-help book that explains how small daily habits can lead to remarkable long-term personal improvement."
-      },
-      {
+    },
+    {
       "id": "16",
       "title": "A Game of Thrones",
       "author": "George R.R. Martin",
@@ -225,8 +225,8 @@
       "publication_year": "1996",
       "stock": 20,
       "description": "The first book in the epic fantasy series A Song of Ice and Fire featuring political intrigue and battles for the Iron Throne."
-      },
-      {
+    },
+    {
       "id": "17",
       "title": "The Name of the Wind",
       "author": "Patrick Rothfuss",
@@ -237,8 +237,8 @@
       "publication_year": "2007",
       "stock": 18,
       "description": "The story of Kvothe, a legendary figure recounting his life as a gifted magician, musician, and adventurer."
-      },
-      {
+    },
+    {
       "id": "18",
       "title": "Murder on the Orient Express",
       "author": "Agatha Christie",
@@ -249,8 +249,8 @@
       "publication_year": "1934",
       "stock": 14,
       "description": "Detective Hercule Poirot investigates a mysterious murder that occurs aboard the luxurious Orient Express train."
-      },
-      {
+    },
+    {
       "id": "19",
       "title": "The Hound of the Baskervilles",
       "author": "Arthur Conan Doyle",
@@ -261,8 +261,8 @@
       "publication_year": "1902",
       "stock": 10,
       "description": "Sherlock Holmes investigates a terrifying legend involving a supernatural hound haunting the Baskerville family."
-      },
-      {
+    },
+    {
       "id": "20",
       "title": "The ABC Murders",
       "author": "Agatha Christie",
@@ -273,8 +273,8 @@
       "publication_year": "1936",
       "stock": 9,
       "description": "Hercule Poirot hunts a serial killer who leaves alphabetical clues before each murder."
-      },
-      {
+    },
+    {
       "id": "21",
       "title": "Gone Girl",
       "author": "Gillian Flynn",
@@ -285,8 +285,8 @@
       "publication_year": "2012",
       "stock": 11,
       "description": "A psychological thriller about the mysterious disappearance of a woman and the secrets within her marriage."
-      },
-      {
+    },
+    {
       "id": "22",
       "title": "Doraemon Vol. 1",
       "author": "Fujiko F. Fujio",
@@ -297,8 +297,8 @@
       "publication_year": "1969",
       "stock": 30,
       "description": "The first volume of the famous manga about Doraemon, a robotic cat from the future who helps a boy named Nobita."
-      },
-      {
+    },
+    {
       "id": "23",
       "title": "Detective Conan Vol. 1",
       "author": "Gosho Aoyama",
@@ -309,8 +309,8 @@
       "publication_year": "1994",
       "stock": 25,
       "description": "A teenage detective is transformed into a child and continues solving complex mysteries while hiding his identity."
-      },
-      {
+    },
+    {
       "id": "24",
       "title": "Inuyasha Vol. 1",
       "author": "Rumiko Takahashi",
@@ -321,8 +321,8 @@
       "publication_year": "1996",
       "stock": 22,
       "description": "A fantasy manga where a modern girl travels to feudal Japan and joins the half-demon Inuyasha on a quest."
-      },
-      {
+    },
+    {
       "id": "25",
       "title": "Naruto Vol. 1",
       "author": "Masashi Kishimoto",
@@ -333,8 +333,8 @@
       "publication_year": "1999",
       "stock": 28,
       "description": "The story of Naruto Uzumaki, a young ninja who dreams of becoming the strongest leader of his village."
-      },
-      {
+    },
+    {
       "id": "26",
       "title": "One Piece Vol. 1",
       "author": "Eiichiro Oda",
@@ -345,8 +345,8 @@
       "publication_year": "1997",
       "stock": 26,
       "description": "Monkey D. Luffy begins his journey to become the Pirate King by searching for the legendary treasure One Piece."
-      },
-      {
+    },
+    {
       "id": "27",
       "title": "The Prince",
       "author": "Niccolò Machiavelli",
@@ -357,8 +357,8 @@
       "publication_year": "1532",
       "stock": 20,
       "description": "A classic political treatise discussing power, leadership, and the strategies rulers use to maintain control."
-      },
-      {
+    },
+    {
       "id": "28",
       "title": "The Art of War",
       "author": "Sun Tzu",
@@ -369,8 +369,8 @@
       "publication_year": "5th century BC",
       "stock": 18,
       "description": "An ancient Chinese military strategy book widely used in warfare, business, and leadership."
-      },
-      {
+    },
+    {
       "id": "29",
       "title": "On Liberty",
       "author": "John Stuart Mill",
@@ -381,8 +381,8 @@
       "publication_year": "1859",
       "stock": 15,
       "description": "A philosophical work defending individual freedom and the importance of liberty in society."
-      },
-      {
+    },
+    {
       "id": "30",
       "title": "The 7 Habits of Highly Effective People",
       "author": "Stephen R. Covey",
@@ -393,8 +393,8 @@
       "publication_year": "1989",
       "stock": 20,
       "description": "A famous self-development book teaching principles for personal and professional effectiveness."
-      },
-      {
+    },
+    {
       "id": "31",
       "title": "Think and Grow Rich",
       "author": "Napoleon Hill",
@@ -405,8 +405,8 @@
       "publication_year": "1937",
       "stock": 18,
       "description": "A motivational classic that explores the mindset and habits needed to achieve financial success."
-      },
-      {
+    },
+    {
       "id": "32",
       "title": "Code Complete",
       "author": "Steve McConnell",
@@ -417,9 +417,32 @@
       "publication_year": "2004",
       "stock": 16,
       "description": "A comprehensive guide to software construction, covering coding practices, debugging, and software quality."
-      }
-      ],
-  "users": [],
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Lap",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "User",
+      "email": "user@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "44d6",
+      "name": "Hữu Thạnh",
+      "email": "ThanhDH.ce191422@gmail.com",
+      "password": "123456",
+      "role": "user"
+    }
+  ],
   "carts": [],
-  "orders": []
+  "orders": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
