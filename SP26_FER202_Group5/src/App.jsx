@@ -10,6 +10,9 @@ import BookDetailPage from './pages/BookDetailPage';
 import AboutPage from './pages/AboutPage';
 import NewPage from './pages/NewPage';
 import CartPage from './components/Cart/CartPage';
+import AdminRoute from './components/AdminRoute';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminPage from './pages/AdminPage';
 
 function App() {
   return (
@@ -22,11 +25,28 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path="/cart" element={<CartPage />} />
+
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute>
+                  <CartPage />
+                </ProtectedRoute>
+              }
+            />
           </Route>
-          {/* Auth pages */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminPage />
+              </AdminRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </CartProvider>
