@@ -32,6 +32,7 @@ const CartPage = () => {
                 <th>Book</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>In Stock</th>
                 <th>Subtotal</th>
                 <th></th>
               </tr>
@@ -70,6 +71,9 @@ const CartPage = () => {
                         </Button>
                       </div>
                     </td>
+
+                    {/* Còn lại */}
+                    <td className="align-middle text-center text-muted">{item.stock - item.quantity}</td>
 
                     {/* Subtotal */}
                     <td className="align-middle fw-semibold">${subtotal.toFixed(2)}</td>
