@@ -6,7 +6,7 @@ import { useCart } from '../Cart/CartGlobalState';
 import './Header.css';
 
 const Header = () => {
-  // const { totalItems } = useCart();
+  const { totalItems } = useCart();
 
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
