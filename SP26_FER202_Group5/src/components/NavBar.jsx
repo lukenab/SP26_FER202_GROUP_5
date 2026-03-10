@@ -23,16 +23,20 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="main-navbar" />
 
         <Navbar.Collapse id="main-navbar">
-          <Nav className="mx-auto nav-menu">
-            <NavDropdown title="Categories" id="category-dropdown">
+          <Nav>
+            <NavDropdown title="Categories" className="category-dropdown">
               {categories.map((cat) => (
                 <NavDropdown.Item  key={cat.id} as={Link}  to={`/categories/${cat.id}`}  className="category-item">
                   {cat.name}
                 </NavDropdown.Item>
               ))}
             </NavDropdown>
-            <Nav.Link as={Link} to="/"> Home </Nav.Link>
-            <Nav.Link as={Link} to="/books"> Books </Nav.Link>
+            </Nav>
+            <Nav className="nav-right">
+              <Nav.Link as={Link} to="/"> Home </Nav.Link>
+              <Nav.Link as={Link} to="/books"> Books </Nav.Link>
+              <Nav.Link as={Link} to="/news"> New </Nav.Link>
+              <Nav.Link as={Link} to="/about"> About </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
