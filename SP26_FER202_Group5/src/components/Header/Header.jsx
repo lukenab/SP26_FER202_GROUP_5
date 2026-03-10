@@ -6,8 +6,7 @@ import { useCart } from '../Cart/CartGlobalState';
 import './Header.css';
 
 const Header = () => {
-  const cart = useCart();
-  const totalItems = cart?.totalItems ?? 0;
+  const { totalItems } = useCart();
 
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
@@ -30,11 +29,11 @@ const Header = () => {
 
             <Link to="/cart" className="position-relative text-dark fs-4">
               <FaShoppingCart />
-              {totalItems > 0 && (
-                <Badge pill bg="danger" className="position-absolute" style={{ top: '-5px', right: '-10px', fontSize: '0.65rem' }}>
-                  {totalItems}
-                </Badge>
-              )}
+              {/* {totalItems > 0 && (
+                // <Badge pill bg="danger" className="position-absolute" style={{ top: '-5px', right: '-10px', fontSize: '0.65rem' }}>
+                //   {totalItems}
+                // </Badge>
+              )} */}
             </Link>
           </div>
         </Navbar.Collapse>

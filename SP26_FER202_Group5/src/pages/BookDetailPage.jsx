@@ -8,7 +8,7 @@ import { useCart } from '../components/Cart/CartGlobalState';
 const BookDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  //const { addToCart } = useCart();
 
   const [book, setBook] = useState(null);
   const [books, setBooks] = useState([]);
@@ -32,10 +32,10 @@ const BookDetailPage = () => {
     if (quantity > 1) setCount(quantity - 1);
   };
 
-  const handleAddToCart = () => {
-    addToCart(book, quantity);
-    navigate('/cart');
-  };
+  // const handleAddToCart = () => {
+  //   addToCart(book, quantity);
+  //   navigate('/cart');
+  // };
 
   if (!book) {
     return (
@@ -113,7 +113,7 @@ const BookDetailPage = () => {
             </Row>
             <Row className="my-3 g-3 text-white">
               <Col>
-                <Button className="w-100" onClick={handleAddToCart} style={{ background: '#1e3d52' }}>
+                <Button className="w-100" style={{ background: '#1e3d52' }}>
                   ADD TO CART
                 </Button>
               </Col>
