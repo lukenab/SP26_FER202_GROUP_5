@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
-import { useCart } from '../Cart/CartGlobalState';
+import { useCart } from './CartGlobalState';
 
 const CartPage = () => {
   const { cartItems, updateQuantity, removeItem, clearCart, totalItems, totalPrice } = useCart();
