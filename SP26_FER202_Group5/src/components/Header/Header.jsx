@@ -2,9 +2,12 @@ import React from 'react';
 import { Navbar, Container, Form, FormControl, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../Cart/CartGlobalState';
 import './Header.css';
 
 const Header = () => {
+  const { totalItems } = useCart();
+
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
       <Container>
@@ -15,8 +18,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Form className="searchField">
-            <FaSearch className="faSearch position-absolute"/>
-
+            <FaSearch className="faSearch position-absolute" />
             <FormControl type="search" placeholder="Search for books, authors, or genres..." className="ps-5 py-2" aria-label="Search" />
           </Form>
 
@@ -27,10 +29,11 @@ const Header = () => {
 
             <Link to="/cart" className="position-relative text-dark fs-4">
               <FaShoppingCart />
-
-              <Badge pill bg="danger" className="position-absolute" style={{ top: '-5px', right: '-10px', fontSize: '0.65rem' }}>
-                3
-              </Badge>
+              {totalItems > 0 && (
+                <Badge pill bg="danger" className="position-absolute" style={{ top: '-5px', right: '-10px', fontSize: '0.65rem' }}>
+                  {totalItems}
+                </Badge>
+              )}
             </Link>
           </div>
         </Navbar.Collapse>
