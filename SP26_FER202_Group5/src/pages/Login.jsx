@@ -31,21 +31,72 @@ export default function Login() {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card">
-        <h2 className="auth-title">Login to OBSM</h2>
+    <div className="login-page">
+      {/* LEFT SECTION */}
+      <div className="login-left">
+        <div className="brand">
+          📚 <span>OBSM Books</span>
+        </div>
 
-        <form className="auth-form" onSubmit={handleLogin}>
-          <input type="email" placeholder="Email" className="auth-input" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <img src="\images\book_login.jpg" alt="Library" className="banner-img" />
 
-          <input type="password" placeholder="Password" className="auth-input" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <h2>Discover the world of knowledge</h2>
 
-          <button className="auth-btn">Login</button>
-        </form>
+        <p>Thousands of quality books are waiting for you to explore. Log in to enjoy a great shopping experience and exclusive offers.</p>
 
-        <p className="auth-footer">
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
+        <div className="stats">
+          <div className="stat">
+            <h3>8K+</h3>
+            <span>Books</span>
+          </div>
+
+          <div className="stat">
+            <h3>50K+</h3>
+            <span>Customers</span>
+          </div>
+
+          <div className="stat">
+            <h3>4.8★</h3>
+            <span>Ratings</span>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT SECTION */}
+      <div className="login-right">
+        <div className="login-box">
+          <h2>Welcome Back</h2>
+          <p>Sign in to continue shopping</p>
+
+          <form onSubmit={handleLogin}>
+            <label>Email</label>
+            <input type="email" placeholder="your.email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+
+            <label>Password</label>
+            <input type="password" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} required />
+
+            <div className="login-options">
+              <label>
+                <input type="checkbox" />
+                Remember me
+              </label>
+
+              <a href="#">Forgot password?</a>
+            </div>
+
+            <button className="login-btn">Sign In</button>
+          </form>
+
+          <p className="register-text">
+            Don't have an account? <Link to="/register">Sign up now</Link>
+          </p>
+
+          <div className="divider">or</div>
+
+          <button className="guest-btn">
+            <Link to="/">Continue as Guest</Link>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import './auth.css';
-import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./auth.css";
+import axios from "axios";
 
 export default function Register() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -17,34 +17,108 @@ export default function Register() {
       name,
       email,
       password,
-      role: 'user',
+      role: "user",
     };
 
-    await axios.post('http://localhost:5000/users', newUser);
+    await axios.post("http://localhost:5000/users", newUser);
 
-    alert('Register success!');
-    navigate('/login');
+    alert("Registration successful!");
+    navigate("/login");
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card">
-        <h2 className="auth-title">Create Account</h2>
+    <div className="login-page">
+      
+      {/* LEFT SECTION */}
+      <div className="login-left">
 
-        <form className="auth-form" onSubmit={handleRegister}>
-          <input type="text" placeholder="Full Name" className="auth-input" value={name} onChange={(e) => setName(e.target.value)} required />
+        <div className="brand">
+          📚 <span>OBSM Books</span>
+        </div>
 
-          <input type="email" placeholder="Email" className="auth-input" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <img
+          src="\images\book-register.jpg"
+          alt="Library"
+          className="banner-img"
+        />
 
-          <input type="password" placeholder="Password" className="auth-input" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <h2>Start your reading journey</h2>
 
-          <button className="auth-btn">Register</button>
-        </form>
-
-        <p className="auth-footer">
-          Already have an account? <Link to="/login">Login</Link>
+        <p>
+          Join thousands of readers discovering amazing books every day.
+          Create an account to start exploring now.
         </p>
+
+        <div className="stats">
+
+          <div className="stat">
+            <h3>8K+</h3>
+            <span>Books</span>
+          </div>
+
+          <div className="stat">
+            <h3>50K+</h3>
+            <span>Customers</span>
+          </div>
+
+          <div className="stat">
+            <h3>4.8★</h3>
+            <span>Ratings</span>
+          </div>
+
+        </div>
+
       </div>
+
+      {/* RIGHT SECTION */}
+      <div className="login-right">
+
+        <div className="login-box">
+
+          <h2>Create Account</h2>
+          <p>Register to start shopping</p>
+
+          <form onSubmit={handleRegister}>
+
+            <label>Full Name</label>
+            <input
+              type="text"
+              placeholder="Your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="your.email@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button className="login-btn">Register</button>
+
+          </form>
+
+          <p className="register-text">
+            Already have an account? <Link to="/login">Sign In</Link>
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
   );
 }
