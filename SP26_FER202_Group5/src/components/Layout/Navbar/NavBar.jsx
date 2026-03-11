@@ -2,7 +2,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { useEffect, useState } from "react";
-import { getAllCategories } from "../service/api";
+import { getAllCategories } from "../../../service/api";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-import { getAllBook } from '../service/api';
+import { getAllBook } from '../../service/api';
 
 const HomePage = () => {
   const  [books, setBooks] = useState([]);

@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-import MiniBookCard from "./MiniBookCard";
+import MiniBookCard from "../components/UI/MiniBookCard";
 
 const LeftPanel = ({ title, newBooks }) => {
 

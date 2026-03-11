@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getAllCategories, getBookDetail, getAllBook } from '../service/api';
-import BookCard from '../components/BookCard';
+import { getAllCategories, getBookDetail, getAllBook } from '../../service/api';
+import BookCard from '../../components/UI/BookCard';
 import { Row, Container, Breadcrumb, Col, Button, InputGroup, Form, Table, Card } from 'react-bootstrap';
-import { useCart } from '../components/Cart/CartGlobalState';
+import { useCart } from '../../components/Context/Cart/CartGlobalState';
 
 const BookDetailPage = () => {
   const { id } = useParams();

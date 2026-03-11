@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { getAllBook} from '../service/api';
-import BookCard from '../components/BookCard';
-import './BookListPage.css';
+import { getAllBook} from '../../service/api';
+import BookCard from '../../components/UI/BookCard';
+import '../Books/BookListPage.css';
 const NewPage = () => {
     const [books, setBooks] = useState([]);
 

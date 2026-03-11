@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import NavBar from './NavBar';
+import Header from './Layout/Header/Header';
+import Footer from './Layout/Footer/Footer';
+import NavBar from '../components/Layout/Navbar/NavBar';
 
 const Layout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);

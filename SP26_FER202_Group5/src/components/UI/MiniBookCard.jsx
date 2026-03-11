@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap"; 
 import { Link } from "react-router-dom";
-import "../components/NavBar.css";
+import "../Layout/Navbar/Navbar.css";
 const MiniBookCard = ({ book }) => {
   return (
     <div className="d-flex align-items-center border-bottom py-2 mini-book">
