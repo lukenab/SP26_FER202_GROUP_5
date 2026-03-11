@@ -32,7 +32,8 @@
 
 .login-btn {
   background-color: #1e3d52 !important; 
-  border: none !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
