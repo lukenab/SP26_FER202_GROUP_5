@@ -47,6 +47,14 @@ function App() {
               </AdminRoute>
             }
           />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </CartProvider>
