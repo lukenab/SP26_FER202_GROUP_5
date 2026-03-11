@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Container, Form, FormControl, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingCart } from 'react-icons/fa';
-import { useCart } from '../Cart/CartGlobalState';
+import { useCart } from '../../Context/Cart/CartGlobalState';
 import './Header.css';
 
 const Header = () => {

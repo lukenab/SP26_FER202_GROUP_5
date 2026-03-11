@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { getAllBook, getAllCategories } from '../service/api';
+import { getAllBook, getAllCategories } from '../../service/api';
 import { Link } from 'react-router-dom';
-import HeroBanner from '../components/HeroBanner';
-import LeftPanel from '../components/LeftPanel';
-import BookCard from '../components/BookCard';
+import HeroBanner from '../Home/HeroBanner';
+import LeftPanel from '../../components/LeftPanel';
+import BookCard from '../../components/UI/BookCard';
 
 import './BookListPage.css';
 
