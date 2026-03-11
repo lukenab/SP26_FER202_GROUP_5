@@ -90,17 +90,21 @@
   padding: 40px;
   border-radius: 16px;
   width: 450px;
+  height: 600px;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
   animation: fadeUp 0.8s ease;
 }
 
 .login-box h2 {
   margin-bottom: 5px;
+  margin-top: -35px;
+  text-align: center;
 }
 
 .login-box p {
   color: #777;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 /* ===== INPUT ===== */
@@ -167,18 +171,20 @@
 
 .register-text {
   text-align: center;
-  margin-top: 18px;
+  margin-top: -7px;
 }
 
 .register-text a {
   color: #2a5a7a;
   font-weight: 600;
+  
 }
 
 .divider {
   text-align: center;
   margin: 16px 0;
   color: #999;
+  margin-top: -25px;
 }
 
 .guest-btn {
@@ -189,6 +195,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.25s;
+  margin-top: -15px;
 }
 
 .guest-btn:hover {

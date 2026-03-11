@@ -424,6 +424,7 @@
       "id": "1",
       "name": "Lap",
       "email": "admin@gmail.com",
+      "phone": "0123456789",
       "password": "123456",
       "role": "admin"
     },
@@ -446,6 +447,14 @@
       "name": "Bùi Như Ý",
       "email": "y@gmail.com",
       "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "ae53",
+      "name": "Tô Thị Thảo Trang ",
+      "email": "Trang@gmail.com",
+      "password": "123456",
+      "phone": "1234567890",
       "role": "user"
     }
   ],
