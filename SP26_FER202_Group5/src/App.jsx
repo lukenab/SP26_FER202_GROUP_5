@@ -13,6 +13,7 @@ import CartPage from './components/Cart/CartPage';
 import AdminRoute from './components/AdminRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminPage from './pages/AdminPage';
+import UserPage from './pages/UserPage';
 import ProfilePage from './pages/ProfilePage';
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
 
           <Route
             path="/admin"
@@ -46,14 +49,6 @@ function App() {
               <AdminRoute>
                 <AdminPage />
               </AdminRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
             }
           />
         </Routes>

@@ -23,7 +23,7 @@ export default function Login() {
       if (user.role === 'admin') {
         navigate('/admin');
       } else {
-        navigate('/');
+        navigate('/user');
       }
     } else {
       alert('Invalid email or password');
