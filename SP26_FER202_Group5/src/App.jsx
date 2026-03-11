@@ -13,6 +13,7 @@ import CartPage from './components/Context/Cart/CartPage';
 import AdminRoute from './pages/Routes/AdminRoute';
 import ProtectedRoute from './pages/Routes/ProtectedRoute';
 import AdminPage from './pages/Admin/AdminPage';
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
   return (
