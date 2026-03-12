@@ -42,7 +42,7 @@ export default function ProfilePage() {
         </div>
         
         <button>
-          <Link to="/user">Back To user</Link>
+          <Link to="/books">Back To Home</Link>
         </button>
       </div>
     </div>
