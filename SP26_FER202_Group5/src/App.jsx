@@ -20,6 +20,7 @@ import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
 
 import UserPage from './pages/UserPage';
 
+
 function App() {
   return (
     <CartProvider>
@@ -46,7 +47,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/user" element={<UserPage />} />
+          {/* <Route path="/books" element={<BookListPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
 
           <Route

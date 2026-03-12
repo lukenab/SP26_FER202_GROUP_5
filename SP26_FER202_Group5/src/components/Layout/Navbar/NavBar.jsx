@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getAllCategories } from "../../../service/api";
 
 const NavBar = () => {
+
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -12,6 +13,7 @@ const NavBar = () => {
       const categoryData = await getAllCategories();
       setCategories(categoryData);
     };
+
     fetchData();
   }, []);
 
@@ -19,26 +21,38 @@ const NavBar = () => {
     <Navbar className="main-navbar" expand="lg">
       <Container>
 
-        {/* Toggle button */}
         <Navbar.Toggle aria-controls="main-navbar" />
 
         <Navbar.Collapse id="main-navbar">
+
+          {/* LEFT */}
           <Nav>
             <NavDropdown title="Categories" className="category-dropdown">
+
               {categories.map((cat) => (
-                <NavDropdown.Item  key={cat.id} as={Link}  to={`/categories/${cat.id}`}  className="category-item">
+                <NavDropdown.Item
+                  key={cat.id}
+                  as={Link}
+                  to={`/categories/${cat.id}`}
+                  className="category-item"
+                >
                   {cat.name}
                 </NavDropdown.Item>
               ))}
+
             </NavDropdown>
-            </Nav>
-            <Nav className="nav-right">
-              <Nav.Link as={Link} to="/"> Home </Nav.Link>
-              <Nav.Link as={Link} to="/books"> Books </Nav.Link>
-              <Nav.Link as={Link} to="/news"> New </Nav.Link>
-              <Nav.Link as={Link} to="/about"> About </Nav.Link>
           </Nav>
+
+          {/* RIGHT */}
+          <Nav className="nav-right">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/books">Books</Nav.Link>
+            <Nav.Link as={Link} to="/news">New</Nav.Link>
+            <Nav.Link as={Link} to="/about">About</Nav.Link>
+          </Nav>
+
         </Navbar.Collapse>
+
       </Container>
     </Navbar>
   );
