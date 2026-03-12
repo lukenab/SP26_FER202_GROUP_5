@@ -1,0 +1,136 @@
+.admin-navbar {
+  height: 70px;
+  margin-left: 260px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.search-wrapper{
+    position: relative;
+    width: 300px;
+}
+
+.search-wrapper .search-icon{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.search-wrapper input{
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 56px 8px 36px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.search-wrapper input:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(30, 61, 82, 0.2);;
+}
+
+#dropdown-custom-components{
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.hide-arrow::after{
+    display: none !important;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.admin-sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    z-index: 1000;
+}
+
+.admin-navbar {
+    height: 70px;
+    margin-left: 260px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    z-index: 999;
+}
+
+.admin-main-content {
+    margin-left: 260px;
+    margin-top: 70px;
+    padding: 24px;
+    background-color: #f4f7fe; 
+    min-height: calc(100vh - 70px);
+}
+
+/* --- SIDEBAR --- */
+.sidebar-brand {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 1.25rem;
+    color: #1e3d52 !important;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 16px 0;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar-item {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    color: #1d3f6c;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.sidebar-item:hover, .sidebar-item.active {
+    background-color: #f3f4f6;
+    color: #253861;
+    border-right: 3px solid #2c5b7a; 
+}
+
+.sidebar-icon {
+    margin-right: 14px;
+    font-size: 1.2rem;
+}
+
+.logo-book{
+    color: #4a7ea0; 
+}
