@@ -19,7 +19,6 @@ import ProfilePage from './pages/ProfilePage';
 import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
 
 import UserPage from './pages/UserPage';
-import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
