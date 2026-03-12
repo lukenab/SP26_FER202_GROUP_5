@@ -18,7 +18,6 @@ import AdminPage from './pages/Admin/AdminPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
 
-import UserPage from './pages/UserPage';
 
 
 function App() {
@@ -47,7 +46,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* <Route path="/books" element={<BookListPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
 
           <Route
