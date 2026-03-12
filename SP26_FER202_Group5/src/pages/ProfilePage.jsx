@@ -27,9 +27,20 @@ export default function ProfilePage() {
         </div>
 
         <div className="profile-item">
+          <span>Phone</span>
+          <p>{user.phone}</p>
+        </div>
+
+        <div className="profile-item">
+          <span>Password</span>
+          <p>{user.password}</p>
+        </div>
+
+        <div className="profile-item">
           <span>Role</span>
           <p>{user.role}</p>
         </div>
+        
         <button>
           <Link to="/user">Back To user</Link>
         </button>
