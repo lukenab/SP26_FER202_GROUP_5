@@ -16,8 +16,8 @@ import AdminRoute from './pages/Routes/AdminRoute';
 import ProtectedRoute from './pages/Routes/ProtectedRoute';
 import AdminPage from './pages/Admin/AdminPage';
 
-import UserPage from './pages/UserPage';
 import ProfilePage from './pages/ProfilePage';
+
 
 function App() {
   return (
@@ -45,7 +45,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/user" element={<UserPage />} />
+          {/* <Route path="/books" element={<BookListPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
 
           <Route
