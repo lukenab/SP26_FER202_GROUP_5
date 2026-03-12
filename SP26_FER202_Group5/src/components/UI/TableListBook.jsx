@@ -10,7 +10,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete}) => {
       <Container className="bg-white shadow-lg border-3 rounded-3 p-2">
         <h2 className="my-2">{title}</h2>
 
-        <Table bordered hover responsive>
+        <Table bordered hover responsive className="rounded-3 overflow-hidden">
           <thead className="table-header">
             <tr>
               <th>ID</th>
@@ -123,7 +123,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete}) => {
                           <img variant="top" src="/images/logo.png" className="p-2" width="135" height="62" alt="logo" />
                           <small>Explore Books</small>
                         </div>
-                        <Button as={Link} to="/books" style={{ background: '#1e3d52' }}>
+                        <Button as={Link} to="/admin" style={{ background: '#1e3d52' }}>
                           View More ›
                         </Button>
                       </div>
