@@ -32,7 +32,6 @@ const CartPage = () => {
                 <th>Book</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>In Stock</th>
                 <th>Subtotal</th>
                 <th></th>
               </tr>
@@ -43,7 +42,7 @@ const CartPage = () => {
                 const subtotal = price * item.quantity;
                 return (
                   <tr key={item.id}>
-                    {/* Tên sách + ảnh */}
+                    {/* Tên sách + ảnh + in stock */}
                     <td>
                       <div className="d-flex align-items-center gap-3">
                         <img src={item.image} alt={item.title} style={{ width: '50px', height: '65px', objectFit: 'cover', borderRadius: '4px' }} />
@@ -52,6 +51,7 @@ const CartPage = () => {
                             {item.title}
                           </Link>
                           <div style={{ fontSize: '13px', color: '#777' }}>{item.author}</div>
+                          <div style={{ fontSize: '12px', color: '#28a745', marginTop: '2px' }}>In stock: {item.stock - item.quantity}</div>
                         </div>
                       </div>
                     </td>
@@ -71,9 +71,6 @@ const CartPage = () => {
                         </Button>
                       </div>
                     </td>
-
-                    {/* Còn lại */}
-                    <td className="align-middle text-center text-muted">{item.stock - item.quantity}</td>
 
                     {/* Subtotal */}
                     <td className="align-middle fw-semibold">${subtotal.toFixed(2)}</td>
