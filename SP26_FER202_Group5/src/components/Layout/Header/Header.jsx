@@ -6,13 +6,21 @@ import { useCart } from '../../Context/Cart/CartGlobalState';
 import './Header.css';
 
 const Header = () => {
+<<<<<<< HEAD
   const { totalItems, syncUser } = useCart();
+=======
+  const { totalItems } = useCart();
+>>>>>>> 7bb05ada3e2cca2065372f4a7b26f9e7f6d3f707
 
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7bb05ada3e2cca2065372f4a7b26f9e7f6d3f707
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -21,7 +29,10 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
+<<<<<<< HEAD
     syncUser(); // reset cartItems về [] trong context
+=======
+>>>>>>> 7bb05ada3e2cca2065372f4a7b26f9e7f6d3f707
     navigate('/');
   };
 
@@ -64,8 +75,23 @@ const Header = () => {
             {/* CART - chỉ hiện badge khi đã đăng nhập và có sản phẩm */}
             <Link to="/cart" className="position-relative text-dark fs-4">
               <FaShoppingCart />
+<<<<<<< HEAD
               {user && totalItems > 0 && (
                 <Badge pill bg="danger" className="position-absolute" style={{ top: '-5px', right: '-10px', fontSize: '0.65rem' }}>
+=======
+
+              {totalItems > 0 && (
+                <Badge
+                  pill
+                  bg="danger"
+                  className="position-absolute"
+                  style={{
+                    top: '-5px',
+                    right: '-10px',
+                    fontSize: '0.65rem',
+                  }}
+                >
+>>>>>>> 7bb05ada3e2cca2065372f4a7b26f9e7f6d3f707
                   {totalItems}
                 </Badge>
               )}
