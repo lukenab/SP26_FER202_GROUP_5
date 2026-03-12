@@ -83,6 +83,7 @@
   align-items: center;
   justify-content: center;
   animation: slideRight 0.8s ease;
+  overflow-y: auto; 
 }
 
 .login-box {
@@ -191,6 +192,11 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.25s;
+}
+
+.guest-btn a{
+  text-decoration: none;
+  color: inherit;
 }
 
 .guest-btn:hover {

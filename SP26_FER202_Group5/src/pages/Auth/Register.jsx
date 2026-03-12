@@ -7,7 +7,6 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
 
   const navigate = useNavigate();
 
@@ -18,7 +17,6 @@ export default function Register() {
       name,
       email,
       password,
-      phone,
       role: 'user',
     };
 
@@ -68,18 +66,15 @@ export default function Register() {
 
           <form onSubmit={handleRegister}>
             <label>Full Name</label>
-            <input type="text" placeholder="Your full name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <input type="text" placeholder="Enter your full name" value={name} onChange={(e) => setName(e.target.value)} required />
 
             <label>Email</label>
             <input type="email" placeholder="your.email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-            <label>Phone</label>
-            <input type="text" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-
             <label>Password</label>
             <input type="password" placeholder="Create a password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
-            <button className="login-btn">Register</button>
+            <button className="login-btn">Sign up</button>
           </form>
 
           <p className="register-text">
