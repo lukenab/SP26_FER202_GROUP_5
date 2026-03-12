@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { getAllBook, getAllCategories, deleteBook } from '../../service/api';
+import { getAllBook, getAllCategories, deleteBook,addBook } from '../../service/api';
 import { FaBook } from 'react-icons/fa';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import TableListBook from '../../components/UI/TableListBook';
+import AddBookModal from '../../components/UI/AddBookModal';
 import './BookManagement.css';
 const BookManagement = () => {
 
@@ -14,7 +15,9 @@ const BookManagement = () => {
   const [showAllBook, setshowAllBook] = useState(true);
   const [showLowStock, setShowLowStock] = useState(false);
   const [showOutOfStock, setShowOutOfStock] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [toast, setToast] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,6 +34,8 @@ const BookManagement = () => {
 
   // calculate book
   const totalOfBook = ListBook.length;
+  // đảo ngược list Nếu kết quả  > 0 b sẽ đứng trước a.
+  const reverseListBook = [...ListBook].sort((a, b)=> b.id - a.id);
   // calculate out of stock
   const totalOutofStock = ListBook.filter((book) => book.stock === 0);
   // calculate low stock
@@ -40,6 +45,15 @@ const BookManagement = () => {
     await deleteBook(id);
     setListBook(list => list.filter(book=> book.id !== id));
     setToast("Book deleted successfully!");
+    setTimeout(()=> {
+      setToast(null)
+    }, 2500);
+  }
+
+  const handleAddBook = async (book) =>{
+    const newBook = await addBook(book);
+    setListBook(pre => [...pre, newBook]);
+    setToast("Book added successfully!")
     setTimeout(()=> {
       setToast(null)
     }, 2500);
@@ -65,9 +79,9 @@ const BookManagement = () => {
                     setShowLowStock(false);
                     setShowOutOfStock(false);
                   }}
-                  style={{ background: '#1e3d52' }}
+                  style={{ background: '#1e3d52', border: "none" }}
                 >
-                  View All →
+                  View All
                 </Button>
               </div>
             </div>
@@ -88,9 +102,9 @@ const BookManagement = () => {
                     setShowOutOfStock(true);
                     setshowAllBook(false);
                   }}
-                  style={{ background: '#1e3d52' }}
+                  style={{ background: '#1e3d52', border: "none" }}
                 >
-                  View All →
+                  View All
                 </Button>
               </div>
             </div>
@@ -110,9 +124,9 @@ const BookManagement = () => {
                     setShowOutOfStock(false);
                     setshowAllBook(false);
                   }}
-                  style={{ background: '#1e3d52' }}
+                  style={{ background: '#1e3d52', border: "none" }}
                 >
-                  View All →
+                  View All
                 </Button>
               </div>
             </div>
@@ -134,20 +148,19 @@ const BookManagement = () => {
                 ))}
               </select>
               {/* Add Book */}
-              <Button style={{ background: "#1e3d52", border: "none" }} > + Add Book </Button>
+              <Button style={{ background: "#1e3d52", border: "none",whiteSpace: "nowrap" }} onClick={()=> setShowAddModal(true)}> + Add Book </Button>
             </div>
           </Col>
         </Row>
 
         {/* Table */}
         <Row className="mt-2">
-          {showAllBook && <TableListBook ListBooks={ListBook} category={ListCategory} title="All Books" onDelete={handleDeleteBook}/>}
+          {showAllBook && <TableListBook ListBooks={reverseListBook} category={ListCategory} title="All Books" onDelete={handleDeleteBook}/>}
 
           {showLowStock && <TableListBook ListBooks={lowStockBooks} category={ListCategory} title="Low Stock Books" onDelete={handleDeleteBook}/>}
 
           {showOutOfStock && <TableListBook ListBooks={totalOutofStock} category={ListCategory} title="Out Of Stock Books" onDelete={handleDeleteBook}/>}
         </Row>
-
       </Container>
         {/* thong bao */}
           {toast && (
@@ -155,6 +168,7 @@ const BookManagement = () => {
               {toast}
             </div>
           )}
+          <AddBookModal show={showAddModal} onClose={()=> setShowAddModal(false)} ListBook={ListBook} ListCategory={ListCategory} onAdd={handleAddBook}/>
     </>
   );
 };
