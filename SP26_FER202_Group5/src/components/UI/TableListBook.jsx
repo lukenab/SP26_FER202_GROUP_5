@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Container, Table, Button, Modal, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-const TableListBook = ({ ListBooks, category, title}) => {
+import "../../pages/Admin/BookManagement.css";
+const TableListBook = ({ ListBooks, category, title, onDelete}) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
   return (
     <>
       <Container className="bg-white shadow-lg border-3 rounded-3 p-2">
-        <h4 className="my-2">{title}</h4>
+        <h2 className="my-2">{title}</h2>
 
         <Table bordered hover responsive>
-          <thead>
-            <tr style={{ backgroundColor: '#1e3d52', color: 'white' }}>
+          <thead className="table-header">
+            <tr>
               <th>ID</th>
               <th>Image</th>
               <th>Title</th>
@@ -96,16 +97,18 @@ const TableListBook = ({ ListBooks, category, title}) => {
 
                   <Row className="my-3 g-3 text-white">
                     <Col>
-                      <Button className="w-100" style={{ background: '#1e3d52' }}>
-                        {' '}
-                        UPDATE{' '}
+                      <Button  className="w-100" style={{ background: '#1e3d52' }}>
+                        UPDATE
                       </Button>
                     </Col>
 
                     <Col>
-                      <Button className="w-100" variant="danger">
-                        {' '}
-                        DELETE{' '}
+                      <Button onClick={() => {
+                              onDelete(selectedBook.id);
+                              setShowModal(false);
+                            }}
+                        className="w-100" variant="danger">
+                        DELETE
                       </Button>
                     </Col>
                   </Row>

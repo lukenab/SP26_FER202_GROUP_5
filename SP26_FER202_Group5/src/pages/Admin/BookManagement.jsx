@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { getAllBook, getAllCategories } from '../../service/api';
+import { getAllBook, getAllCategories, deleteBook } from '../../service/api';
 import { FaBook } from 'react-icons/fa';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import TableListBook from '../../components/UI/TableListBook';
+import './BookManagement.css';
 const BookManagement = () => {
 
   const [ListBook, setListBook] = useState([]);
@@ -13,7 +14,7 @@ const BookManagement = () => {
   const [showAllBook, setshowAllBook] = useState(true);
   const [showLowStock, setShowLowStock] = useState(false);
   const [showOutOfStock, setShowOutOfStock] = useState(false);
-
+  const [toast, setToast] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +35,15 @@ const BookManagement = () => {
   const totalOutofStock = ListBook.filter((book) => book.stock === 0);
   // calculate low stock
   const lowStockBooks = ListBook.filter((book) => book.stock > 0 && book.stock < 5);
+
+  const handleDeleteBook = async (id) =>{
+    await deleteBook(id);
+    setListBook(list => list.filter(book=> book.id !== id));
+    setToast("Book deleted successfully!");
+    setTimeout(()=> {
+      setToast(null)
+    }, 2500);
+  }
 
   return (
     <>
@@ -108,15 +118,43 @@ const BookManagement = () => {
             </div>
           </Col>
         </Row>
-        {/* Table */}
-        <Row className="mt-4">
-          {showAllBook && <TableListBook ListBooks={ListBook} category={ListCategory} title="All Books" />}
 
-          {showLowStock && <TableListBook ListBooks={lowStockBooks} category={ListCategory} title="Low Stock Books" />}
-
-          {showOutOfStock && <TableListBook ListBooks={totalOutofStock} category={ListCategory} title="Out Of Stock Books" />}
+        <Row className="mt-3">
+          <Col className='px-0'>
+            <div className="d-flex align-items-center gap-2">
+              {/* Search */}
+              <input type="text" className="form-control" placeholder="Enter title, author, category..." style={{ maxWidth: "880px" }} />
+              {/* Category filter */}
+              <select className="form-select" style={{ maxWidth: "200px" }}>
+                <option value="All">All Categories</option>
+                {ListCategory.map((cate) => (
+                  <option key={cate.id} value={cate.id}>
+                    {cate.name}
+                  </option>
+                ))}
+              </select>
+              {/* Add Book */}
+              <Button style={{ background: "#1e3d52", border: "none" }} > + Add Book </Button>
+            </div>
+          </Col>
         </Row>
+
+        {/* Table */}
+        <Row className="mt-2">
+          {showAllBook && <TableListBook ListBooks={ListBook} category={ListCategory} title="All Books" onDelete={handleDeleteBook}/>}
+
+          {showLowStock && <TableListBook ListBooks={lowStockBooks} category={ListCategory} title="Low Stock Books" onDelete={handleDeleteBook}/>}
+
+          {showOutOfStock && <TableListBook ListBooks={totalOutofStock} category={ListCategory} title="Out Of Stock Books" onDelete={handleDeleteBook}/>}
+        </Row>
+
       </Container>
+        {/* thong bao */}
+          {toast && (
+            <div className="custom-toast">
+              {toast}
+            </div>
+          )}
     </>
   );
 };
