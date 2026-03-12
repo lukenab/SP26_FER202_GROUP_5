@@ -25,3 +25,12 @@ export const deleteBook = async (id) => {
     console.error(error);
   }
 };
+
+export const addBook =  async (book) => {
+try {
+    const response = await axios.post(`${BASE_URL}/books`, book);
+    return response.data;
+  } catch (error) {
+    console.error("Add book error:",error);
+  }
+};
