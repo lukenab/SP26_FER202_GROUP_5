@@ -75,7 +75,7 @@ export default function Register() {
 
             <label>Phone</label>
             <input type="text" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-            
+
             <label>Password</label>
             <input type="password" placeholder="Create a password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
@@ -87,7 +87,9 @@ export default function Register() {
           </p>
           <div className="divider">or</div>
           <button className="guest-btn">
-            <Link to="/">Continue as Guest</Link>
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              Continue as Guest
+            </Link>
           </button>
         </div>
       </div>

@@ -134,3 +134,16 @@
 .logo-book{
     color: #4a7ea0; 
 }
+
+.dropdown-item:active, 
+.dropdown-item.active {
+    background-color: transparent !important;
+    color: inherit !important;
+    outline: none !important;
+}
+
+.dropdown-item:focus {
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
