@@ -15,8 +15,10 @@ import CartPage from './components/Context/Cart/CartPage';
 import AdminRoute from './pages/Routes/AdminRoute';
 import ProtectedRoute from './pages/Routes/ProtectedRoute';
 import AdminPage from './pages/Admin/AdminPage';
-
 import ProfilePage from './pages/ProfilePage';
+import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
+
+import UserPage from './pages/UserPage';
 
 
 function App() {
@@ -52,7 +54,7 @@ function App() {
             path="/admin"
             element={
               <AdminRoute>
-                <AdminPage />
+                <AdminLayout />
               </AdminRoute>
             }
           />
