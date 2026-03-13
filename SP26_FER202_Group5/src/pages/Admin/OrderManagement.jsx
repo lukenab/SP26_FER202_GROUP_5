@@ -12,13 +12,11 @@ const OrderManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
-  // Hàm mở Popup và nạp dữ liệu đơn hàng vào
   const handleViewDetails = (order) => {
     setSelectedOrder(order);
     setShowModal(true);
   };
 
-  // Hàm đóng Popup
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedOrder(null);
@@ -236,9 +234,6 @@ const OrderManagement = () => {
         </div>
       </div>
 
-      {/* ======================================= */}
-      {/* POPUP (MODAL) HIỂN THỊ CHI TIẾT ĐƠN HÀNG */}
-      {/* ======================================= */}
       <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
         <Modal.Header closeButton className="border-0 pb-0">
           <Modal.Title className="fw-bold" style={{ color: '#1e3d52' }}>
@@ -249,7 +244,6 @@ const OrderManagement = () => {
         <Modal.Body className="pt-3">
           {selectedOrder && (
             <>
-              {/* Thông tin người nhận */}
               <div className="bg-light p-3 rounded mb-4">
                 <h6 className="fw-bold mb-3">Customer Information</h6>
                 <Row>
@@ -272,7 +266,6 @@ const OrderManagement = () => {
                 </Row>
               </div>
 
-              {/* Danh sách sách đã mua */}
               <h6 className="fw-bold mb-3">Items Ordered</h6>
               <Table bordered hover responsive>
                 <thead className="table-light">
@@ -308,7 +301,6 @@ const OrderManagement = () => {
                 </tbody>
               </Table>
 
-              {/* Tổng tiền */}
               <div className="d-flex justify-content-end mt-3">
                 <div className="text-end">
                   <div className="text-muted mb-1">Total Amount</div>
