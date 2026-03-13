@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { getAllBook, getAllCategories, deleteBook,addBook } from '../../service/api';
+import { getAllBook, getAllCategories, deleteBook,addBook, updateBook } from '../../service/api';
 import { FaBook } from 'react-icons/fa';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { FiAlertTriangle } from 'react-icons/fi';
@@ -44,20 +44,31 @@ const BookManagement = () => {
   const handleDeleteBook = async (id) =>{
     await deleteBook(id);
     setListBook(list => list.filter(book=> book.id !== id));
-    setToast("Book deleted successfully!");
+    setToast("Book Deleted Successfully!");
     setTimeout(()=> {
       setToast(null)
     }, 2500);
   }
 
-  const handleAddBook = async (book) =>{
-    const newBook = await addBook(book);
-    setListBook(pre => [...pre, newBook]);
-    setToast("Book added successfully!")
-    setTimeout(()=> {
-      setToast(null)
-    }, 2500);
+  const handleAddAndUpdateBook = async (book, isUpdate) =>{
+    try {
+        if(!isUpdate) {
+        const newBook = await addBook(book);
+        setListBook(pre => [...pre, newBook]);
+        setToast("Book Added Successfully!")
+      }else {
+        const updatedBook = await updateBook(book.id, book);
+        setListBook(pre=> pre.map(b=> (b.id === updatedBook.id ? updatedBook :b)))
+        setToast("Book Updated Successfully!")
+      }
+      setTimeout(()=> { setToast(null) }, 2500);
+    } catch (error) {
+      setToast("Something went wrong!")
+      console.log(error);
+    }
   }
+
+
 
   return (
     <>
@@ -155,11 +166,11 @@ const BookManagement = () => {
 
         {/* Table */}
         <Row className="mt-2">
-          {showAllBook && <TableListBook ListBooks={reverseListBook} category={ListCategory} title="All Books" onDelete={handleDeleteBook}/>}
+          {showAllBook && <TableListBook ListBooks={reverseListBook} category={ListCategory} title="All Books" onDelete={handleDeleteBook} onUpdate={handleAddAndUpdateBook}/>}
 
-          {showLowStock && <TableListBook ListBooks={lowStockBooks} category={ListCategory} title="Low Stock Books" onDelete={handleDeleteBook}/>}
+          {showLowStock && <TableListBook ListBooks={lowStockBooks} category={ListCategory} title="Low Stock Books" onDelete={handleDeleteBook} onUpdate={handleAddAndUpdateBook}/>}
 
-          {showOutOfStock && <TableListBook ListBooks={totalOutofStock} category={ListCategory} title="Out Of Stock Books" onDelete={handleDeleteBook}/>}
+          {showOutOfStock && <TableListBook ListBooks={totalOutofStock} category={ListCategory} title="Out Of Stock Books" onDelete={handleDeleteBook} onUpdate={handleAddAndUpdateBook}/>}
         </Row>
       </Container>
         {/* thong bao */}
@@ -168,7 +179,7 @@ const BookManagement = () => {
               {toast}
             </div>
           )}
-          <AddBookModal show={showAddModal} onClose={()=> setShowAddModal(false)} ListBook={ListBook} ListCategory={ListCategory} onAdd={handleAddBook}/>
+          <AddBookModal show={showAddModal} onClose={()=> setShowAddModal(false)} ListBook={ListBook} ListCategory={ListCategory} onAdd={handleAddAndUpdateBook}/>
     </>
   );
 };
