@@ -16,6 +16,8 @@ const BookManagement = () => {
   const [showLowStock, setShowLowStock] = useState(false);
   const [showOutOfStock, setShowOutOfStock] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [searchKey, setSearchKey] = useState("")
+  const [filteredListCate, setFilteredListCate] = useState("All");
   const [toast, setToast] = useState(null);
 
   useEffect(() => {
@@ -32,14 +34,26 @@ const BookManagement = () => {
     fetchData();
   }, []);
 
+  //serach and filter
+  const filteredBook = ListBook.filter((book)=>{
+    //filter
+    const matchCategory = book.category_id === filteredListCate || filteredListCate === 'All'
+    //search
+    const matchSearch = book.title.toLowerCase().includes(searchKey.toLowerCase()) ||
+                        book.author.toLowerCase().includes(searchKey.toLowerCase()) ||
+                        book.publication_year.includes(searchKey) ||
+                        book.country.toLowerCase().includes(searchKey.toLowerCase())
+    return matchCategory && matchSearch;
+  })  
+
   // calculate book
   const totalOfBook = ListBook.length;
   // đảo ngược list Nếu kết quả  > 0 b sẽ đứng trước a.
-  const reverseListBook = [...ListBook].sort((a, b)=> b.id - a.id);
+  const reverseListBook = [...filteredBook].sort((a, b)=> b.id - a.id);
   // calculate out of stock
-  const totalOutofStock = ListBook.filter((book) => book.stock === 0);
+  const totalOutofStock = filteredBook.filter((book) => book.stock === 0);
   // calculate low stock
-  const lowStockBooks = ListBook.filter((book) => book.stock > 0 && book.stock < 5);
+  const lowStockBooks = filteredBook.filter((book) => book.stock > 0 && book.stock < 5);
 
   const handleDeleteBook = async (id) =>{
     await deleteBook(id);
@@ -67,8 +81,6 @@ const BookManagement = () => {
       console.log(error);
     }
   }
-
-
 
   return (
     <>
@@ -148,9 +160,9 @@ const BookManagement = () => {
           <Col className='px-0'>
             <div className="d-flex align-items-center gap-2">
               {/* Search */}
-              <input type="text" className="form-control" placeholder="Enter title, author, category..." style={{ maxWidth: "880px" }} />
+              <input type="text" className="form-control" placeholder="Enter Title, Author, Category, Country,..." style={{ maxWidth: "880px" }} value={searchKey} onChange={(e)=> setSearchKey(e.target.value)}/>
               {/* Category filter */}
-              <select className="form-select" style={{ maxWidth: "200px" }}>
+              <select className="form-select" value={filteredListCate} onChange={(e)=> setFilteredListCate(e.target.value)} style={{ maxWidth: "200px" }}>
                 <option value="All">All Categories</option>
                 {ListCategory.map((cate) => (
                   <option key={cate.id} value={cate.id}>
