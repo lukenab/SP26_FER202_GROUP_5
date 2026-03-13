@@ -33,7 +33,7 @@ const NavBar = () => {
                 <NavDropdown.Item
                   key={cat.id}
                   as={Link}
-                  to={`/categories/${cat.id}`}
+                  to={`/category/${cat.id}`}
                   className="category-item"
                 >
                   {cat.name}
