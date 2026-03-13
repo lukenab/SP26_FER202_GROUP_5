@@ -34,3 +34,8 @@ try {
     console.error("Add book error:",error);
   }
 };
+
+export const updateBook = async (id, updateBook) => {
+  const response =  await axios.patch(`${BASE_URL}/books/${id}`, updateBook);
+  return response.data;
+}
