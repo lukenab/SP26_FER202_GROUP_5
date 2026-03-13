@@ -4,7 +4,6 @@ import { getAllCategories, getBookDetail, getAllBook } from '../../service/api';
 import BookCard from '../../components/UI/BookCard';
 import { Row, Container, Breadcrumb, Col, Button, InputGroup, Form, Table, Card, Toast, ToastContainer } from 'react-bootstrap';
 import { useCart } from '../../components/Context/Cart/CartGlobalState';
-
 const BookDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -100,8 +99,8 @@ const BookDetailPage = () => {
       </Breadcrumb>
 
       {/* Card detail */}
-      <Container className="shadow-lg border-0 rounded-3 mb-4">
-        <h4 className="pt-2">{book.title}</h4>
+      <Container className="shadow-lg border-0 rounded-3 mb-4 p-4">
+        <h4>{book.title}</h4>
         <hr />
         <Row>
           {/* Cột 1 - ảnh */}
