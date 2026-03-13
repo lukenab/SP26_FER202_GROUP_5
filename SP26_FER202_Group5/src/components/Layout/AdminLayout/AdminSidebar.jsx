@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiGrid, FiUsers, FiBook, FiShoppingCart, FiSettings, FiUser } from 'react-icons/fi';
+import { BiCategory } from "react-icons/bi";
 import './AdminLayout.css';
 
 const AdminSidebar = () => {
@@ -11,6 +12,7 @@ const AdminSidebar = () => {
     { title: 'User Management', path: '/admin/users', icon: <FiUsers /> },
     { title: 'Books Management', path: '/admin/books', icon: <FiBook /> },
     { title: 'Orders & Finance', path: '/admin/orders', icon: <FiShoppingCart /> },
+    { title: 'Categories', path: '/admin/categories', icon: <BiCategory /> },
     { title: 'Settings', path: '/admin/settings', icon: <FiSettings /> },
     { title: 'Profile', path: '/admin/profile', icon: <FiUser /> },
   ];
