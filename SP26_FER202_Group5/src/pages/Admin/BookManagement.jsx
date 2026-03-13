@@ -90,10 +90,10 @@ const BookManagement = () => {
           <Col md={4} className="ps-0">
             <div className="bg-white shadow-lg rounded-3 p-3 h-100">
               <div className="d-flex justify-content-between align-items-center">
-                <h4>Total Books</h4>
+                <h5>Total Books</h5>
                 <FaBook size={30} />
               </div>
-              <h4>{totalOfBook}</h4>
+              <h5>{totalOfBook}</h5>
               <div className="d-flex justify-content-between align-items-center">
                 <span className="text-success">Library inventory</span>
                 <Button
@@ -102,7 +102,7 @@ const BookManagement = () => {
                     setShowLowStock(false);
                     setShowOutOfStock(false);
                   }}
-                  style={{ background: '#1e3d52', border: "none" }}
+                  style={{ background: 'transparent', border: '2px solid #1e3d52',color: '#1e3d52' }}
                 >
                   View All
                 </Button>
@@ -113,10 +113,10 @@ const BookManagement = () => {
           <Col md={4}>
             <div className="bg-white shadow-lg rounded-3 p-3 h-100">
               <div className="d-flex justify-content-between align-items-center">
-                <h4>Out Of Stock</h4>
+                <h5>Out Of Stock</h5>
                 <MdRemoveShoppingCart size={28} />
               </div>
-              <h4>{totalOutofStock.length}</h4>
+              <h5>{totalOutofStock.length}</h5>
               <div className="d-flex justify-content-between align-items-center">
                 <span className="text-danger">Need restocking</span>
                 <Button
@@ -125,7 +125,7 @@ const BookManagement = () => {
                     setShowOutOfStock(true);
                     setshowAllBook(false);
                   }}
-                  style={{ background: '#1e3d52', border: "none" }}
+                  style={{ background: 'transparent', border: '2px solid #1e3d52',color: '#1e3d52' }}
                 >
                   View All
                 </Button>
@@ -135,10 +135,10 @@ const BookManagement = () => {
           <Col md={4} className="pe-0">
             <div className="bg-white shadow-lg rounded-3 p-3 h-100">
               <div className="d-flex justify-content-between align-items-center">
-                <h4>Low Stock</h4>
+                <h5>Low Stock</h5>
                 <FiAlertTriangle size={28} />
               </div>
-              <h4>{lowStockBooks.length}</h4>
+              <h5>{lowStockBooks.length}</h5>
               <div className="d-flex justify-content-between align-items-center">
                 <span className="text-warning">Need restocking</span>
                 <Button
@@ -147,7 +147,7 @@ const BookManagement = () => {
                     setShowOutOfStock(false);
                     setshowAllBook(false);
                   }}
-                  style={{ background: '#1e3d52', border: "none" }}
+                  style={{ background: 'transparent', border: '2px solid #1e3d52',color: '#1e3d52' }}
                 >
                   View All
                 </Button>
