@@ -38,9 +38,9 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
   return (
     <>
       <Container className="bg-white shadow-lg border-3 rounded-3 p-2">
-        <h2 className="my-2">{title}</h2>
+        <h3 className="my-2">{title}</h3>
 
-        <Table bordered hover responsive className="rounded-3 overflow-hidden">
+        <Table hover responsive className="rounded-3 overflow-hidden">
           <thead className="table-header">
             <tr>
               <th>ID</th>
@@ -50,9 +50,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
               <th>price</th>
               <th>Country</th>
               <th>Category</th>
-              <th>Publication</th>
               <th>Stock</th>
-              <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -69,20 +67,18 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
                 <tr key={book.id}>
                   <td>{book.id}</td>
                   <td>
-                    <img src={book.image} alt={book.title} width="85" height="142" style={{ objectFit: 'cover', borderRadius: '4px' }} />
+                    <img src={book.image} alt={book.title} width="85" height="122" style={{ objectFit: 'cover', borderRadius: '4px' }} />
                   </td>
                   <td>{book.title}</td>
                   <td>{book.author}</td>
                   <td>{book.price}</td>
                   <td>{book.country}</td>
                   <td>{category?.find((c) => c.id === book.category_id)?.name || 'Unknown'}</td>
-                  <td>{book.publication_year}</td>
                   <td>{book.stock}</td>
-                  <td>{book.description}</td>
                   <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                     <Button
                       size="sm"
-                      style={{ background: '#1e3d52', border: 'none' }}
+                      style={{ background: 'transparent', border: '2px solid #1e3d52',color: '#1e3d52' }}
                       onClick={() => {
                         setSelectedBook(book);
                         setEditBook(book);
