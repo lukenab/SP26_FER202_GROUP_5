@@ -10,6 +10,7 @@ const Header = () => {
 
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [searchKey, setSearchKey] = useState("");
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -24,6 +25,15 @@ const Header = () => {
     navigate('/');
   };
 
+  const handleSearch =(e)=>{
+    e.preventDefault();
+    if(searchKey.trim()){
+      navigate(`/books?search=${searchKey}`);
+    }else{
+      navigate("/books");
+    }
+  }
+
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
       <Container>
@@ -36,9 +46,9 @@ const Header = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           {/* SEARCH */}
-          <Form className="searchField">
+          <Form className="searchField" onSubmit={handleSearch}>
             <FaSearch className="faSearch position-absolute" />
-            <FormControl type="search" placeholder="Search for books, authors, or genres..." className="ps-5 py-2" aria-label="Search" />
+            <FormControl type="search" placeholder="Search for books, authors, or genres..." className="ps-5 py-2" aria-label="Search" value={searchKey} onChange={(e)=> setSearchKey(e.target.value)} />
           </Form>
 
           {/* RIGHT SIDE */}
