@@ -1,18 +1,91 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
-const CartGlobalState = createContext(null);
+const CartContext = createContext(null);
+
+const API = 'http://localhost:5000/carts';
+
+// Lấy user hiện tại từ localStorage
+const getCurrentUser = () => {
+  try {
+    return JSON.parse(localStorage.getItem('user'));
+  } catch {
+    return null;
+  }
+};
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [cartRecord, setCartRecord] = useState(null); // record trong db.json
+  const [currentUser, setCurrentUser] = useState(getCurrentUser);
 
-  // Thêm sách vào giỏ - nếu đã có thì cộng thêm số lượng
-  const addToCart = (book, quantity = 1) => {
-    const existing = cartItems.find((item) => item.id === book.id);
-    if (existing) {
-      setCartItems(cartItems.map((item) => (item.id === book.id ? { ...item, quantity: item.quantity + quantity } : item)));
+  // Khi user thay đổi → load giỏ hàng từ db.json
+  useEffect(() => {
+    if (currentUser) {
+      fetchCart(currentUser.id);
     } else {
-      setCartItems([...cartItems, { ...book, quantity }]);
+      setCartItems([]);
+      setCartRecord(null);
     }
+  }, [currentUser]);
+
+  // Load giỏ hàng của user từ db.json
+  const fetchCart = async (userId) => {
+    try {
+      const res = await axios.get(`${API}?userId=${userId}`);
+      if (res.data.length > 0) {
+        setCartRecord(res.data[0]);
+        setCartItems(res.data[0].items || []);
+      } else {
+        setCartRecord(null);
+        setCartItems([]);
+      }
+    } catch {
+      setCartItems([]);
+    }
+  };
+
+  // Lưu giỏ hàng lên db.json (POST nếu chưa có, PUT nếu đã có)
+  const saveCart = async (userId, items, record) => {
+    try {
+      if (record) {
+        await axios.put(`${API}/${record.id}`, { userId, items });
+      } else {
+        const res = await axios.post(API, { userId, items });
+        setCartRecord(res.data);
+      }
+    } catch (err) {
+      console.error('Failed to save cart:', err);
+    }
+  };
+
+  // Hàm gọi sau mỗi thay đổi cartItems
+  const updateCartState = (newItems) => {
+    setCartItems(newItems);
+    if (currentUser) {
+      saveCart(currentUser.id, newItems, cartRecord);
+    }
+  };
+
+  // Hàm để Login gọi sau khi đăng nhập
+  const syncUser = () => {
+    const user = getCurrentUser();
+    setCurrentUser(user);
+  };
+
+  // Thêm sách vào giỏ - chỉ cho phép khi đã đăng nhập
+  const addToCart = (book, quantity = 1) => {
+    if (!currentUser) return false;
+
+    const existing = cartItems.find((item) => item.id === book.id);
+    let newItems;
+    if (existing) {
+      newItems = cartItems.map((item) => (item.id === book.id ? { ...item, quantity: item.quantity + quantity } : item));
+    } else {
+      newItems = [...cartItems, { ...book, quantity }];
+    }
+    updateCartState(newItems);
+    return true;
   };
 
   // Cập nhật số lượng
@@ -21,16 +94,20 @@ export const CartProvider = ({ children }) => {
       removeItem(bookId);
       return;
     }
-    setCartItems(cartItems.map((item) => (item.id === bookId ? { ...item, quantity: newQty } : item)));
+    const newItems = cartItems.map((item) => (item.id === bookId ? { ...item, quantity: newQty } : item));
+    updateCartState(newItems);
   };
 
   // Xóa 1 item
   const removeItem = (bookId) => {
-    setCartItems(cartItems.filter((item) => item.id !== bookId));
+    const newItems = cartItems.filter((item) => item.id !== bookId);
+    updateCartState(newItems);
   };
 
   // Xóa toàn bộ giỏ
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => {
+    updateCartState([]);
+  };
 
   // Tổng số lượng (dùng cho badge ở Header)
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -41,7 +118,23 @@ export const CartProvider = ({ children }) => {
     return sum + price * item.quantity;
   }, 0);
 
-  return <CartGlobalState.Provider value={{ cartItems, addToCart, updateQuantity, removeItem, clearCart, totalItems, totalPrice }}>{children}</CartGlobalState.Provider>;
+  return (
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        updateQuantity,
+        removeItem,
+        clearCart,
+        totalItems,
+        totalPrice,
+        currentUser,
+        syncUser,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
 
-export const useCart = () => useContext(CartGlobalState);
+export const useCart = () => useContext(CartContext);

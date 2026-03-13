@@ -458,7 +458,59 @@
       "role": "user"
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "userId": "6c59",
+      "items": [
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 1
+        },
+        {
+          "id": "10",
+          "title": "The Lord Of The Rings",
+          "author": "J.R.R Tolkien",
+          "country": "United Kingdom",
+          "price": "$59",
+          "image": "/images/book-10.jpg",
+          "category_id": "1",
+          "publication_year": "1954",
+          "stock": 15,
+          "description": "An epic fantasy trilogy about the quest to destroy the One Ring and defeat the dark lord Sauron.",
+          "quantity": 1
+        }
+      ],
+      "id": "5d1f"
+    },
+    {
+      "userId": "ae53",
+      "items": [
+        {
+          "id": "11",
+          "title": "Mastering ChatGPT for Beginners",
+          "author": "Shane Corbitt",
+          "country": "United States",
+          "price": "$99",
+          "image": "/images/book-11.jpg",
+          "category_id": "6",
+          "publication_year": "2023",
+          "stock": 3,
+          "description": "A beginner-friendly guide explaining how to effectively use ChatGPT for productivity, learning, and content creation.",
+          "quantity": 3
+        }
+      ],
+      "id": "5740"
+    }
+  ],
   "orders": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getAllCategories, getBookDetail, getAllBook } from '../../service/api';
 import BookCard from '../../components/UI/BookCard';
-import { Row, Container, Breadcrumb, Col, Button, InputGroup, Form, Table, Card } from 'react-bootstrap';
+import { Row, Container, Breadcrumb, Col, Button, InputGroup, Form, Table, Card, Toast, ToastContainer } from 'react-bootstrap';
 import { useCart } from '../../components/Context/Cart/CartGlobalState';
 
 const BookDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, currentUser } = useCart();
 
   const [book, setBook] = useState(null);
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [showLoginToast, setShowLoginToast] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,8 +34,22 @@ const BookDetailPage = () => {
   };
 
   const handleAddToCart = () => {
+    // Kiểm tra đăng nhập trước khi thêm vào giỏ
+    if (!currentUser) {
+      setShowLoginToast(true);
+      return;
+    }
     addToCart(book, quantity);
     navigate('/cart');
+  };
+
+  const handleBuyNow = () => {
+    if (!currentUser) {
+      setShowLoginToast(true);
+      return;
+    }
+    addToCart(book, quantity);
+    navigate('/orders');
   };
 
   if (!book) {
@@ -57,6 +72,22 @@ const BookDetailPage = () => {
 
   return (
     <>
+      {/* Toast thông báo yêu cầu đăng nhập */}
+      <ToastContainer position="top-end" className="p-3" style={{ zIndex: 9999 }}>
+        <Toast show={showLoginToast} onClose={() => setShowLoginToast(false)} delay={3000} autohide bg="warning">
+          <Toast.Header>
+            <strong className="me-auto">⚠️ Login Required</strong>
+          </Toast.Header>
+          <Toast.Body>
+            You need to{' '}
+            <Link to="/login" style={{ fontWeight: 600, color: '#1e3d52' }}>
+              sign in
+            </Link>{' '}
+            before adding items to your cart.
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4">
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/', style: { textDecoration: 'none' } }}>
@@ -114,15 +145,25 @@ const BookDetailPage = () => {
             <Row className="my-3 g-3 text-white">
               <Col>
                 <Button className="w-100" onClick={handleAddToCart} style={{ background: '#1e3d52' }}>
-                  ADD TO CART
+                  {currentUser ? 'ADD TO CART' : '🔒 ADD TO CART'}
                 </Button>
               </Col>
               <Col>
-                <Button className="w-100" as={Link} to="/orders" style={{ background: '#1e3d52' }}>
-                  BUY NOW
+                <Button className="w-100" onClick={handleBuyNow} style={{ background: '#1e3d52' }}>
+                  {currentUser ? 'BUY NOW' : '🔒 BUY NOW'}
                 </Button>
               </Col>
             </Row>
+
+            {/* Hiển thị hint nếu chưa đăng nhập */}
+            {!currentUser && (
+              <small className="text-muted">
+                <Link to="/login" style={{ color: '#1e3d52' }}>
+                  Sign in
+                </Link>{' '}
+                to add items to cart
+              </small>
+            )}
           </Col>
 
           {/* Cột 3 - thông tin chi tiết */}
