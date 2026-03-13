@@ -50,21 +50,35 @@ const AddBookModal = ({show, onClose, onAdd, ListCategory, ListBook}) => {
         return;
         }
         // check them sach cung. neu cung sach => + stock, nguoc lai them moi
-        const existingBook = ListBook.find((b)=>{
-            b.title.toLowerCase() === newBook.title.toLowerCase() &&
-            b.author.toLowerCase() === newBook.author.toLowerCase()
-        })
+        const existingBook = ListBook.find((b)=>
+            b.title.trim().toLowerCase() === newBook.title.trim().toLowerCase() &&
+            b.author.trim().toLowerCase() === newBook.author.trim().toLowerCase()
+        )
         if(existingBook) {
             const updatedBook = {
                 ...existingBook,
-                stock: Number(existingBook.stock) + stockNumber
+                stock: Number(existingBook.stock) + stockNumber,
+                price:`$${priceNumber}`
             }
-            onAdd(updatedBook, true)
+            onAdd(updatedBook, true)  // true = update stock
             onClose();
-            return;
+            //reset form sau khi add
+            setNewBook({
+                    id:"",
+                    title:"",
+                    author:"",
+                    country:"",
+                    price:"",
+                    image:"",
+                    category_id:"",
+                    publication_year:"",
+                    stock:"",
+                    description:""
+                });
+        return;
         }
         // nếu chưa tồn tại => add mới
-        const newId = Math.max(...ListBook.map(b => Number(b.id))) + 1;
+        const newId = ListBook.length > 0 ? Math.max(...ListBook.map(b => Number(b.id))) + 1 : 1;
         
         // cho ngta nhap so roi => chuyen string add vao db.json
         const priceString = `$${priceNumber}`;
