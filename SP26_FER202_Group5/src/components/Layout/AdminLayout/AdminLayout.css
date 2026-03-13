@@ -64,6 +64,8 @@
     width: 260px;
     height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
     background: #ffffff;
     border-right: 1px solid #e5e7eb;
     z-index: 1000;
