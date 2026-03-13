@@ -64,6 +64,8 @@
     width: 260px;
     height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
     background: #ffffff;
     border-right: 1px solid #e5e7eb;
     z-index: 1000;
@@ -87,7 +89,7 @@
     margin-left: 260px;
     margin-top: 70px;
     padding: 24px;
-    background-color: #f4f7fe; 
+    background-color: #F1F4F6; 
     min-height: calc(100vh - 70px);
 }
 

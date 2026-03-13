@@ -26,16 +26,44 @@ export const deleteBook = async (id) => {
   }
 };
 
-export const addBook =  async (book) => {
-try {
+export const addBook = async (book) => {
+  try {
     const response = await axios.post(`${BASE_URL}/books`, book);
     return response.data;
   } catch (error) {
-    console.error("Add book error:",error);
+    console.error('Add book error:', error);
   }
 };
 
 export const updateBook = async (id, updateBook) => {
-  const response =  await axios.patch(`${BASE_URL}/books/${id}`, updateBook);
+  const response = await axios.patch(`${BASE_URL}/books/${id}`, updateBook);
   return response.data;
+};
+
+export const createOrder = async (orderData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/orders`, orderData);
+    return response.data;
+  } catch (error) {
+    console.error('Fail to create orders: ', error);
+  }
+};
+
+export const getAllOrders = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/orders`);
+    return response.data;
+  } catch (error) {
+    console.error("Fail to get all orders: ", error);
+    return [];
+  }
+};
+
+export const updateOrderStatus = async (id, newStatus) => {
+  try {
+    const response = await axios.patch(`${BASE_URL}/orders/${id}`, {status: newStatus});
+    return response.data
+  } catch (error) {
+    console.log("Fail to update orders: ", error);
+  }
 }

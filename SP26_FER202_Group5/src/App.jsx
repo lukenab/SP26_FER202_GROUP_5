@@ -15,11 +15,12 @@ import BookByCategory from './components/UI/BookByCategory';
 import CartPage from './components/Context/Cart/CartPage';
 import AdminRoute from './pages/Routes/AdminRoute';
 import ProtectedRoute from './pages/Routes/ProtectedRoute';
-import AdminPage from './pages/Admin/AdminPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
 import BookManagement from './pages/Admin/BookManagement';
 import UserPage from './pages/UserPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrderManagement from './pages/Admin/OrderManagement';
 
 
 function App() {
@@ -34,16 +35,19 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path='/category/:cate_id' element={<BookByCategory/>}/>
-            <Route
-              path="/cart"
-              element={
+
+            <Route path="/cart" element={
                 <ProtectedRoute>
                   <CartPage />
                 </ProtectedRoute>
-              }
-            />
-          </Route>
+              }/>
+
+            <Route path="/orders" element={
+              <ProtectedRoute>
+                <CheckoutPage/>
+              </ProtectedRoute>
+            }/>
+            </Route>
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -51,14 +55,17 @@ function App() {
           {/* <Route path="/books" element={<BookListPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
 
-          <Route
-            path="/admin"
-            element={
+          <Route path="/admin" element={
               <AdminRoute>
                 <AdminLayout />
               </AdminRoute>
-            }
-          >
+            }>
+
+              
+            <Route path="orders" element={
+              <OrderManagement/>
+            }/>
+
           <Route path='books' element={<BookManagement/>}/>
 
           </Route>
