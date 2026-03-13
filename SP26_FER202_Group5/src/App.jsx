@@ -10,6 +10,7 @@ import Register from './pages/Auth/Register';
 import BookDetailPage from './pages/Books/BookDetailPage';
 import AboutPage from './pages/Home/AboutPage';
 import NewPage from './pages/Home/NewPage';
+import BookByCategory from './components/UI/BookByCategory';
 
 import CartPage from './components/Context/Cart/CartPage';
 import AdminRoute from './pages/Routes/AdminRoute';
@@ -33,7 +34,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
-
+            <Route path='/category/:cate_id' element={<BookByCategory/>}/>
             <Route
               path="/cart"
               element={
