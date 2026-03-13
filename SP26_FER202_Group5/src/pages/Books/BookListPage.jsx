@@ -83,12 +83,10 @@ const BookListPage = () => {
 
         {/* HERO */}
         <HeroBanner />
-
+        
         <Row>
-
           {/* LEFT PANEL */}
           <Col lg={3}>
-
             <Row className='mb-3'>
               <LeftPanel
                 newBooks={newBooks}
@@ -102,19 +100,15 @@ const BookListPage = () => {
                 title={"New Arrivals"}
               />
             </Row>
-
           </Col>
 
 
           {/* BOOK AREA */}
           <Col lg={9}>
-
             {/* FEATURED */}
             <div className="category-block">
               <h4 className='fw-bold'>New Featured</h4>
-
               <Row xs={2} md={4} className="g-3 mb-2">
-
                 {featuredBooks.map((book) => (
                   <Col key={book.id}>
                     <BookCard book={book} />
@@ -124,42 +118,26 @@ const BookListPage = () => {
               </Row>
             </div>
 
-
             {/* BOOKS BY CATEGORY */}
             {booksByCategory.map((category) => (
-
               <div key={category.id} className="category-block mt-4">
-
-                <h4 className="fw-bold">
-                  {category.name}
-                </h4>
-
+                <h4 className="fw-bold"> {category.name}</h4>
                 {category.books.length > 0 ? (
-
                   <Row xs={2} md={4} className="g-3">
-
                     {category.books.map((book) => (
                       <Col key={book.id}>
                         <BookCard book={book} />
                       </Col>
                     ))}
-
                   </Row>
-
                 ) : (
-
                   <div className="empty-category">
                     <p>No books available in this category yet</p>
                   </div>
-
                 )}
-
                 {/* VIEW ALL */}
                 <div className="text-end mt-2">
-                  <Link
-                    to={`/category/${category.id}`}
-                    className="view-all-link"
-                  >
+                  <Link to={`/category/${category.id}`}className="view-all-link">
                     View All →
                   </Link>
                 </div>
@@ -167,21 +145,15 @@ const BookListPage = () => {
               </div>
 
             ))}
-
           </Col>
-
         </Row>
 
 
         {/* LOW STOCK */}
         <Row className="category-block">
 
-          <h4 className='fw-bold'>
-            Low Stock Books
-          </h4>
-
+          <h4 className='fw-bold'>Low Stock Books </h4>
           <Row xs={2} md={5} className="g-3 mb-2">
-
             {lowStockBooks.map((book) => (
               <Col key={book.id}>
                 <BookCard book={book} />

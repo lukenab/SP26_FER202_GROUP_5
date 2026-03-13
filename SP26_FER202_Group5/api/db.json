@@ -417,6 +417,18 @@
       "publication_year": "2004",
       "stock": 16,
       "description": "A comprehensive guide to software construction, covering coding practices, debugging, and software quality."
+    },
+    {
+      "id": "33",
+      "title": "Fairy Tail, Vol. 1",
+      "author": "Hiro Mashima",
+      "country": "Japan",
+      "price": "$11",
+      "image": "/images/Fairy Tail Vol. 1.jpg",
+      "category_id": "8",
+      "publication_year": "2006",
+      "stock": "15",
+      "description": "Lucy, an aspiring Celestial Wizard, joins the famous Fairy Tail Guild and teams up with Natsu Dragneel, a Fire Dragon Slayer, for epic adventures."
     }
   ],
   "users": [

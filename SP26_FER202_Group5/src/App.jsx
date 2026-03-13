@@ -17,7 +17,7 @@ import ProtectedRoute from './pages/Routes/ProtectedRoute';
 import AdminPage from './pages/Admin/AdminPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
-
+import BookManagement from './pages/Admin/BookManagement';
 import UserPage from './pages/UserPage';
 
 
@@ -57,7 +57,11 @@ function App() {
                 <AdminLayout />
               </AdminRoute>
             }
-          />
+          >
+          <Route path='books' element={<BookManagement/>}/>
+
+          </Route>
+         
 
         </Routes>
       </BrowserRouter>
