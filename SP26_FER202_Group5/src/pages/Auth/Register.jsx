@@ -7,7 +7,6 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
 
   const navigate = useNavigate();
 
@@ -67,7 +66,7 @@ export default function Register() {
 
           <form onSubmit={handleRegister}>
             <label>Full Name</label>
-            <input type="text" placeholder="Your full name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <input type="text" placeholder="Enter your full name" value={name} onChange={(e) => setName(e.target.value)} required />
 
             <label>Email</label>
             <input type="email" placeholder="your.email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -75,7 +74,7 @@ export default function Register() {
             <label>Password</label>
             <input type="password" placeholder="Create a password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
-            <button className="login-btn">Register</button>
+            <button className="login-btn">Sign up</button>
           </form>
 
           <p className="register-text">
@@ -83,7 +82,9 @@ export default function Register() {
           </p>
           <div className="divider">or</div>
           <button className="guest-btn">
-            <Link to="/">Continue as Guest</Link>
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              Continue as Guest
+            </Link>
           </button>
         </div>
       </div>

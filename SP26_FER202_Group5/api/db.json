@@ -417,6 +417,18 @@
       "publication_year": "2004",
       "stock": 16,
       "description": "A comprehensive guide to software construction, covering coding practices, debugging, and software quality."
+    },
+    {
+      "id": "33",
+      "title": "Fairy Tail, Vol. 1",
+      "author": "Hiro Mashima",
+      "country": "Japan",
+      "price": "$11",
+      "image": "/images/Fairy Tail Vol. 1.jpg",
+      "category_id": "8",
+      "publication_year": "2006",
+      "stock": "15",
+      "description": "Lucy, an aspiring Celestial Wizard, joins the famous Fairy Tail Guild and teams up with Natsu Dragneel, a Fire Dragon Slayer, for epic adventures."
     }
   ],
   "users": [
@@ -471,7 +483,502 @@
       "birthday": "2026-02-26"
     }
   ],
-  "carts": [],
-  "orders": [],
+  "carts": [
+    {
+      "userId": "6c59",
+      "items": [
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 1
+        },
+        {
+          "id": "10",
+          "title": "The Lord Of The Rings",
+          "author": "J.R.R Tolkien",
+          "country": "United Kingdom",
+          "price": "$59",
+          "image": "/images/book-10.jpg",
+          "category_id": "1",
+          "publication_year": "1954",
+          "stock": 15,
+          "description": "An epic fantasy trilogy about the quest to destroy the One Ring and defeat the dark lord Sauron.",
+          "quantity": 1
+        }
+      ],
+      "id": "5d1f"
+    },
+    {
+      "userId": "ae53",
+      "items": [
+        {
+          "id": "11",
+          "title": "Mastering ChatGPT for Beginners",
+          "author": "Shane Corbitt",
+          "country": "United States",
+          "price": "$99",
+          "image": "/images/book-11.jpg",
+          "category_id": "6",
+          "publication_year": "2023",
+          "stock": 3,
+          "description": "A beginner-friendly guide explaining how to effectively use ChatGPT for productivity, learning, and content creation.",
+          "quantity": 3
+        }
+      ],
+      "id": "5740"
+    },
+    {
+      "id": "1aef",
+      "userId": "1",
+      "items": [
+        {
+          "id": "3",
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "country": "United States",
+          "price": "$18",
+          "image": "/images/book-3.jpg",
+          "category_id": "2",
+          "publication_year": "1960",
+          "stock": 1,
+          "description": "A powerful story about racial injustice in the American South seen through the eyes of a young girl named Scout Finch.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "30bb",
+      "userId": "2",
+      "items": [
+        {
+          "id": "4",
+          "title": "1984",
+          "author": "George Orwell",
+          "country": "United Kingdom",
+          "price": "$22",
+          "image": "/images/book-4.jpg",
+          "category_id": "2",
+          "publication_year": "1949",
+          "stock": 14,
+          "description": "A dystopian novel depicting a totalitarian society ruled by Big Brother where surveillance and propaganda control every aspect of life.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "userId": "2",
+      "items": [
+        {
+          "id": "24",
+          "title": "Inuyasha Vol. 1",
+          "author": "Rumiko Takahashi",
+          "country": "Japan",
+          "price": "$14",
+          "image": "/images/book-24.jpg",
+          "category_id": "8",
+          "publication_year": "1996",
+          "stock": 22,
+          "description": "A fantasy manga where a modern girl travels to feudal Japan and joins the half-demon Inuyasha on a quest.",
+          "quantity": 3
+        },
+        {
+          "id": "16",
+          "title": "A Game of Thrones",
+          "author": "George R.R. Martin",
+          "country": "United States",
+          "price": "$55",
+          "image": "/images/book-16.jpg",
+          "category_id": "1",
+          "publication_year": "1996",
+          "stock": 20,
+          "description": "The first book in the epic fantasy series A Song of Ice and Fire featuring political intrigue and battles for the Iron Throne.",
+          "quantity": 3
+        }
+      ],
+      "id": "3458"
+    },
+    {
+      "id": "2e2c",
+      "userId": "2",
+      "items": [
+        {
+          "id": "15",
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "country": "United States",
+          "price": "$30",
+          "image": "/images/book-15.jpg",
+          "category_id": "6",
+          "publication_year": "2018",
+          "stock": 24,
+          "description": "A self-help book that explains how small daily habits can lead to remarkable long-term personal improvement.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "7bf9",
+      "userId": "2",
+      "items": [
+        {
+          "id": "18",
+          "title": "Murder on the Orient Express",
+          "author": "Agatha Christie",
+          "country": "United Kingdom",
+          "price": "$20",
+          "image": "/images/book-18.webp",
+          "category_id": "4",
+          "publication_year": "1934",
+          "stock": 14,
+          "description": "Detective Hercule Poirot investigates a mysterious murder that occurs aboard the luxurious Orient Express train.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "e7c6",
+      "userId": "2",
+      "items": [
+        {
+          "id": "4",
+          "title": "1984",
+          "author": "George Orwell",
+          "country": "United Kingdom",
+          "price": "$22",
+          "image": "/images/book-4.jpg",
+          "category_id": "2",
+          "publication_year": "1949",
+          "stock": 14,
+          "description": "A dystopian novel depicting a totalitarian society ruled by Big Brother where surveillance and propaganda control every aspect of life.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "432d",
+      "userId": "2",
+      "items": [
+        {
+          "id": "14",
+          "title": "The Pragmatic Programmer",
+          "author": "Andrew Hunt",
+          "country": "United States",
+          "price": "$48",
+          "image": "/images/book-14.webp",
+          "category_id": "4",
+          "publication_year": "1999",
+          "stock": 2,
+          "description": "A classic programming guide offering practical advice and principles for becoming a better software developer.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "8a02",
+      "userId": "2",
+      "items": [
+        {
+          "id": "9",
+          "title": "The Hobbit",
+          "author": "J.R.R Tolkien",
+          "country": "United Kingdom",
+          "price": "$50",
+          "image": "/images/book-9.jpg",
+          "category_id": "1",
+          "publication_year": "1937",
+          "stock": 22,
+          "description": "Bilbo Baggins embarks on an unexpected adventure with a group of dwarves to reclaim their stolen treasure from the dragon Smaug.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "205c",
+      "userId": "2",
+      "items": [
+        {
+          "id": "29",
+          "title": "On Liberty",
+          "author": "John Stuart Mill",
+          "country": "United Kingdom",
+          "price": "$17",
+          "image": "/images/book-29.jpg",
+          "category_id": "7",
+          "publication_year": "1859",
+          "stock": 15,
+          "description": "A philosophical work defending individual freedom and the importance of liberty in society.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "userId": "2",
+      "items": [
+        {
+          "id": "4",
+          "title": "1984",
+          "author": "George Orwell",
+          "country": "United Kingdom",
+          "price": "$22",
+          "image": "/images/book-4.jpg",
+          "category_id": "2",
+          "publication_year": "1949",
+          "stock": 14,
+          "description": "A dystopian novel depicting a totalitarian society ruled by Big Brother where surveillance and propaganda control every aspect of life.",
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 1
+        },
+        {
+          "id": "8",
+          "title": "Where The Crawdads Sing",
+          "author": "Della Owens",
+          "country": "United States",
+          "price": "$39",
+          "image": "/images/book-8.jpg",
+          "category_id": "5",
+          "publication_year": "2018",
+          "stock": 13,
+          "description": "A mystery novel about a young girl who grows up isolated in the marsh and becomes the prime suspect in a local murder.",
+          "quantity": 1
+        }
+      ],
+      "id": "fc07"
+    },
+    {
+      "userId": "2",
+      "items": [
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 1
+        }
+      ],
+      "id": "ff76"
+    },
+    {
+      "id": "45db",
+      "userId": "2",
+      "items": [
+        {
+          "id": "24",
+          "title": "Inuyasha Vol. 1",
+          "author": "Rumiko Takahashi",
+          "country": "Japan",
+          "price": "$14",
+          "image": "/images/book-24.jpg",
+          "category_id": "8",
+          "publication_year": "1996",
+          "stock": 22,
+          "description": "A fantasy manga where a modern girl travels to feudal Japan and joins the half-demon Inuyasha on a quest.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "19d6",
+      "userId": "2",
+      "items": [
+        {
+          "id": "12",
+          "title": "Make American Great Again",
+          "author": "Donald J.Trump",
+          "country": "United States",
+          "price": "$19",
+          "image": "/images/book-12.jpg",
+          "category_id": "7",
+          "publication_year": "2015",
+          "stock": 1,
+          "description": "A political book outlining Donald Trump's vision for economic growth, immigration policy, and national security.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "0182",
+      "userId": "2",
+      "items": [
+        {
+          "id": "7",
+          "title": "C++ Primer 5th edition",
+          "author": "Stanley B.Lippman",
+          "country": "United States",
+          "price": "$49",
+          "image": "/images/book-7.jpg",
+          "category_id": "4",
+          "publication_year": "2012",
+          "stock": 20,
+          "description": "A comprehensive guide to learning C++ programming covering modern C++ features and best practices.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "a582",
+      "userId": "2",
+      "items": [
+        {
+          "id": "26",
+          "title": "One Piece Vol. 1",
+          "author": "Eiichiro Oda",
+          "country": "Japan",
+          "price": "$15",
+          "image": "/images/book-26.jpg",
+          "category_id": "8",
+          "publication_year": "1997",
+          "stock": 26,
+          "description": "Monkey D. Luffy begins his journey to become the Pirate King by searching for the legendary treasure One Piece.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ffd7",
+      "userId": "2",
+      "items": [
+        {
+          "id": "11",
+          "title": "Mastering ChatGPT for Beginners",
+          "author": "Shane Corbitt",
+          "country": "United States",
+          "price": "$99",
+          "image": "/images/book-11.jpg",
+          "category_id": "6",
+          "publication_year": "2023",
+          "stock": 3,
+          "description": "A beginner-friendly guide explaining how to effectively use ChatGPT for productivity, learning, and content creation.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "userId": "2",
+      "items": [
+        {
+          "id": "21",
+          "title": "Gone Girl",
+          "author": "Gillian Flynn",
+          "country": "United States",
+          "price": "$21",
+          "image": "/images/book-21.webp",
+          "category_id": "5",
+          "publication_year": "2012",
+          "stock": 11,
+          "description": "A psychological thriller about the mysterious disappearance of a woman and the secrets within her marriage.",
+          "quantity": 1
+        },
+        {
+          "id": "15",
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "country": "United States",
+          "price": "$30",
+          "image": "/images/book-15.jpg",
+          "category_id": "6",
+          "publication_year": "2018",
+          "stock": 24,
+          "description": "A self-help book that explains how small daily habits can lead to remarkable long-term personal improvement.",
+          "quantity": 1
+        }
+      ],
+      "id": "f060"
+    },
+    {
+      "id": "be4b",
+      "userId": "1",
+      "items": [
+        {
+          "id": "7",
+          "title": "C++ Primer 5th edition",
+          "author": "Stanley B.Lippman",
+          "country": "United States",
+          "price": "$49",
+          "image": "/images/book-7.jpg",
+          "category_id": "4",
+          "publication_year": "2012",
+          "stock": 20,
+          "description": "A comprehensive guide to learning C++ programming covering modern C++ features and best practices.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "userId": "2",
+      "items": [],
+      "id": "cd7d"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1e03",
+      "userId": "2",
+      "customerInfo": {
+        "name": "User",
+        "phone": "",
+        "address": ""
+      },
+      "items": [
+        {
+          "bookId": "10",
+          "title": "The Lord Of The Rings",
+          "price": "$59",
+          "quantity": 1,
+          "image": "/images/book-10.jpg"
+        }
+      ],
+      "totalPrice": 59,
+      "status": "Processing",
+      "createdAt": "2026-03-13T08:27:12.000Z"
+    },
+    {
+      "id": "f39d",
+      "userId": "2",
+      "customerInfo": {
+        "name": "User",
+        "phone": "0812154005",
+        "email": "user@gmail.com",
+        "address": "132/4 duong 3/2"
+      },
+      "items": [
+        {
+          "bookId": "2",
+          "title": "The Great Gatsby",
+          "price": "$15",
+          "quantity": 3,
+          "image": "/images/book-2.jpg"
+        }
+      ],
+      "totalPrice": 45,
+      "status": "Pending",
+      "createdAt": "2026-03-13T13:22:27.805Z"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

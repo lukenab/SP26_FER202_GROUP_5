@@ -2,12 +2,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './auth.css';
 import axios from 'axios';
-
+import { useCart } from '../../components/Context/Cart/CartGlobalState';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
+  const { syncUser } = useCart();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,8 +21,8 @@ export default function Login() {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
 
-      const expireTime = Date.now() + 60 * 60 * 1000; // 1 giờ
-      localStorage.setItem('expireTime', expireTime);
+      // Đồng bộ lại user trong CartGlobalState → tự động load giỏ hàng đã lưu
+      syncUser();
 
       if (user.role === 'admin') {
         navigate('/admin');

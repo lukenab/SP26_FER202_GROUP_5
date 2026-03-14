@@ -10,10 +10,11 @@ const AdminLayout = () => {
     <div>
         <AdminSidebar/>
         <AdminNavbar/>
-
-        <main>
+        
+        <main className="admin-main-content">
             <Outlet/>
         </main>
+        
     </div>
   )
 }
