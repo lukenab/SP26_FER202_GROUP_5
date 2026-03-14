@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './components/Context/Cart/CartGlobalState';
 import Layout from './components/Layout';
@@ -22,13 +23,27 @@ import UserPage from './pages/UserPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderManagement from './pages/Admin/OrderManagement';
 
+  // Ham kiem tra session khi app load
+  function checkSession() {
+    const expireTime = localStorage.getItem('expireTime');
 
-function App() {
+    if (expireTime && Date.now() > expireTime) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('expireTime');
+
+      alert('Session expired. Please login again.');
+      window.location.href = '/login';
+    }
+  }
+    useEffect(() => {
+      checkSession();
+    }, []);
+
+    
   return (
     <CartProvider>
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/books" element={<BookListPage />} />
@@ -52,7 +67,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* <Route path="/books" element={<BookListPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
 
           <Route path="/admin" element={

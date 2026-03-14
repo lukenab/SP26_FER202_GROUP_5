@@ -10,22 +10,10 @@ import BookCard from '../../components/UI/BookCard';
 import './BookListPage.css';
 
 const BookListPage = () => {
-
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-
-    // check login
-    const user = localStorage.getItem("user");
-
-    if (!user) {
-      navigate("/login");
-      return;
-    }
-
     const fetchData = async () => {
       try {
         const bookData = await getAllBook();
@@ -33,9 +21,8 @@ const BookListPage = () => {
 
         setBooks(bookData);
         setCategories(categoryData);
-
       } catch (error) {
-        console.error("Error loading data:", error);
+        console.error('Error loading data:', error);
       }
     };
 
@@ -73,13 +60,11 @@ const BookListPage = () => {
       books: books
         .filter((book) => book.category_id === category.id)
         .sort(() => 0.5 - Math.random())
-        .slice(0, 4)
+        .slice(0, 4),
     }));
-
 
   return (
     <>
-
       <Container fluid className="mt-1">
         {search ? (
            <>
@@ -137,7 +122,6 @@ const BookListPage = () => {
                         <BookCard book={book} />
                       </Col>
                     ))}
-
                   </Row>
                 </div>
 
@@ -187,7 +171,6 @@ const BookListPage = () => {
             </>
         )}
       </Container>
-
     </>
   );
 };

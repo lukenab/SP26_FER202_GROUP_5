@@ -1,50 +1,101 @@
 import { useState } from 'react';
-import './ProfilePage.css';
 import { Link } from 'react-router-dom';
+import './ProfilePage.css';
+import Header from '../components/Layout/Header/Header';
+import NavBar from '../components/Layout/Navbar/NavBar';
 
 export default function ProfilePage() {
-  const [user] = useState(() => {
-    return JSON.parse(localStorage.getItem('user'));
+  const [formData, setFormData] = useState(() => {
+    const data = localStorage.getItem('user');
+    return data ? JSON.parse(data) : null;
   });
 
-  if (!user) {
+  if (!formData) {
     return <p style={{ textAlign: 'center' }}>Loading...</p>;
   }
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/users/${formData.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const updatedUser = await response.json();
+
+      // update localStorage
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+
+      alert('Profile updated successfully!');
+    } catch (error) {
+      console.error(error);
+      alert('Update failed!');
+    }
+  };
+
   return (
-    <div className="profile-container">
-      <div className="profile-card">
-        <h2>User Profile</h2>
+    <>
+      <Header />
+      <NavBar />
+      <div className="profile-container">
+        <div className="profile-card">
+          <div className="profile-header">
+            <div className="avatar">{formData.name?.charAt(0).toUpperCase()}</div>
 
-        <div className="profile-item">
-          <span>Name</span>
-          <p>{user.name}</p>
-        </div>
+            <div>
+              <h3>{formData.name || 'Unknown User'}</h3>
+              <p>{formData.email || 'No email'}</p>
+            </div>
+          </div>
 
-        <div className="profile-item">
-          <span>Email</span>
-          <p>{user.email}</p>
-        </div>
+          <div className="profile-body">
+            <div className="profile-group">
+              <label>Full Name</label>
+              <input type="text" name="name" value={formData.name || ''} onChange={handleChange} />
+            </div>
 
-        <div className="profile-item">
-          <span>Phone</span>
-          <p>{user.phone}</p>
-        </div>
+            <div className="profile-group">
+              <label>Email</label>
+              <input type="text" value={formData.email || ''} readOnly />
+            </div>
 
-        <div className="profile-item">
-          <span>Password</span>
-          <p>{user.password}</p>
-        </div>
+            <div className="profile-group">
+              <label>Phone Number</label>
+              <input type="text" name="phone" value={formData.phone || ''} onChange={handleChange} />
+            </div>
 
-        <div className="profile-item">
-          <span>Role</span>
-          <p>{user.role}</p>
+            <div className="profile-group">
+              <label>Address</label>
+              <input type="text" name="address" value={formData.address || ''} onChange={handleChange} />
+            </div>
+
+            <div className="profile-group">
+              <label>Date of Birth</label>
+              <input type="date" name="birthday" value={formData.birthday || ''} onChange={handleChange} />
+            </div>
+
+            <div className="profile-actions">
+              <Link to="/books" className="btn-back">
+                ← Back to Home
+              </Link>
+
+              <button className="btn-save" onClick={handleSave}>
+                Save
+              </button>
+            </div>
+          </div>
         </div>
-        
-        <button>
-          <Link to="/books">Back To Home</Link>
-        </button>
       </div>
-    </div>
+    </>
   );
 }

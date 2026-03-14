@@ -1,35 +1,118 @@
-.profile-container{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#f4f6f8;
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f5f6f7;
+  padding-top: 40px;
 }
 
-.profile-card{
-  width:350px;
-  padding:30px;
-  background:white;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+.profile-card {
+  width: 650px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.profile-card h2{
-  margin-bottom:20px;
-  text-align:center;
+/* header */
+
+.profile-header {
+  background: linear-gradient(90deg, #2a5a7a, #45708c);
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
 }
 
-.profile-item{
-  margin-bottom:15px;
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }
 
-.profile-item span{
-  font-size:13px;
-  color:#888;
+/* body */
+
+.profile-body {
+  padding: 30px;
 }
 
-.profile-item p{
-  font-size:16px;
-  font-weight:500;
-  margin:4px 0 0;
+/* input group */
+
+.profile-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.profile-group input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f8f8f8;
+  font-size: 14px;
+}
+
+/* actions */
+
+.profile-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* back button */
+
+.btn-back {
+  padding: 10px 18px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  background: white;
+}
+
+.btn-back:hover {
+  background: #f3f3f3;
+}
+
+/* save button */
+
+.btn-save {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #2a5a7a;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-save:hover {
+  background: #0a7c8f;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #578aac, #45708c);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
 }

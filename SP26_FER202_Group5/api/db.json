@@ -459,7 +459,10 @@
       "name": "Bùi Như Ý",
       "email": "y@gmail.com",
       "password": "123456",
-      "role": "user"
+      "role": "user",
+      "phone": "0901234567",
+      "address": "",
+      "birthday": "2026-03-03"
     },
     {
       "id": "ae53",
@@ -468,6 +471,16 @@
       "password": "123456",
       "phone": "1234567890",
       "role": "user"
+    },
+    {
+      "id": "a316",
+      "name": "Huỳnh Thanh Bình",
+      "email": "binh@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "phone": "1234567890",
+      "address": "Cân Thơ",
+      "birthday": "2026-02-26"
     }
   ],
   "carts": [
