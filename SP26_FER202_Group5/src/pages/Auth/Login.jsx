@@ -20,6 +20,9 @@ export default function Login() {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
 
+      const expireTime = Date.now() + 60 * 60 * 1000; // 1 giờ
+      localStorage.setItem('expireTime', expireTime);
+
       if (user.role === 'admin') {
         navigate('/admin');
       } else {

@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './components/Context/Cart/CartGlobalState';
 import Layout from './components/Layout';
@@ -18,14 +19,29 @@ import AdminPage from './pages/Admin/AdminPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
 
-
-
 function App() {
+
+  // Ham kiem tra session khi app load
+  function checkSession() {
+    const expireTime = localStorage.getItem('expireTime');
+
+    if (expireTime && Date.now() > expireTime) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('expireTime');
+
+      alert('Session expired. Please login again.');
+      window.location.href = '/login';
+    }
+  }
+    useEffect(() => {
+      checkSession();
+    }, []);
+
+    
   return (
     <CartProvider>
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/books" element={<BookListPage />} />
@@ -56,7 +72,6 @@ function App() {
               </AdminRoute>
             }
           />
-
         </Routes>
       </BrowserRouter>
     </CartProvider>
