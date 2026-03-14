@@ -18,9 +18,9 @@ import ProtectedRoute from './pages/Routes/ProtectedRoute';
 import ProfilePage from './pages/ProfilePage';
 import AdminLayout from './components/Layout/AdminLayout/AdminLayout';
 import BookManagement from './pages/Admin/BookManagement';
-import UserPage from './pages/UserPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderManagement from './pages/Admin/OrderManagement';
+import UserManagement from './pages/Admin/UserManagement';
 
 
 function App() {
@@ -64,6 +64,10 @@ function App() {
               
             <Route path="orders" element={
               <OrderManagement/>
+            }/>
+
+            <Route path="users" element={
+              <UserManagement/>
             }/>
 
           <Route path='books' element={<BookManagement/>}/>
