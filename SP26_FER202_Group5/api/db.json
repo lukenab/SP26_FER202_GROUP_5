@@ -452,7 +452,10 @@
       "name": "Bùi Như Ý",
       "email": "y@gmail.com",
       "password": "123456",
-      "role": "user"
+      "role": "user",
+      "phone": "0901234567",
+      "address": "",
+      "birthday": "2026-03-03"
     },
     {
       "id": "ae53",
@@ -460,28 +463,17 @@
       "email": "Trang@gmail.com",
       "password": "123456",
       "phone": "1234567890",
-      "role": "user",
-      "status": "Inactive"
+      "role": "user"
     },
     {
-      "id": "d7de",
-      "name": "Linh Đang",
-      "email": "dang@gmail.com",
+      "id": "a316",
+      "name": "Huỳnh Thanh Bình",
+      "email": "binh@gmail.com",
+      "password": "123456",
+      "role": "user",
       "phone": "1234567890",
-      "password": "123456",
-      "role": "user",
-      "status": "Active",
-      "createdAt": "2026-03-14"
-    },
-    {
-      "id": "e2f3",
-      "name": "Bùi Thanh Thảo",
-      "email": "thao@gmail.com",
-      "phone": "0981903004",
-      "password": "123456",
-      "role": "user",
-      "status": "Active",
-      "createdAt": "2026-03-14"
+      "address": "Cân Thơ",
+      "birthday": "2026-02-26"
     }
   ],
   "carts": [
