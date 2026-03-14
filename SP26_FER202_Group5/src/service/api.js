@@ -54,16 +54,59 @@ export const getAllOrders = async () => {
     const response = await axios.get(`${BASE_URL}/orders`);
     return response.data;
   } catch (error) {
-    console.error("Fail to get all orders: ", error);
+    console.error('Fail to get all orders: ', error);
     return [];
   }
 };
 
 export const updateOrderStatus = async (id, newStatus) => {
   try {
-    const response = await axios.patch(`${BASE_URL}/orders/${id}`, {status: newStatus});
-    return response.data
+    const response = await axios.patch(`${BASE_URL}/orders/${id}`, { status: newStatus });
+    return response.data;
   } catch (error) {
-    console.log("Fail to update orders: ", error);
+    console.log('Fail to update orders: ', error);
   }
-}
+};
+
+// ================= USER MANAGEMENT =================
+
+// GET all users
+export const getAllUsers = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/users`);
+    return response.data;
+  } catch (error) {
+    console.error('Fail to get users:', error);
+    return [];
+  }
+};
+
+// CREATE user
+export const createUser = async (user) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/users`, user);
+    return response.data;
+  } catch (error) {
+    console.error('Fail to create user:', error);
+  }
+};
+
+// UPDATE user
+export const updateUser = async (id, userData) => {
+  try {
+    const response = await axios.patch(`${BASE_URL}/users/${id}`, userData);
+    return response.data;
+  } catch (error) {
+    console.error('Fail to update user:', error);
+  }
+};
+
+// DELETE user
+export const deleteUser = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/users/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Fail to delete user:', error);
+  }
+};
