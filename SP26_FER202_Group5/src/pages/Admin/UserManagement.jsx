@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllUsers, deleteUser, updateUser } from '../../service/api';
+import { getAllUsers, updateUser } from '../../service/api';
 import './UserManagement.css';
 import CreateUserModal from './CreateUserModal';
 import EditUserModal from './EditUserModal';
