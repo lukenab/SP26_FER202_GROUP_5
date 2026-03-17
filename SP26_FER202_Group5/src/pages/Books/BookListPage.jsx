@@ -13,6 +13,8 @@ const BookListPage = () => {
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
