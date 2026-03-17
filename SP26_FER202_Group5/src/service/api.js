@@ -110,3 +110,35 @@ export const deleteUser = async (id) => {
     console.error('Fail to delete user:', error);
   }
 };
+
+// === CATEGORY ===
+
+// ADD CATEGORY
+export const addCategory = async (category) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/categories`, category);
+    return response.data;
+  } catch (error) {
+    console.error("Fail to add category:", error);
+  }
+};
+
+// UPDATE CATEGORY
+export const updateCategory = async (id, category) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/categories/${id}`, category);
+    return response.data;
+  } catch (error) {
+    console.error("Fail to update category:", error);
+  }
+};
+
+// DELETE CATEGORY
+export const deleteCategory = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/categories/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Fail to delete category:", error);
+  }
+};
