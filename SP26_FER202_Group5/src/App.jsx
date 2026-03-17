@@ -22,7 +22,7 @@ import BookManagement from './pages/Admin/BookManagement';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderManagement from './pages/Admin/OrderManagement';
 import UserManagement from './pages/Admin/UserManagement';
-
+ function App() {
   // Ham kiem tra session khi app load
   function checkSession() {
     const expireTime = localStorage.getItem('expireTime');
