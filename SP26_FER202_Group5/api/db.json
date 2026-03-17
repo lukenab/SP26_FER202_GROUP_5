@@ -945,6 +945,25 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": "1934",
+      "userId": "2",
+      "items": [
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "orders": [
