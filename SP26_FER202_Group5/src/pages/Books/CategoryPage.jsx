@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllBook, getAllCategories } from "../service/api";
+import { getAllBook, getAllCategories } from "../../service/api";
 import { Row, Col, Container } from "react-bootstrap";
-import BookCard from "../components/UI/BookCard";
+import BookCard from "../../components/UI/BookCard";
 
 const CategoryPage = () => {
     const { id } = useParams();

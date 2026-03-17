@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Table, Button, Form } from "react-bootstrap";
-import { getAllCategories, addCategory, updateCategory, deleteCategory, getAllBook } from "../service/api";
+import { getAllCategories, addCategory, updateCategory, deleteCategory, getAllBook } from '../../service/api';
 
 const AdminCategoryPage = () => {
     const [categories, setCategories] = useState([]);

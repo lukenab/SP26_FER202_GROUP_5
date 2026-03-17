@@ -5,7 +5,7 @@ import CreateUserModal from './CreateUserModal';
 import EditUserModal from './EditUserModal';
 import { FiEdit } from 'react-icons/fi';
 import { FiTrash2 } from 'react-icons/fi';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
