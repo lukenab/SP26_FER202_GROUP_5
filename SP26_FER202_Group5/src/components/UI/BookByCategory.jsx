@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { getAllBook, getAllCategories } from '../../service/api';
 import '../../pages/Books/BookListPage.css';
 const BookByCategory = () => {
-    const { cate_id } = useParams();
+    const { id } = useParams();
     const[Listbooks, setListBook] = useState([]);
     const [category, setCategory]= useState([]);
     useEffect(()=>{
@@ -20,8 +20,8 @@ const BookByCategory = () => {
         fetchData();
     }, []);
 
-    const List = Listbooks.filter((book) => book.category_id === cate_id);
-    const currentCategory = category.find((c) => c.id === cate_id);
+    const List = Listbooks.filter((book) => book.category_id === id);
+    const currentCategory = category.find((c) => c.id === id);
 return (
     <>
     <Container className='my-4'>

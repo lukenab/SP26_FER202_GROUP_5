@@ -53,7 +53,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path="/category/:id" element={<CategoryPage />} />
+            <Route path="/category/:id" element={<BookByCategory />} />
 
             <Route path="/cart" element={
               <ProtectedRoute>
