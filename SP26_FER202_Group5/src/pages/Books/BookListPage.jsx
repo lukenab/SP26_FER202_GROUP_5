@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap';
 import { getAllBook, getAllCategories } from '../../service/api';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import HeroBanner from '../Home/HeroBanner';
 import LeftPanel from '../../components/LeftPanel';
@@ -29,20 +29,22 @@ const BookListPage = () => {
     };
 
     fetchData();
-
-  }, [navigate]);
+  }, []);
 
   //Lấy keyword từ URL
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const search = params.get("search")
+  const search = params.get('search');
 
-  const filteredBooks = search ? books.filter(book => 
-      book.title.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
-      book.author.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
-      book.country.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
-      book.publication_year.trim().toLowerCase().includes(search.trim().toLowerCase())
-  ) : books
+  const filteredBooks = search
+    ? books.filter(
+        (book) =>
+          book.title.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
+          book.author.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
+          book.country.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
+          book.publication_year.trim().toLowerCase().includes(search.trim().toLowerCase()),
+      )
+    : books;
   // sách mới phát hành
   const newBooks = [...books].sort((a, b) => b.publication_year - a.publication_year).slice(0, 5);
 
@@ -56,7 +58,9 @@ const BookListPage = () => {
   const lowStockBooks = books.filter((b) => b.stock <= 5).slice(0, 5);
 
   // sách theo category
-  const booksByCategory = [...categories].sort(() => 0.5 - Math.random()).slice(0, 2)
+  const booksByCategory = [...categories]
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2)
     .map((category) => ({
       ...category,
       books: books
@@ -69,47 +73,45 @@ const BookListPage = () => {
     <>
       <Container fluid className="mt-1">
         {search ? (
-           <>
-             {/* Breadcrumb */}
-              <Breadcrumb className="pt-3">
-                <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/', style: { textDecoration: 'none' } }}>
-                  Home
-                </Breadcrumb.Item>
-                <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/books', style: { textDecoration: 'none' } }}>
-                  Books
-                </Breadcrumb.Item>
-              </Breadcrumb>
+          <>
+            {/* Breadcrumb */}
+            <Breadcrumb className="pt-3">
+              <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/', style: { textDecoration: 'none' } }}>
+                Home
+              </Breadcrumb.Item>
+              <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/books', style: { textDecoration: 'none' } }}>
+                Books
+              </Breadcrumb.Item>
+            </Breadcrumb>
 
-              <div className='category-block'>
-                <h3> Search results for: {search}</h3>
-                {filteredBooks.length > 0 ? (
-                  <Row xs={2} md={5} className="g-3 my-2 ">
+            <div className="category-block">
+              <h3> Search results for: {search}</h3>
+              {filteredBooks.length > 0 ? (
+                <Row xs={2} md={5} className="g-3 my-2 ">
                   {filteredBooks.map((book) => (
                     <Col key={book.id}>
                       <BookCard book={book} />
                     </Col>
                   ))}
                 </Row>
-                ) : (
-                  <h4 className="text-center mt-5">
-                  No books found for "{search}"!
-                </h4>
-                )}
-              </div>
-        </>
+              ) : (
+                <h4 className="text-center mt-5">No books found for "{search}"!</h4>
+              )}
+            </div>
+          </>
         ) : (
-         <>
-              {/* HERO */}
+          <>
+            {/* HERO */}
             <HeroBanner />
-              <Row>
+            <Row>
               {/* LEFT PANEL */}
               <Col lg={3}>
-                <Row className='mb-3'>
-                  <LeftPanel newBooks={newBooks} title={"New Books"} />
+                <Row className="mb-3">
+                  <LeftPanel newBooks={newBooks} title={'New Books'} />
                 </Row>
 
-                <Row className='mb-3'>
-                  <LeftPanel newBooks={newArrivals}  title={"New Arrivals"} />
+                <Row className="mb-3">
+                  <LeftPanel newBooks={newArrivals} title={'New Arrivals'} />
                 </Row>
               </Col>
 
@@ -117,7 +119,7 @@ const BookListPage = () => {
               <Col lg={9}>
                 {/* FEATURED */}
                 <div className="category-block">
-                  <h4 className='fw-bold'>New Featured</h4>
+                  <h4 className="fw-bold">New Featured</h4>
                   <Row xs={2} md={4} className="g-3 mb-2">
                     {featuredBooks.map((book) => (
                       <Col key={book.id}>
@@ -146,31 +148,27 @@ const BookListPage = () => {
                     )}
                     {/* VIEW ALL */}
                     <div className="text-end mt-2">
-                      <Link to={`/category/${category.id}`}className="view-all-link">
+                      <Link to={`/category/${category.id}`} className="view-all-link">
                         View All →
                       </Link>
                     </div>
-
                   </div>
-
                 ))}
               </Col>
             </Row>
 
             {/* LOW STOCK */}
             <Row className="category-block">
-
-              <h4 className='fw-bold'>Low Stock Books </h4>
+              <h4 className="fw-bold">Low Stock Books </h4>
               <Row xs={2} md={5} className="g-3 mb-2">
                 {lowStockBooks.map((book) => (
                   <Col key={book.id}>
                     <BookCard book={book} />
                   </Col>
                 ))}
-
               </Row>
             </Row>
-            </>
+          </>
         )}
       </Container>
     </>

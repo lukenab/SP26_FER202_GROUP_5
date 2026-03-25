@@ -24,6 +24,7 @@ import OrderManagement from './pages/Admin/OrderManagement';
 import UserManagement from './pages/Admin/UserManagement';
 import CategoryPage from './pages/Books/CategoryPage';
 import AdminCategoryPage from './pages/Admin/AdminCategoryPage';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 
 // Ham kiem tra session khi app load
 function checkSession() {
@@ -53,7 +54,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path="/category/:id" element={<CategoryPage />} />
+            <Route path="/category/:id" element={<BookByCategory />} />
 
             <Route path="/cart" element={
               <ProtectedRoute>
@@ -78,7 +79,9 @@ function App() {
               <AdminLayout />
             </AdminRoute>
           }>
-
+            <Route index path="dashboard" element={
+              <AdminDashboard />
+            } />
 
             <Route path="orders" element={
               <OrderManagement />
