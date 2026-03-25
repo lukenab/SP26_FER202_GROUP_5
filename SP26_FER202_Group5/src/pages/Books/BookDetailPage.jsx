@@ -66,7 +66,6 @@ const BookDetailPage = () => {
 
   const listSameBook = books
     .filter((item) => item.category_id === book.category_id && item.id !== book.id)
-    .sort(() => 0.5 - Math.random())
     .slice(0, 4);
 
   return (
