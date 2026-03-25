@@ -57,3 +57,28 @@
     margin-top: 16px;
     padding-top: 8px;
 }
+
+.form-actions .btn-primary {
+    background-color: #38749c !important; 
+    border: none !important;
+    padding: 10px 25px;
+    font-weight: 500;
+}
+
+.form-actions .btn-primary:hover {
+    background-color: #377096 !important; 
+}
+
+
+.form-actions .btn-danger {
+    background-color: transparent !important;
+    color: #dc3545 !important; 
+    border: 1px solid #dc3545 !important;
+    padding: 10px 25px;
+}
+
+.form-actions .btn-danger:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
