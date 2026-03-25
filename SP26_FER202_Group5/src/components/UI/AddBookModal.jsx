@@ -62,10 +62,14 @@ const AddBookModal = ({show, onClose, onAdd, ListCategory, ListBook}) => {
         if(existingBook) {
             const updatedBook = {
                 ...existingBook,
+                ...newBook,
+                id: existingBook.id.toString(),
                 stock: Number(existingBook.stock) + stockNumber,
                 price:`$${priceNumber}`
             }
             onAdd(updatedBook, true)  // true = update stock
+            console.log("ID gửi lên:", newBook.id);
+console.log("Type:", typeof newBook.id);
             onClose();
             //reset form sau khi add
             setNewBook({
@@ -89,7 +93,7 @@ const AddBookModal = ({show, onClose, onAdd, ListCategory, ListBook}) => {
         const priceString = `$${priceNumber}`;
         const bookToAdd = {
             ...newBook,
-            id:newId,
+            id:newId.toString(),
             price: priceString
         }
         onAdd(bookToAdd, false);

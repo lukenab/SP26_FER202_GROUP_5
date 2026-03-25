@@ -40,12 +40,12 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
 
       const updatedBook = {
           ...editBook,
+          id: editBook.id.toString(),
+          stock: stockNumber,
           price: `$${priceNumber}`
         };
 
       onUpdate(updatedBook, true);
-
-      setEditMode(false);
       setShowModal(false);
     }
 
