@@ -6,16 +6,22 @@ import { getAllCategories } from "../../../service/api";
 
 const NavBar = () => {
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryData = await getAllCategories();
-      setCategories(categoryData);
-    };
+      const categoryData = await getAllCategories()
+      const sorted = categoryData
+        .filter(cat => cat.status === "Active")
+        .sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+        )
 
-    fetchData();
-  }, []);
+      setCategories(sorted)
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <Navbar className="main-navbar" expand="lg">
@@ -36,7 +42,7 @@ const NavBar = () => {
                   to={`/category/${cat.id}`}
                   className="category-item"
                 >
-                  {cat.name}
+                  {cat.name} 
                 </NavDropdown.Item>
               ))}
 

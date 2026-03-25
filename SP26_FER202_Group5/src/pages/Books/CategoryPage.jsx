@@ -9,24 +9,26 @@ const CategoryPage = () => {
     const { id } = useParams()
     const [books, setBooks] = useState([])
     const [categoryName, setCategoryName] = useState("")
+    const [categoryDescription, setCategoryDescription] = useState("")
 
     useEffect(() => {
         const fetchData = async () => {
-            const bookData = await getAllBook();
-            const categories = await getAllCategories();
-            const filtered = bookData.filter(
-                (book) => Number(book.category_id) === Number(id)
-            );
-            const category = categories.find((c) => String(c.id) === String(id));
-            setBooks(filtered);
-            setCategoryName(category?.name || "Category");
-        };
-        fetchData();
+            const bookData = await getAllBook()
+            const categoryData = await getAllCategories()
+
+            const filtered = bookData.filter((book) => Number(book.category_id) === Number(id))
+            const category = categoryData.find((c) => String(c.id) === String(id))
+            setBooks(filtered)
+            setCategoryName(category?.name || "Category")
+            setCategoryDescription(category.description || "")
+        }
+        fetchData()
     }, [id])
 
     return (
         <Container className="mt-4">
             <h2 className="fw-bold mb-4">{categoryName}</h2>
+            <p className="text-muted mb-4">{categoryDescription}</p>
             <Row>
                 {books.length > 0 ? (
                     books.map((book) => (
