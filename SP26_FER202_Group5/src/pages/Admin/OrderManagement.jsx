@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getAllOrders, updateOrderStatus } from '../../service/api';
-import { Container, Table, Badge, Form, Row, Col, InputGroup, Modal, Button } from 'react-bootstrap';
+import { deleteOrder, getAllOrders, updateOrderStatus } from '../../service/api';
+import { Container, Table, Badge, Form, Row, Col, InputGroup, Modal, Button, Pagination } from 'react-bootstrap';
 import { FiShoppingBag, FiClock, FiCheckCircle, FiDollarSign, FiSearch, FiEye, FiEdit, FiTrash2 } from 'react-icons/fi';
 import './OrderManagement.css';
 
@@ -11,6 +11,41 @@ const OrderManagement = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [orderToDelete, setOrderToDelete] = useState(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const ordersPerPage = 10;
+
+  const lastOrderIndex = currentPage * ordersPerPage;
+  const firstPageIndex = lastOrderIndex - ordersPerPage;
+
+  const filteredOrders = orders.filter((order) => {
+    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase()) || order.customerInfo?.name?.toLowerCase().includes(searchTerm.toLowerCase()) || order.customerInfo?.phone?.includes(searchTerm);
+
+    const matchesStatus = statusFilter === 'All' || order.status === statusFilter;
+
+    return matchesSearch && matchesStatus;
+  });
+
+  const totalOrders = orders.length;
+  const pendingOrders = orders.filter((o) => o.status === 'Pending').length;
+  const deliveredOrders = orders.filter((o) => o.status === 'Delivered').length;
+  const totalRevenue = orders.filter((o) => o.status === 'Delivered').reduce((sum, o) => sum + (o.totalPrice || 0), 0);
+
+  const currentOrders = filteredOrders.slice(firstPageIndex, lastOrderIndex);
+  const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+
+  const handleShowDeleteModal = (order) => {
+    setOrderToDelete(order);
+    setShowDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
+    setOrderToDelete(null);
+  };
 
   const handleViewDetails = (order) => {
     setSelectedOrder(order);
@@ -40,23 +75,23 @@ const OrderManagement = () => {
     fetchOrders();
   }, []);
 
+  const handleConfirmDelete = async () => {
+    if (orderToDelete) {
+      try {
+        await deleteOrder(orderToDelete.id);
+        setShowDeleteModal(false);
+        fetchOrders();
+      } catch (error) {
+        console.error('Delete failed:', error);
+        alert('Failed to delete order.');
+      }
+    }
+  };
+
   const handleStatusChange = async (orderId, newStatus) => {
     await updateOrderStatus(orderId, newStatus);
     fetchOrders();
   };
-
-  const totalOrders = orders.length;
-  const pendingOrders = orders.filter((o) => o.status === 'Pending').length;
-  const deliveredOrders = orders.filter((o) => o.status === 'Delivered').length;
-  const totalRevenue = orders.filter((o) => o.status === 'Delivered').reduce((sum, o) => sum + (o.totalPrice || 0), 0);
-
-  const filteredOrders = orders.filter((order) => {
-    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase()) || order.customerInfo?.name?.toLowerCase().includes(searchTerm.toLowerCase()) || order.customerInfo?.phone?.includes(searchTerm);
-
-    const matchesStatus = statusFilter === 'All' || order.status === statusFilter;
-
-    return matchesSearch && matchesStatus;
-  });
 
   const getStatusBadge = (status) => {
     switch (status) {
@@ -168,15 +203,15 @@ const OrderManagement = () => {
             <thead>
               <tr>
                 <th style={{ width: '10%' }}>ORDER ID</th>
-                <th style={{ width: '30%' }}>CUSTOMER INFO</th>
+                <th style={{ width: '25%' }}>CUSTOMER INFO</th>
                 <th style={{ width: '15%' }}>ORDER DATE</th>
                 <th style={{ width: '15%' }}>AMOUNT</th>
-                <th style={{ width: '15%' }}>STATUS</th>
+                <th style={{ width: '20%' }}>STATUS</th>
                 <th style={{ width: '15%' }}>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
-              {filteredOrders.map((order) => (
+              {currentOrders.map((order) => (
                 <tr key={order.id}>
                   <td className="fw-semibold text-secondary">#{order.id.slice(0, 6).toUpperCase()}</td>
 
@@ -219,12 +254,29 @@ const OrderManagement = () => {
 
                   <td>
                     <FiEye className="action-icon" title="View Details" onClick={() => handleViewDetails(order)} />
-                    <FiTrash2 className="action-icon text-danger" title="Delete Order" />
+                    {order.status === 'Cancelled' && <FiTrash2 onClick={() => handleShowDeleteModal(order)} className="action-icon text-danger" title="Delete Order" />}
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
+
+          <div className="d-flex justify-content-end align-items-center p-3 border-top bg-light-subtle rounded-bottom-3">
+            <div className="text-muted me-auto small">
+              Showing {Math.min(firstPageIndex + 1, filteredOrders.length)} to {Math.min(lastOrderIndex, filteredOrders.length)} of {filteredOrders.length} orders
+            </div>
+            <Pagination className="mb-0">
+              <Pagination.Prev onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1} />
+
+              {[...Array(totalPages)].map((_, index) => (
+                <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => setCurrentPage(index + 1)}>
+                  {index + 1}
+                </Pagination.Item>
+              ))}
+
+              <Pagination.Next onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages || totalPages === 0} />
+            </Pagination>
+          </div>
 
           {filteredOrders.length === 0 && (
             <div className="text-center py-5 text-muted">
@@ -236,9 +288,7 @@ const OrderManagement = () => {
 
       <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
         <Modal.Header closeButton className="border-0 pb-0">
-          <Modal.Title className="fw-bold" style={{ color: '#1e3d52' }}>
-            Order Details {selectedOrder && `#${selectedOrder.id.slice(0, 6).toUpperCase()}`}
-          </Modal.Title>
+          <Modal.Title className="fw-bold">Order Details {selectedOrder && `#${selectedOrder.id.slice(0, 6).toUpperCase()}`}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body className="pt-3">
@@ -315,6 +365,27 @@ const OrderManagement = () => {
         <Modal.Footer className="border-0 pt-0">
           <Button variant="secondary" onClick={handleCloseModal}>
             Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showDeleteModal} onHide={handleCloseDeleteModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title className="fw-bold text-danger">Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-center py-4">
+          <p className="text-muted">
+            Are you sure to delete order <strong>#{orderToDelete?.id.slice(0, 6).toUpperCase()}</strong>.
+            <br />
+            This action cannot be undone.
+          </p>
+        </Modal.Body>
+        <Modal.Footer className="justify-content-end pb-4">
+          <Button variant="secondary" onClick={handleCloseDeleteModal} className="px-4 me-2">
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleConfirmDelete} className="px-4">
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
