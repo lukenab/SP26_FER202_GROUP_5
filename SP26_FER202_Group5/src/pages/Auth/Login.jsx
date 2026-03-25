@@ -25,7 +25,7 @@ export default function Login() {
       syncUser();
 
       if (user.role === 'admin') {
-        navigate('/admin');
+        navigate('/admin/dashboard');
       } else {
         navigate('/books');
       }
