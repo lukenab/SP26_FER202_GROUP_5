@@ -463,7 +463,8 @@
       "email": "Trang@gmail.com",
       "password": "123456",
       "phone": "1234567890",
-      "role": "user"
+      "role": "user",
+      "status": "Inactive"
     },
     {
       "id": "a316",
@@ -473,7 +474,67 @@
       "role": "user",
       "phone": "1234567890",
       "address": "Cân Thơ",
-      "birthday": "2026-02-26"
+      "birthday": "2026-02-26",
+      "status": "Active"
+    },
+    {
+      "id": "1663",
+      "name": "Huỳnh Toàn",
+      "email": "toan@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "status": "Active",
+      "createdAt": "2026-03-25T14:40:34.894Z"
+    },
+    {
+      "id": "4e60",
+      "name": "Đoàn Văn ",
+      "email": "van@gmail.com",
+      "phone": "0981903004",
+      "password": "123456",
+      "role": "user",
+      "status": "Active",
+      "createdAt": "2026-03-25"
+    },
+    {
+      "id": "7e5b",
+      "name": "Thanh Hiền",
+      "email": "hien@gmail.com",
+      "phone": "09819020034",
+      "password": "123456",
+      "role": "user",
+      "status": "Active",
+      "createdAt": "2026-03-25"
+    },
+    {
+      "id": "f892",
+      "name": "Thanh Thảo",
+      "email": "thao@gmail.com",
+      "phone": "0981903004",
+      "password": "123456",
+      "role": "user",
+      "status": "Active",
+      "createdAt": "2026-03-25"
+    },
+    {
+      "id": "c138",
+      "name": "Kim Chi",
+      "email": "chi@gmail.com",
+      "phone": "0981903004",
+      "password": "123456",
+      "role": "user",
+      "status": "Inactive",
+      "createdAt": "2026-03-25"
+    },
+    {
+      "id": "7f13",
+      "name": "Trần Thị Tham Lam",
+      "email": "lam@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "status": "Active",
+      "createdAt": "2026-03-25T15:09:46.377Z",
+      "birthday": "2005-03-04"
     }
   ],
   "carts": [
@@ -964,6 +1025,11 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "userId": "2",
+      "items": [],
+      "id": "da71"
     }
   ],
   "orders": [
@@ -1009,6 +1075,28 @@
       "totalPrice": 45,
       "status": "Pending",
       "createdAt": "2026-03-13T13:22:27.805Z"
+    },
+    {
+      "id": "5338",
+      "userId": "2",
+      "customerInfo": {
+        "name": "Hữu Lập",
+        "phone": "0981903004",
+        "email": "user@gmail.com",
+        "address": "Cân Thơ"
+      },
+      "items": [
+        {
+          "bookId": "16",
+          "title": "A Game of Thrones",
+          "price": "$55",
+          "quantity": 1,
+          "image": "/images/book-16.jpg"
+        }
+      ],
+      "totalPrice": 55,
+      "status": "Pending",
+      "createdAt": "2026-03-25T15:04:51.128Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
