@@ -54,18 +54,18 @@ const BookListPage = () => {
   // featured random
   const featuredBooks = [...books].sort(() => 0.5 - Math.random()).slice(0, 8);
 
+
   // sắp hết hàng
   const lowStockBooks = books.filter((b) => b.stock <= 5).slice(0, 5);
 
-  // sách theo category
-  const booksByCategory = [...categories]
+  // sách theo category nào đủ 4 cuốn để ko bị lủng UI chính
+  const booksByCategory = categories.filter(cate => books.filter((b)=> cate.id === b.category_id).length >=4)
     .sort(() => 0.5 - Math.random())
     .slice(0, 2)
     .map((category) => ({
       ...category,
       books: books
         .filter((book) => book.category_id === category.id)
-        .sort(() => 0.5 - Math.random())
         .slice(0, 4),
     }));
 
