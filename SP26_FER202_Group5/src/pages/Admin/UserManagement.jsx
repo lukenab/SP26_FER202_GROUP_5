@@ -38,27 +38,40 @@ const UserManagement = () => {
     });
 
     if (result.isConfirmed) {
-      // soft delete
-      await updateUser(id, {
-        status: 'Inactive',
-      });
+      try {
+        await updateUser(id, {
+          status: 'Inactive',
+        });
 
-      fetchUsers();
+        await fetchUsers();
 
-      Swal.fire({
-        title: 'User Deactivated!',
-        text: `${name} is now inactive.`,
-        icon: 'success',
-        timer: 1500,
-        showConfirmButton: false,
-      });
+        Swal.fire({
+          title: 'User Deactivated!',
+          text: `${name} is now inactive.`,
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } catch (error) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to deactivate user.',
+          icon: 'error',
+        });
+      }
     }
   };
+
   // ================= SEARCH =================
-  const filteredUsers = users.filter((u) => u.status !== 'Inactive').filter((u) => u.name?.toLowerCase().includes(search.toLowerCase()) || u.email?.toLowerCase().includes(search.toLowerCase()) || u.role?.toLowerCase().includes(search.toLowerCase()));
+  const filteredUsers = users.filter(
+    (u) =>
+      u.name?.toLowerCase().includes(search.toLowerCase()) ||
+      u.email?.toLowerCase().includes(search.toLowerCase()) ||
+      u.role?.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="user-page">
-      {/* HEADER */}
       <div className="user-header">
         <h2>User Management</h2>
 
@@ -67,12 +80,15 @@ const UserManagement = () => {
         </button>
       </div>
 
-      {/* SEARCH */}
       <div className="search-box">
-        <input type="text" placeholder="Search users by name, email, or role..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Search users by name, email, or role..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
-      {/* TABLE */}
       <div className="table-wrapper">
         <table className="user-table">
           <thead>
@@ -90,7 +106,6 @@ const UserManagement = () => {
             {filteredUsers.map((u) => (
               <tr key={u.id}>
                 <td>{u.name}</td>
-
                 <td>{u.email}</td>
 
                 <td>
@@ -98,7 +113,9 @@ const UserManagement = () => {
                 </td>
 
                 <td>
-                  <span className={u.status === 'Inactive' ? 'status inactive' : 'status active'}>{u.status || 'Active'}</span>
+                  <span className={u.status === 'Inactive' ? 'status inactive' : 'status active'}>
+                    {u.status || 'Active'}
+                  </span>
                 </td>
 
                 <td>{u.createdAt ? new Date(u.createdAt).toISOString().split('T')[0] : '-'}</td>
@@ -124,11 +141,19 @@ const UserManagement = () => {
         </table>
       </div>
 
-      {/* MODAL CREATE USER */}
+      <CreateUserModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onCreated={fetchUsers}
+        existingUsers={users}
+      />
 
-      <CreateUserModal isOpen={showModal} onClose={() => setShowModal(false)} onCreated={fetchUsers} existingUsers={users} />
-      {/* MODAL EDIT USER */}
-      <EditUserModal isOpen={showEditModal} onClose={() => setShowEditModal(false)} user={editUser} onUpdated={fetchUsers} />
+      <EditUserModal
+        isOpen={showEditModal}
+        onClose={() => setShowEditModal(false)}
+        user={editUser}
+        onUpdated={fetchUsers}
+      />
     </div>
   );
 };

@@ -106,6 +106,7 @@ export const updateUser = async (id, userData) => {
     return response.data;
   } catch (error) {
     console.error('Fail to update user:', error);
+    throw error; 
   }
 };
 
