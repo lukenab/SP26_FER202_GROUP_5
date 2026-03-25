@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap';
 import { getAllBook, getAllCategories } from '../../service/api';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import HeroBanner from '../Home/HeroBanner';
 import LeftPanel from '../../components/LeftPanel';
