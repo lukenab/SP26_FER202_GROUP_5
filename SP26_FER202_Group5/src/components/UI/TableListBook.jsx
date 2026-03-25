@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Table, Button, Modal, Row, Col, Card, Form } from 'react-bootstrap';
+import { Container, Table, Button, Modal, Row, Col, Card, Form, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../pages/Admin/BookManagement.css';
 const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
@@ -7,8 +7,13 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editBook, setEditBook] = useState(null);
+  const [error, setError] = useState("");
+
+
+
 
   const handleChange = (e) => {
+    setError("");
     setEditBook((pre) => ({
       ...pre,
       [e.target.name]: e.target.value,
@@ -18,7 +23,27 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
 
  const handleSubmit = (e) => {
       e.preventDefault();
-      onUpdate(editBook, true);
+
+      const priceNumber = Number(editBook.price.replace("$", ""));
+      const stockNumber = Number(editBook.stock);
+      const yearNumber = Number(editBook.publication_year);
+      const currentYear = new Date().getFullYear();
+
+      if(yearNumber > currentYear) {
+        setError("Publication year cannot be in the future!")
+        return;
+        }
+        if(stockNumber <= 0) {
+            setError("Stock must be positive number!");
+            return;
+        }
+
+      const updatedBook = {
+          ...editBook,
+          price: `$${priceNumber}`
+        };
+
+      onUpdate(updatedBook, true);
 
       setEditMode(false);
       setShowModal(false);
@@ -47,7 +72,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
               <th>Image</th>
               <th>Title</th>
               <th>Author</th>
-              <th>price</th>
+              <th>Price</th>
               <th>Country</th>
               <th>Category</th>
               <th>Stock</th>
@@ -94,6 +119,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
             )}
           </tbody>
         </Table>
+
       </Container>
 
       <Modal show={showModal} onHide={() => setShowModal(false)} size="xl" className="p-3" scrollable>
@@ -112,7 +138,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
 
                   {/* Info */}
                   <Col md={4}>
-                    <h4 style={{ color: '#1e3d52' }}>{selectedBook.price}</h4>
+                    <h4 style={{ color: '#1e3d52' }}>Price: {selectedBook.price}</h4>
 
                     <p>Stock: {selectedBook.stock}</p>
 
@@ -256,7 +282,7 @@ const TableListBook = ({ ListBooks, category, title, onDelete, onUpdate }) => {
                    <Form.Control type="file" accept="image/*" name="image" onChange={handleUploadImage} />
               
               </Form.Group>
-
+              {error !== "" ? (<Alert variant="danger"> {error}  </Alert>): ""}    
               <Button style={{ background: '#1e3d52', border: 'none' }} type="submit" className="mt-3 me-3">
                 Update Book
               </Button>
