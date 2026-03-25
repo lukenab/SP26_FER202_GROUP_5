@@ -22,24 +22,27 @@ import BookManagement from './pages/Admin/BookManagement';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderManagement from './pages/Admin/OrderManagement';
 import UserManagement from './pages/Admin/UserManagement';
- function App() {
-  // Ham kiem tra session khi app load
-  function checkSession() {
-    const expireTime = localStorage.getItem('expireTime');
+import CategoryPage from './pages/Books/CategoryPage';
+import AdminCategoryPage from './pages/Admin/AdminCategoryPage';
 
-    if (expireTime && Date.now() > expireTime) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('expireTime');
+// Ham kiem tra session khi app load
+function checkSession() {
+  const expireTime = localStorage.getItem('expireTime');
 
-      alert('Session expired. Please login again.');
-      window.location.href = '/login';
-    }
+  if (expireTime && Date.now() > expireTime) {
+    localStorage.removeItem('user');
+    localStorage.removeItem('expireTime');
+
+    alert('Session expired. Please login again.');
+    window.location.href = '/login';
   }
-    useEffect(() => {
-      checkSession();
-    }, []);
+}
 
-    
+function App() {
+  useEffect(() => {
+    checkSession();
+  }, []);
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -50,19 +53,20 @@ import UserManagement from './pages/Admin/UserManagement';
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
+            <Route path="/category/:id" element={<CategoryPage />} />
 
             <Route path="/cart" element={
-                <ProtectedRoute>
-                  <CartPage />
-                </ProtectedRoute>
-              }/>
+              <ProtectedRoute>
+                <CartPage />
+              </ProtectedRoute>
+            } />
 
             <Route path="/orders" element={
               <ProtectedRoute>
-                <CheckoutPage/>
+                <CheckoutPage />
               </ProtectedRoute>
-            }/>
-            </Route>
+            } />
+          </Route>
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -70,24 +74,26 @@ import UserManagement from './pages/Admin/UserManagement';
           <Route path="/profile" element={<ProfilePage />} />
 
           <Route path="/admin" element={
-              <AdminRoute>
-                <AdminLayout />
-              </AdminRoute>
-            }>
+            <AdminRoute>
+              <AdminLayout />
+            </AdminRoute>
+          }>
 
-              
+
             <Route path="orders" element={
-              <OrderManagement/>
-            }/>
+              <OrderManagement />
+            } />
 
             <Route path="users" element={
-              <UserManagement/>
-            }/>
+              <UserManagement />
+            } />
 
-          <Route path='books' element={<BookManagement/>}/>
+            <Route path='books' element={<BookManagement />} />
+
+            <Route path="categories" element={<AdminCategoryPage />} />
 
           </Route>
-         
+
 
         </Routes>
       </BrowserRouter>
