@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { deleteOrder, getAllOrders, updateOrderStatus } from '../../service/api';
+import { deleteOrder, getAllBook, getAllOrders, updateOrderStatus } from '../../service/api';
 import { Container, Table, Badge, Form, Row, Col, InputGroup, Modal, Button, Pagination } from 'react-bootstrap';
 import { FiShoppingBag, FiClock, FiCheckCircle, FiDollarSign, FiSearch, FiEye, FiEdit, FiTrash2 } from 'react-icons/fi';
 import './OrderManagement.css';
 
 const OrderManagement = () => {
   const [orders, setOrders] = useState([]);
+  const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
 
@@ -59,15 +60,16 @@ const OrderManagement = () => {
 
   const fetchOrders = async () => {
     try {
-      const data = await getAllOrders();
-      if (data && Array.isArray(data)) {
-        const sortedData = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      const [ordersData, booksData] = await Promise.all([getAllOrders(), getAllBook()]);
+      if (ordersData) {
+        const sortedData = ordersData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setOrders(sortedData);
-      } else {
-        setOrders([]);
+      }
+      if (booksData) {
+        setBooks(booksData);
       }
     } catch (error) {
-      console.error('Fail to get orders', error);
+      console.error('Fail to get data', error);
     }
   };
 
@@ -88,9 +90,36 @@ const OrderManagement = () => {
     }
   };
 
+  const getLiveStock = (bookId) => {
+    const book = books.find((b) => b.id === bookId);
+    return book ? book.stock : 0;
+  };
+
+  const checkStockAvailability = (order) => {
+    return order.items.every((item) => {
+      const liveBook = books.find((b) => b.id === item.bookId);
+      return liveBook && liveBook.stock >= item.quantity;
+    });
+  };
+
   const handleStatusChange = async (orderId, newStatus) => {
-    await updateOrderStatus(orderId, newStatus);
-    fetchOrders();
+    const order = orders.find((o) => o.id === orderId);
+
+    if (newStatus === 'Processing' || newStatus === 'Shipping') {
+      const isAvailable = checkStockAvailability(order);
+
+      if (!isAvailable) {
+        alert('❌ Order approval failed: Insufficient stock available.');
+        return;
+      }
+    }
+
+    try {
+      await updateOrderStatus(orderId, newStatus);
+      fetchOrders();
+    } catch (error) {
+      console.error('Update failed', error);
+    }
   };
 
   const getStatusBadge = (status) => {
@@ -233,7 +262,11 @@ const OrderManagement = () => {
                   <td className="fw-bold">${order.totalPrice?.toFixed(2)}</td>
 
                   <td>
-                    <Form.Select size="sm" value={order.status} onChange={(e) => handleStatusChange(order.id, e.target.value)} className={`text-${getStatusBadge(order.status)} fw-semibold border-0 shadow-none bg-transparent`} style={{ cursor: 'pointer', paddingLeft: 0 }}>
+                    <Form.Select size="sm" value={order.status} 
+                    onChange={(e) => handleStatusChange(order.id, e.target.value)} 
+                    className={`text-${getStatusBadge(order.status)} fw-semibold border-0 shadow-none bg-transparent`} 
+                    isInvalid={!checkStockAvailability(order) && order.status === 'Pending'} style={{ cursor: 'pointer', paddingLeft: 0}} 
+                    disabled={order.status === 'Delivered' || order.status === 'Cancelled'}>
                       <option className="text-dark" value="Pending">
                         Pending
                       </option>
@@ -250,6 +283,12 @@ const OrderManagement = () => {
                         Cancelled
                       </option>
                     </Form.Select>
+
+                    {!checkStockAvailability(order) && order.status === 'Pending' && (
+                      <div className="text-danger mt-1 fw-bold" style={{ fontSize: '11px' }}>
+                       Stock Insufficient
+                      </div>
+                    )}
                   </td>
 
                   <td>
@@ -299,18 +338,19 @@ const OrderManagement = () => {
                 <Row>
                   <Col sm={6}>
                     <p className="mb-1">
-                      <span className="text-muted">Name:</span> <strong>{selectedOrder.customerInfo?.name}</strong>
+                      <span className="fw-bold">Name: </span>
+                      {selectedOrder.customerInfo?.name}
                     </p>
                     <p className="mb-1">
-                      <span className="text-muted">Phone:</span> <strong>{selectedOrder.customerInfo?.phone}</strong>
+                      <span className="fw-bold">Phone: </span> {selectedOrder.customerInfo?.phone}
                     </p>
                   </Col>
                   <Col sm={6}>
                     <p className="mb-1">
-                      <span className="text-muted">Email:</span> <strong>{selectedOrder.customerInfo?.email || 'N/A'}</strong>
+                      <span className="fw-bold">Email: </span> {selectedOrder.customerInfo?.email || 'N/A'}
                     </p>
                     <p className="mb-1">
-                      <span className="text-muted">Address:</span> <strong>{selectedOrder.customerInfo?.address}</strong>
+                      <span className="fw-bold">Address: </span> {selectedOrder.customerInfo?.address}
                     </p>
                   </Col>
                 </Row>
@@ -322,29 +362,32 @@ const OrderManagement = () => {
                   <tr>
                     <th>Book</th>
                     <th className="text-center">Price</th>
-                    <th className="text-center">Qty</th>
+                    <th className="text-center">Quantity</th>
                     <th className="text-end">Subtotal</th>
                   </tr>
                 </thead>
                 <tbody>
                   {selectedOrder.items?.map((item, index) => {
-                    const priceNum = parseFloat(item.price.replace('$', '')) || 0;
+                    const liveStock = getLiveStock(item.bookId);
+                    const isOutOfStock = liveStock < item.quantity;
+
                     return (
                       <tr key={index}>
                         <td>
                           <div className="d-flex align-items-center gap-3">
-                            <img src={item.image} alt={item.title} style={{ width: '40px', height: '55px', objectFit: 'cover', borderRadius: '4px' }} />
+                            <img src={item.image} alt={item.title} style={{ width: '40px', height: '55px', objectFit: 'cover' }} />
                             <div>
                               <div className="fw-semibold text-dark">{item.title}</div>
-                              <div className="text-muted" style={{ fontSize: '12px' }}>
-                                ID: {item.bookId}
-                              </div>
+                              <div className="text-muted small">Current Stock: {liveStock}</div>
                             </div>
                           </div>
                         </td>
                         <td className="align-middle text-center">{item.price}</td>
-                        <td className="align-middle text-center">{item.quantity}</td>
-                        <td className="align-middle text-end fw-semibold">${(priceNum * item.quantity).toFixed(2)}</td>
+                        <td className="align-middle text-center">
+                          {item.quantity}
+                          {isOutOfStock && <div className="text-danger extra-small fw-bold">Not enough stock!</div>}
+                        </td>
+                        <td className="align-middle text-end fw-semibold">${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}</td>
                       </tr>
                     );
                   })}

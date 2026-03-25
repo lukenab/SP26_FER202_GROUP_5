@@ -8,13 +8,13 @@ const AdminSidebar = () => {
   const location = useLocation();
 
   const menuItems = [
-    { title: 'Dashboard', path: '/admin', icon: <FiGrid /> },
+    { title: 'Dashboard', path: '/admin/dashboard', icon: <FiGrid /> },
     { title: 'User Management', path: '/admin/users', icon: <FiUsers /> },
     { title: 'Books Management', path: '/admin/books', icon: <FiBook /> },
     { title: 'Orders & Finance', path: '/admin/orders', icon: <FiShoppingCart /> },
     { title: 'Categories', path: '/admin/categories', icon: <BiCategory /> },
-    { title: 'Settings', path: '/admin/settings', icon: <FiSettings /> },
-    { title: 'Profile', path: '/admin/profile', icon: <FiUser /> },
+    // { title: 'Settings', path: '/admin/settings', icon: <FiSettings /> },
+    // { title: 'Profile', path: '/admin/profile', icon: <FiUser /> },
   ];
 
   return (
