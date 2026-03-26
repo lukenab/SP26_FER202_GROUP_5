@@ -40,7 +40,7 @@
       "id": "7",
       "name": "Political",
       "description": "Politics and leadership related books",
-      "status": "Active"
+      "status": "Inactive"
     },
     {
       "id": "8",
@@ -52,7 +52,7 @@
       "id": "d790",
       "name": "Podcast",
       "description": "Podcast-style learning content",
-      "status": "Active"
+      "status": "Inactive"
     },
     {
       "id": "87c8",
@@ -1076,6 +1076,63 @@
       "userId": "691a",
       "items": [],
       "id": "34eb"
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 5
+        }
+      ],
+      "id": "5f43"
+    },
+    {
+      "id": "ad96",
+      "userId": "2",
+      "items": [
+        {
+          "id": "2",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "country": "United States",
+          "price": "$15",
+          "image": "/images/book-2.jpg",
+          "category_id": "2",
+          "publication_year": "1925",
+          "stock": 18,
+          "description": "A classic novel set in the Jazz Age that explores wealth, love, and the American Dream through the mysterious millionaire Jay Gatsby.",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "8629",
+      "userId": "1",
+      "items": [
+        {
+          "id": "1",
+          "title": "Harry Potter",
+          "author": "J.K. Rowling",
+          "country": "United Kingdom",
+          "price": "$20",
+          "image": "/images/book-1.jpg",
+          "category_id": "1",
+          "publication_year": "1997",
+          "stock": 25,
+          "description": "A young wizard named Harry discovers his magical heritage and attends Hogwarts School of Witchcraft and Wizardry while confronting the dark wizard Voldemort.",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "orders": [
@@ -2600,30 +2657,8 @@
         }
       ],
       "totalPrice": 50,
-      "status": "Shipping",
+      "status": "Cancelled",
       "createdAt": "2026-03-25T20:20:00.000Z"
-    },
-    {
-      "id": "v1w2",
-      "userId": "a316",
-      "customerInfo": {
-        "name": "Silas Coleman",
-        "phone": "0556677892",
-        "email": "scoleman@gmail.com",
-        "address": "121 Silicon Valley, California, USA"
-      },
-      "items": [
-        {
-          "bookId": "32",
-          "title": "Code Complete",
-          "price": "$41",
-          "quantity": 1,
-          "image": "/images/book-32.jpg"
-        }
-      ],
-      "totalPrice": 41,
-      "status": "Shipping",
-      "createdAt": "2026-03-25T20:30:00.000Z"
     },
     {
       "id": "z5a6",
@@ -2644,7 +2679,7 @@
         }
       ],
       "totalPrice": 22,
-      "status": "Pending",
+      "status": "Cancelled",
       "createdAt": "2026-03-25T20:40:00.000Z"
     },
     {
@@ -2688,7 +2723,7 @@
         }
       ],
       "totalPrice": 45,
-      "status": "Processing",
+      "status": "Delivered",
       "createdAt": "2026-03-25T20:50:00.000Z"
     },
     {
@@ -2798,7 +2833,7 @@
         }
       ],
       "totalPrice": 22,
-      "status": "Delivered",
+      "status": "Pending",
       "createdAt": "2026-03-25T21:20:00.000Z"
     }
   ],

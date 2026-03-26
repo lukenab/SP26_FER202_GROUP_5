@@ -52,7 +52,7 @@ const HomePage = () => {
                   <Card.Subtitle className="mb-3 text-muted">{book.author}</Card.Subtitle>
                   
                   <div className="mt-auto d-flex justify-content-between align-items-center">
-                    <span className="text-danger fw-bold fs-5">${book.price}</span>
+                    <span className="text-danger fw-bold fs-5">{book.price}</span>
                     <Button as={Link} to={`/books/${book.id}`} variant="outline-primary" className="view-detail-btn">
                       View Detail
                     </Button>
