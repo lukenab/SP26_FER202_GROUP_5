@@ -24,12 +24,13 @@ import OrderManagement from './pages/Admin/OrderManagement';
 import UserManagement from './pages/Admin/UserManagement';
 import CategoryPage from './pages/Books/CategoryPage';
 import AdminCategoryPage from './pages/Admin/AdminCategoryPage';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 
-// Ham kiem tra session khi app load
+// Fix #3: ép kiểu Number để so sánh đúng (localStorage trả về string)
 function checkSession() {
   const expireTime = localStorage.getItem('expireTime');
 
-  if (expireTime && Date.now() > expireTime) {
+  if (expireTime && Date.now() > Number(expireTime)) {
     localStorage.removeItem('user');
     localStorage.removeItem('expireTime');
 
@@ -53,19 +54,20 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path="/category/:id" element={<CategoryPage />} />
+            <Route path="/category/:id" element={<BookByCategory />} />
 
-            <Route path="/cart" element={
-              <ProtectedRoute>
-                <CartPage />
-              </ProtectedRoute>
-            } />
+            {/* Fix #1: /cart không cần đăng nhập - guest được vào xem giỏ hàng */}
+            <Route path="/cart" element={<CartPage />} />
 
-            <Route path="/orders" element={
-              <ProtectedRoute>
-                <CheckoutPage />
-              </ProtectedRoute>
-            } />
+            {/* /orders vẫn cần đăng nhập */}
+            <Route
+              path="/orders"
+              element={
+                <ProtectedRoute>
+                  <CheckoutPage />
+                </ProtectedRoute>
+              }
+            />
           </Route>
 
           <Route path="/login" element={<Login />} />
@@ -73,28 +75,20 @@ function App() {
 
           <Route path="/profile" element={<ProfilePage />} />
 
-          <Route path="/admin" element={
-            <AdminRoute>
-              <AdminLayout />
-            </AdminRoute>
-          }>
-
-
-            <Route path="orders" element={
-              <OrderManagement />
-            } />
-
-            <Route path="users" element={
-              <UserManagement />
-            } />
-
-            <Route path='books' element={<BookManagement />} />
-
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminLayout />
+              </AdminRoute>
+            }
+          >
+            <Route index path="dashboard" element={<AdminDashboard />} />
+            <Route path="orders" element={<OrderManagement />} />
+            <Route path="users" element={<UserManagement />} />
+            <Route path="books" element={<BookManagement />} />
             <Route path="categories" element={<AdminCategoryPage />} />
-
           </Route>
-
-
         </Routes>
       </BrowserRouter>
     </CartProvider>
