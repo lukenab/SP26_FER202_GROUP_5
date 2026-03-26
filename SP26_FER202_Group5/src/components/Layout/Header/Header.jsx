@@ -6,11 +6,11 @@ import { useCart } from '../../Context/Cart/CartGlobalState';
 import './Header.css';
 
 const Header = () => {
-  const { totalItems } = useCart();
+  const { totalItems, syncUser } = useCart();
 
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const [searchKey, setSearchKey] = useState("");
+  const [searchKey, setSearchKey] = useState('');
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -21,18 +21,20 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('expireTime');
     setUser(null);
+    syncUser(); // báo CartGlobalState biết user đã logout → clear cart
     navigate('/');
   };
 
-  const handleSearch =(e)=>{
+  const handleSearch = (e) => {
     e.preventDefault();
-    if(searchKey.trim()){
+    if (searchKey.trim()) {
       navigate(`/books?search=${searchKey}`);
-    }else{
-      navigate("/books");
+    } else {
+      navigate('/books');
     }
-  }
+  };
 
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
@@ -48,7 +50,7 @@ const Header = () => {
           {/* SEARCH */}
           <Form className="searchField" onSubmit={handleSearch}>
             <FaSearch className="faSearch position-absolute" />
-            <FormControl type="search" placeholder="Search for books, authors, or genres..." className="ps-5 py-2" aria-label="Search" value={searchKey} onChange={(e)=> setSearchKey(e.target.value)} />
+            <FormControl type="search" placeholder="Search for books, authors, or genres..." className="ps-5 py-2" aria-label="Search" value={searchKey} onChange={(e) => setSearchKey(e.target.value)} />
           </Form>
 
           {/* RIGHT SIDE */}

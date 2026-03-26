@@ -4,6 +4,7 @@ import { getAllCategories, getBookDetail, getAllBook } from '../../service/api';
 import BookCard from '../../components/UI/BookCard';
 import { Row, Container, Breadcrumb, Col, Button, InputGroup, Form, Table, Card, Toast, ToastContainer } from 'react-bootstrap';
 import { useCart } from '../../components/Context/Cart/CartGlobalState';
+
 const BookDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -32,16 +33,12 @@ const BookDetailPage = () => {
     if (quantity > 1) setCount(quantity - 1);
   };
 
+  // Thêm vào giỏ - KHÔNG cần đăng nhập
   const handleAddToCart = () => {
-    // Kiểm tra đăng nhập trước khi thêm vào giỏ
-    if (!currentUser) {
-      setShowLoginToast(true);
-      return;
-    }
     addToCart(book, quantity);
-    navigate('/cart');
   };
 
+  // Mua ngay - cần đăng nhập
   const handleBuyNow = () => {
     if (!currentUser) {
       setShowLoginToast(true);
@@ -64,14 +61,13 @@ const BookDetailPage = () => {
     );
   }
 
-  const listSameBook = books
-    .filter((item) => item.category_id === book.category_id && item.id !== book.id)
-    .slice(0, 4);
+  const listSameBook = books.filter((item) => item.category_id === book.category_id && item.id !== book.id).slice(0, 4);
 
   return (
     <>
-      {/* Toast thông báo yêu cầu đăng nhập */}
+      {/* Toast thêm vào giỏ thành công */}
       <ToastContainer position="top-end" className="p-3" style={{ zIndex: 9999 }}>
+        {/* Toast yêu cầu đăng nhập khi Buy Now */}
         <Toast show={showLoginToast} onClose={() => setShowLoginToast(false)} delay={3000} autohide bg="warning">
           <Toast.Header>
             <strong className="me-auto">⚠️ Login Required</strong>
@@ -81,7 +77,7 @@ const BookDetailPage = () => {
             <Link to="/login" style={{ fontWeight: 600, color: '#1e3d52' }}>
               sign in
             </Link>{' '}
-            before adding items to your cart.
+            to purchase items.
           </Toast.Body>
         </Toast>
       </ToastContainer>
@@ -142,24 +138,26 @@ const BookDetailPage = () => {
             </Row>
             <Row className="my-3 g-3 text-white">
               <Col>
+                {/* ADD TO CART - không cần đăng nhập */}
                 <Button className="w-100" onClick={handleAddToCart} style={{ background: '#1e3d52' }}>
-                  {currentUser ? 'ADD TO CART' : '🔒 ADD TO CART'}
+                  ADD TO CART
                 </Button>
               </Col>
               <Col>
+                {/* BUY NOW - cần đăng nhập */}
                 <Button className="w-100" onClick={handleBuyNow} style={{ background: '#1e3d52' }}>
                   {currentUser ? 'BUY NOW' : '🔒 BUY NOW'}
                 </Button>
               </Col>
             </Row>
 
-            {/* Hiển thị hint nếu chưa đăng nhập */}
+            {/* Hint nếu chưa đăng nhập */}
             {!currentUser && (
               <small className="text-muted">
                 <Link to="/login" style={{ color: '#1e3d52' }}>
                   Sign in
                 </Link>{' '}
-                to add items to cart
+                to purchase items
               </small>
             )}
           </Col>
