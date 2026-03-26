@@ -68,6 +68,14 @@ export const updateOrderStatus = async (id, newStatus) => {
   }
 };
 
+export const deleteOrder = async (orderId) => {
+  try {
+    return await axios.delete(`${BASE_URL}/orders/${orderId}`);
+  } catch (error) {
+    console.error("Delete failed ", error);
+  }
+}
+
 // ================= USER MANAGEMENT =================
 
 // GET all users
@@ -98,6 +106,7 @@ export const updateUser = async (id, userData) => {
     return response.data;
   } catch (error) {
     console.error('Fail to update user:', error);
+    throw error; 
   }
 };
 

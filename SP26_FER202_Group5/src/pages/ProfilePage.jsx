@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './ProfilePage.css';
 import Header from '../components/Layout/Header/Header';
 import NavBar from '../components/Layout/Navbar/NavBar';
+import Swal from 'sweetalert2';
 
 export default function ProfilePage() {
   const [formData, setFormData] = useState(() => {
@@ -22,26 +23,36 @@ export default function ProfilePage() {
   };
 
   const handleSave = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/users/${formData.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const response = await fetch(`http://localhost:5000/users/${formData.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-      const updatedUser = await response.json();
+    const updatedUser = await response.json();
 
-      // update localStorage
-      localStorage.setItem('user', JSON.stringify(updatedUser));
+    localStorage.setItem('user', JSON.stringify(updatedUser));
 
-      alert('Profile updated successfully!');
-    } catch (error) {
-      console.error(error);
-      alert('Update failed!');
-    }
-  };
+    Swal.fire({
+      title: 'Profile Updated!',
+      text: 'Your profile has been updated successfully.',
+      icon: 'success',
+      timer: 1500,
+      showConfirmButton: false,
+    });
+  } catch (error) {
+    console.error(error);
+
+    Swal.fire({
+      title: 'Error!',
+      text: 'Update failed!',
+      icon: 'error',
+    });
+  }
+};
 
   return (
     <>

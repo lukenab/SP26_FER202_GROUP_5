@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './auth.css';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -18,12 +19,29 @@ export default function Register() {
       email,
       password,
       role: 'user',
+      status: 'Active',
+      createdAt: new Date().toISOString(),
     };
 
-    await axios.post('http://localhost:5000/users', newUser);
+    try {
+      await axios.post('http://localhost:5000/users', newUser);
 
-    alert('Registration successful!');
-    navigate('/login');
+      Swal.fire({
+        title: 'Registration Successful!',
+        text: 'Your account has been created successfully.',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      navigate('/login');
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to register account.',
+        icon: 'error',
+      });
+    }
   };
 
   return (
@@ -42,12 +60,12 @@ export default function Register() {
 
         <div className="stats">
           <div className="stat">
-            <h3>8K+</h3>
+            <h3>1K+</h3>
             <span>Books</span>
           </div>
 
           <div className="stat">
-            <h3>50K+</h3>
+            <h3>5K+</h3>
             <span>Customers</span>
           </div>
 
