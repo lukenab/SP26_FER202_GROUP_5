@@ -5,7 +5,6 @@ const CartContext = createContext(null);
 
 const API = 'http://localhost:5000/carts';
 
-// Lấy user hiện tại từ localStorage
 const getCurrentUser = () => {
   try {
     return JSON.parse(localStorage.getItem('user'));
@@ -14,38 +13,78 @@ const getCurrentUser = () => {
   }
 };
 
+// Guest cart dùng localStorage
+const GUEST_CART_KEY = 'guest_cart';
+
+const getGuestCart = () => {
+  try {
+    return JSON.parse(localStorage.getItem(GUEST_CART_KEY)) || [];
+  } catch {
+    return [];
+  }
+};
+
+const saveGuestCart = (items) => {
+  localStorage.setItem(GUEST_CART_KEY, JSON.stringify(items));
+};
+
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [cartRecord, setCartRecord] = useState(null); // record trong db.json
+  const [cartRecord, setCartRecord] = useState(null);
   const [currentUser, setCurrentUser] = useState(getCurrentUser);
 
-  // Khi user thay đổi → load giỏ hàng từ db.json
+  // Khi user thay đổi → load giỏ hàng phù hợp
   useEffect(() => {
     if (currentUser) {
       fetchCart(currentUser.id);
     } else {
-      setCartItems([]);
+      // Guest: load từ localStorage
+      setCartItems(getGuestCart());
       setCartRecord(null);
     }
   }, [currentUser]);
 
-  // Load giỏ hàng của user từ db.json
+  // Load giỏ hàng của user đã đăng nhập từ db.json
   const fetchCart = async (userId) => {
     try {
       const res = await axios.get(`${API}?userId=${userId}`);
       if (res.data.length > 0) {
         setCartRecord(res.data[0]);
-        setCartItems(res.data[0].items || []);
+
+        // Merge guest cart vào user cart nếu có
+        const guestItems = getGuestCart();
+        let mergedItems = res.data[0].items || [];
+
+        if (guestItems.length > 0) {
+          guestItems.forEach((guestItem) => {
+            const existing = mergedItems.find((i) => i.id === guestItem.id);
+            if (existing) {
+              mergedItems = mergedItems.map((i) => (i.id === guestItem.id ? { ...i, quantity: i.quantity + guestItem.quantity } : i));
+            } else {
+              mergedItems = [...mergedItems, guestItem];
+            }
+          });
+          // Xóa guest cart sau khi merge
+          localStorage.removeItem(GUEST_CART_KEY);
+          saveCart(userId, mergedItems, res.data[0]);
+        }
+
+        setCartItems(mergedItems);
       } else {
+        // User chưa có cart trong db → merge guest cart nếu có
+        const guestItems = getGuestCart();
         setCartRecord(null);
-        setCartItems([]);
+        setCartItems(guestItems);
+        if (guestItems.length > 0) {
+          localStorage.removeItem(GUEST_CART_KEY);
+          saveCart(userId, guestItems, null);
+        }
       }
     } catch {
-      setCartItems([]);
+      setCartItems(getGuestCart());
     }
   };
 
-  // Lưu giỏ hàng lên db.json (POST nếu chưa có, PUT nếu đã có)
   const saveCart = async (userId, items, record) => {
     try {
       if (record) {
@@ -59,24 +98,23 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Hàm gọi sau mỗi thay đổi cartItems
   const updateCartState = (newItems) => {
     setCartItems(newItems);
     if (currentUser) {
       saveCart(currentUser.id, newItems, cartRecord);
+    } else {
+      // Guest: lưu vào localStorage
+      saveGuestCart(newItems);
     }
   };
 
-  // Hàm để Login gọi sau khi đăng nhập
   const syncUser = () => {
     const user = getCurrentUser();
     setCurrentUser(user);
   };
 
-  // Thêm sách vào giỏ - chỉ cho phép khi đã đăng nhập
+  // Thêm sách vào giỏ - KHÔNG cần đăng nhập
   const addToCart = (book, quantity = 1) => {
-    if (!currentUser) return false;
-
     const existing = cartItems.find((item) => item.id === book.id);
     let newItems;
     if (existing) {
@@ -88,7 +126,6 @@ export const CartProvider = ({ children }) => {
     return true;
   };
 
-  // Cập nhật số lượng
   const updateQuantity = (bookId, newQty) => {
     if (newQty <= 0) {
       removeItem(bookId);
@@ -98,21 +135,17 @@ export const CartProvider = ({ children }) => {
     updateCartState(newItems);
   };
 
-  // Xóa 1 item
   const removeItem = (bookId) => {
     const newItems = cartItems.filter((item) => item.id !== bookId);
     updateCartState(newItems);
   };
 
-  // Xóa toàn bộ giỏ
   const clearCart = () => {
     updateCartState([]);
   };
 
-  // Tổng số lượng (dùng cho badge ở Header)
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Tổng tiền
   const totalPrice = cartItems.reduce((sum, item) => {
     const price = parseFloat(item.price.replace('$', '')) || 0;
     return sum + price * item.quantity;
