@@ -14,6 +14,7 @@ const BookDetailPage = () => {
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [showLoginToast, setShowLoginToast] = useState(false);
+  const [showAddedToast, setShowAddedToast] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,12 +34,11 @@ const BookDetailPage = () => {
     if (quantity > 1) setCount(quantity - 1);
   };
 
-  // Thêm vào giỏ - KHÔNG cần đăng nhập
   const handleAddToCart = () => {
     addToCart(book, quantity);
+    setShowAddedToast(true);
   };
 
-  // Mua ngay - cần đăng nhập
   const handleBuyNow = () => {
     if (!currentUser) {
       setShowLoginToast(true);
@@ -65,8 +65,20 @@ const BookDetailPage = () => {
 
   return (
     <>
-      {/* Toast thêm vào giỏ thành công */}
       <ToastContainer position="top-end" className="p-3" style={{ zIndex: 9999 }}>
+        {/* Toast thêm vào giỏ thành công */}
+        <Toast show={showAddedToast} onClose={() => setShowAddedToast(false)} delay={2500} autohide bg="success">
+          <Toast.Header>
+            <strong className="me-auto">✅ Added to Cart</strong>
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            <strong>{book.title}</strong> has been added to your cart!{' '}
+            <Link to="/cart" style={{ color: '#fff', textDecoration: 'underline' }}>
+              View Cart
+            </Link>
+          </Toast.Body>
+        </Toast>
+
         {/* Toast yêu cầu đăng nhập khi Buy Now */}
         <Toast show={showLoginToast} onClose={() => setShowLoginToast(false)} delay={3000} autohide bg="warning">
           <Toast.Header>
@@ -82,7 +94,6 @@ const BookDetailPage = () => {
         </Toast>
       </ToastContainer>
 
-      {/* Breadcrumb */}
       <Breadcrumb className="pt-4">
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/', style: { textDecoration: 'none' } }}>
           Home
@@ -93,17 +104,14 @@ const BookDetailPage = () => {
         <Breadcrumb.Item active>{book.title}</Breadcrumb.Item>
       </Breadcrumb>
 
-      {/* Card detail */}
       <Container className="shadow-lg border-0 rounded-3 mb-4 p-4">
         <h4>{book.title}</h4>
         <hr />
         <Row>
-          {/* Cột 1 - ảnh */}
           <Col md={4} className="p-3">
             <img src={book.image} className="shadow-sm border-1 rounded-5 p-3" alt={book.title} style={{ width: '100%', height: '440px', objectFit: 'contain' }} />
           </Col>
 
-          {/* Cột 2 - thông tin + thêm giỏ */}
           <Col md={4}>
             <Row>
               <p className="fs-2 fw-bold" style={{ color: '#1e3d52' }}>
@@ -125,7 +133,6 @@ const BookDetailPage = () => {
               </div>
             </Row>
             <Row>
-              {/* Chọn số lượng */}
               <InputGroup size="sm" style={{ width: '230px', height: '40px' }}>
                 <Button variant="outline-secondary" className="px-3 border-1" onClick={handleDecrease}>
                   -
@@ -138,20 +145,16 @@ const BookDetailPage = () => {
             </Row>
             <Row className="my-3 g-3 text-white">
               <Col>
-                {/* ADD TO CART - không cần đăng nhập */}
                 <Button className="w-100" onClick={handleAddToCart} style={{ background: '#1e3d52' }}>
                   ADD TO CART
                 </Button>
               </Col>
               <Col>
-                {/* BUY NOW - cần đăng nhập */}
                 <Button className="w-100" onClick={handleBuyNow} style={{ background: '#1e3d52' }}>
                   {currentUser ? 'BUY NOW' : '🔒 BUY NOW'}
                 </Button>
               </Col>
             </Row>
-
-            {/* Hint nếu chưa đăng nhập */}
             {!currentUser && (
               <small className="text-muted">
                 <Link to="/login" style={{ color: '#1e3d52' }}>
@@ -162,7 +165,6 @@ const BookDetailPage = () => {
             )}
           </Col>
 
-          {/* Cột 3 - thông tin chi tiết */}
           <Col md={4} className="px-5">
             <Row className="mb-5">
               <Card className="py-2">
@@ -207,7 +209,6 @@ const BookDetailPage = () => {
         </Row>
       </Container>
 
-      {/* Related books */}
       <div className="shadow-lg border-0 rounded-3 mb-4 p-3">
         <h4>Related Books</h4>
         {listSameBook.length > 0 ? (
