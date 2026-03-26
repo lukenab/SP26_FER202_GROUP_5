@@ -22,7 +22,6 @@ import BookManagement from './pages/Admin/BookManagement';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderManagement from './pages/Admin/OrderManagement';
 import UserManagement from './pages/Admin/UserManagement';
-import CategoryPage from './pages/Books/CategoryPage';
 import AdminCategoryPage from './pages/Admin/AdminCategoryPage';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 
