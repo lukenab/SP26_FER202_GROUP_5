@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './auth.css';
 import axios from 'axios';
 import { useCart } from '../../components/Context/Cart/CartGlobalState';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,11 +22,15 @@ export default function Login() {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
 
+      // Fix #4: set expireTime đúng cách (24 giờ)
+      const expireTime = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem('expireTime', String(expireTime));
+
       // Đồng bộ lại user trong CartGlobalState → tự động load giỏ hàng đã lưu
       syncUser();
 
       if (user.role === 'admin') {
-        navigate('/admin');
+        navigate('/admin/dashboard');
       } else {
         navigate('/books');
       }
@@ -97,9 +102,10 @@ export default function Login() {
 
           <div className="divider">or</div>
 
-          <button className="guest-btn">
-            <Link to="/">Continue as Guest</Link>
-          </button>
+          {/* Fix #5: dùng Link trực tiếp thay vì lồng Link trong button */}
+          <Link to="/" className="guest-btn" style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>
+            Continue as Guest
+          </Link>
         </div>
       </div>
     </div>
