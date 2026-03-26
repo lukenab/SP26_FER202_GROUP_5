@@ -49,6 +49,11 @@ const AddBookModal = ({show, onClose, onAdd, ListCategory, ListBook}) => {
         setError("Publication year cannot be in the future!")
         return;
         }
+        if(stockNumber <= 0) {
+        setError("Stock must be positive number!");
+        return;
+        }
+
         // check them sach cung. neu cung sach => + stock, nguoc lai them moi
         const existingBook = ListBook.find((b)=>
             b.title.trim().toLowerCase() === newBook.title.trim().toLowerCase() &&
@@ -57,10 +62,14 @@ const AddBookModal = ({show, onClose, onAdd, ListCategory, ListBook}) => {
         if(existingBook) {
             const updatedBook = {
                 ...existingBook,
+                ...newBook,
+                id: existingBook.id.toString(),
                 stock: Number(existingBook.stock) + stockNumber,
                 price:`$${priceNumber}`
             }
             onAdd(updatedBook, true)  // true = update stock
+            console.log("ID gửi lên:", newBook.id);
+console.log("Type:", typeof newBook.id);
             onClose();
             //reset form sau khi add
             setNewBook({
@@ -84,7 +93,7 @@ const AddBookModal = ({show, onClose, onAdd, ListCategory, ListBook}) => {
         const priceString = `$${priceNumber}`;
         const bookToAdd = {
             ...newBook,
-            id:newId,
+            id:newId.toString(),
             price: priceString
         }
         onAdd(bookToAdd, false);
@@ -122,7 +131,7 @@ return (
 
                 <Form.Group className='w-100'>
                     <Form.Label className='fw-bold'>Stock</Form.Label>
-                    <Form.Control name="stock" placeholder='Enter Stock'min="0" type='Number' onChange={handleChange} required/>
+                    <Form.Control name="stock" placeholder='Enter Stock' min="0" type='Number' onChange={handleChange} required/>
                 </Form.Group>
             </div>
             
@@ -154,7 +163,7 @@ return (
                 <Form.Label className='fw-bold'>Upload image file</Form.Label>
                 <Form.Control type='file' accept="image/*" name='image' onChange={handleUploadImage} required />
             </Form.Group>
-              {error !== "" ? (<Alert variant="danger"> {error}  </Alert>): ""}            
+            {error !== "" ? (<Alert variant="danger"> {error}  </Alert>): ""}
             <Button style={{ background: '#1e3d52', border: "none" }} type='submit' className='mt-3'>Add Book</Button>
           
         </Form>
