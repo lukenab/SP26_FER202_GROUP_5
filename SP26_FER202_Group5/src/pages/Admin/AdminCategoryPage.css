@@ -1,0 +1,28 @@
+.table-wrapper {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+.custom-table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.custom-table th:first-child {
+    border-top-left-radius: 14px;
+}
+
+.custom-table th:last-child {
+    border-top-right-radius: 14px;
+}
+
+.custom-table tr:last-child td:first-child {
+    border-bottom-left-radius: 14px;
+}
+
+.custom-table tr:last-child td:last-child {
+    border-bottom-right-radius: 14px;
+}

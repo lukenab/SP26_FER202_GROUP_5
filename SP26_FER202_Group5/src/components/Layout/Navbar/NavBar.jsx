@@ -2,20 +2,30 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { useEffect, useState } from "react";
-import { getAllCategories } from "../../../service/api";
+import { getAllCategories, getAllBook } from "../../../service/api";
 
 const NavBar = () => {
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([])
+  const [books, setBooks] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryData = await getAllCategories();
-      setCategories(categoryData);
-    };
+      const categoryData = await getAllCategories()
+      const bookData = await getAllBook()
 
-    fetchData();
-  }, []);
+      const sorted = categoryData
+        .filter(cat => cat.status === "Active")
+        .sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+        )
+
+      setCategories(sorted)
+      setBooks(bookData)
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <Navbar className="main-navbar" expand="lg">
@@ -36,7 +46,7 @@ const NavBar = () => {
                   to={`/category/${cat.id}`}
                   className="category-item"
                 >
-                  {cat.name}
+                  {cat.name} ({books.filter(b => String(b.category_id) === String(cat.id)).length})
                 </NavDropdown.Item>
               ))}
 

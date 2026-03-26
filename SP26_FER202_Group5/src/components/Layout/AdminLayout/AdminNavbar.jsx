@@ -19,10 +19,10 @@ const AdminNavbar = () => {
         <div className='d-flex align-items-center'>
             <FiMenu className='fs-4 me-3 text-secondary' style={{cursor: 'pointer'}}/>
 
-            <div className='search-wrapper d-none d-md-block'>
+            {/* <div className='search-wrapper d-none d-md-block'>
                 <FiSearch className='search-icon'/>
                 <input type="text" placeholder='Search...' />
-            </div>
+            </div> */}
         </div>
 
         <Dropdown align="end">

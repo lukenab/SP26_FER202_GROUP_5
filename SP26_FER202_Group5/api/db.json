@@ -2,39 +2,63 @@
   "categories": [
     {
       "id": "1",
-      "name": "Fantasy"
+      "name": "Fantasy",
+      "description": "Epic magic stories",
+      "status": "Active"
     },
     {
       "id": "2",
-      "name": "Classic Literature"
+      "name": "Classic Literature",
+      "description": "Timeless literary masterpieces",
+      "status": "Active"
     },
     {
       "id": "3",
-      "name": "Horror"
+      "name": "Horror",
+      "description": "Scary suspense stories",
+      "status": "Active"
     },
     {
       "id": "4",
-      "name": "Programming"
+      "name": "Programming",
+      "description": "Books about coding and software development",
+      "status": "Active"
     },
     {
       "id": "5",
-      "name": "Mystery Fiction"
+      "name": "Mystery Fiction",
+      "description": "Detective and investigation stories",
+      "status": "Active"
     },
     {
       "id": "6",
-      "name": "Self-Help"
+      "name": "Self-Help",
+      "description": "Personal development and motivation books",
+      "status": "Active"
     },
     {
       "id": "7",
-      "name": "Political"
+      "name": "Political",
+      "description": "Politics and leadership related books",
+      "status": "Active"
     },
     {
       "id": "8",
-      "name": "Manga"
+      "name": "Manga",
+      "description": "Japanese comic books",
+      "status": "Active"
     },
     {
       "id": "d790",
-      "name": "Podcast"
+      "name": "Podcast",
+      "description": "Podcast-style learning content",
+      "status": "Active"
+    },
+    {
+      "id": "87c8",
+      "name": "Test-category",
+      "description": "test",
+      "status": "Active"
     }
   ],
   "books": [
