@@ -98,7 +98,6 @@ const CartPage = () => {
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -154,11 +153,6 @@ const CartPage = () => {
                     <td className="align-middle fw-semibold">${subtotal.toFixed(2)}</td>
 
                     {/* Xóa */}
-                    <td className="align-middle text-center">
-                      <Button variant="outline-danger" size="sm" onClick={() => removeItem(item.id)}>
-                        <FaTrash />
-                      </Button>
-                    </td>
                   </tr>
                 );
               })}
